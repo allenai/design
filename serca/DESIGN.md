@@ -322,7 +322,7 @@ typography:
     lineHeight: 22.4px
 
   # ── External Communications (NOT for product UI) ──────────────────
-  # Manrope, body text only. Scope: slide decks, EarthRanger.com, email
+  # Manrope, body text only. Scope: slide decks, SERCA.org, email
   # newsletters, printed materials. Headings in these contexts still use
   # PP Telegraf (see Strata Text Styles above) — only body text changes.
   external-comms-body-lg:
@@ -355,7 +355,7 @@ typography:
 
 The SMART-EarthRanger Conservation Alliance (SERCA) is a global collaboration that unites SMART and EarthRanger — the world's most widely used conservation management platforms — with proven field experience and training resources into a single, free support system for the people safeguarding protected and conserved areas. The Alliance is governed by nine member organizations; no single organization leads it. SMART and EarthRanger remain the platforms practitioners use today.
 
-This file is the **Alliance identity, not a product interface**. Use it for booth and event materials, partner decks and one-pagers, social profiles, and the "A part of" lockup an Alliance member uses to show its affiliation. It is not a primary product mark — SMART and EarthRanger keep their own marks on their own product surfaces.
+This file is the **Alliance identity, not a product interface**. Use it for booth and event materials, partner decks and one-pagers, social profiles, and the "A part of" lockup an Alliance member uses to show its affiliation. It is not a primary product mark — SMART and EarthRanger keep their own marks on their own product surfaces. The SERCA platform brings together SERCA Web, SERCA Mobile, Ecoscope, and Gundi — tools built around data-driven decision making and adaptive management.
 
 SERCA's colors and typography are EarthRanger's, token for token: every color value, text style, size, and weight below is identical, so Alliance materials sit naturally beside EarthRanger materials. What SERCA adds is the mark and the rules for applying it.
 
@@ -421,7 +421,7 @@ SERCA materials are viewed in the same low-bandwidth field conditions as EarthRa
 
 ### External communications (Manrope) — not for UI
 
-Manrope is a typographic option for **externally-facing communications only**: slide decks, serca.org, email newsletters, and printed materials. Most SERCA materials are external communications, so Manrope body text is the common case here. It is **never** used in product UI — product interfaces always use Roboto for body text via the `platform.body` tokens above.
+Manrope is a typographic option for **externally-facing communications only**: slide decks, SERCA.org, email newsletters, and printed materials. Most SERCA materials are external communications, so Manrope body text is the common case here. It is **never** used in product UI — product interfaces always use Roboto for body text via the `platform.body` tokens above.
 
 Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`external-comms-body-lg/md/sm/xs`, same sizes/line-heights as the UI Body scale). Headings in external communications still use PP Telegraf, exactly as in product UI — do not substitute Manrope for headings anywhere.
 
@@ -437,14 +437,14 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 - **Usage:** Primary icon library — search for any standard UI icon here first
 - **Color:** Use `UI/Icons` token (`#767676`) by default unless the design specifies otherwise
 
-### Library 2: ER Design System Custom Icons
+### Library 2: SERCA Design Figma File
 
-- **Source:** ER Design System Figma file (`gQJAI5XKeENQsqkCaFBev3`), Icons page
-- **Style:** Custom filled icons specific to the EarthRanger domain
+- **Source:** SERCA Design Figma file (`gQJAI5XKeENQsqkCaFBev3`), Icons page
+- **Style:** SERCA icons — custom filled icons specific to the SERCA domain
 - **Default size:** 18×18px for most icons; 16×16px for menu bar and inline UI icons
 - **Usage:** Use these for domain-specific concepts not covered by Material (e.g. Patrol, Spoor, Basemap, Fence, Wildlife Sighting, GPS, Report, Observation Patrol, Deforestation, etc.)
 - **Variants:** Some icons have filled/outline or state variants (e.g. Cloud Online/Offline, Eye Open/Closed, Active/Inactive, Download states) — use the variant that matches the design exactly
-- **Note:** The ER icon library references Material Design as its base — for any icon not listed as a custom symbol, search the Material Design library
+- **Note:** The SERCA icon library references Material Design as its base — for any icon not listed as a custom symbol, search the Material Design library
 
 ### Library 3: SERCA Google Slides Template
 
@@ -468,7 +468,7 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 
 **Don't write "suite of tools", "users", or "available now" in SERCA materials.** SERCA is a unified platform; the people it serves are practitioners and conservation teams; SMART and EarthRanger are available today, while SERCA Web and Mobile follow a milestone-based roadmap.
 
-**Don't use emojis in SERCA materials — use an icon library instead.** See the Icons section above: Material Design Icons for standard UI icons, ER Design System Custom Icons for domain-specific concepts (Patrol, Spoor, Basemap, Fence, Wildlife Sighting, etc.). Emojis render inconsistently across platforms/fonts and don't carry the states (filled/outline, active/inactive, etc.) the icon libraries provide.
+**Don't use emojis in SERCA materials — use an icon library instead.** See the Icons section above: Material Design Icons for standard UI icons, SERCA icons for domain-specific concepts (Patrol, Spoor, Basemap, Fence, Wildlife Sighting, etc.). Emojis render inconsistently across platforms/fonts and don't carry the states (filled/outline, active/inactive, etc.) the icon libraries provide.
 
 **Don't load web fonts without these performance safeguards.** SERCA materials are viewed in low-bandwidth field conditions where a delayed font can mean delayed information in high-stakes moments (active patrols, incident response).
 
