@@ -150,7 +150,7 @@ import logo from "@allenai/design-system/olmo-earth/assets/logo.svg";
 
 TypeScript needs no extra types here: with `resolveJsonModule`, it infers exact keys and per-component shapes from the JSON, so `tokens.colors["dark-teel"]` is a compile error.
 
-The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, and `<product>/voice` where a `VOICE.md` exists. Only OlmoEarth has a generated `tokens.json`; the others can have one when something needs it.
+The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Only OlmoEarth has a generated `tokens.json`; the others can have one when something needs it.
 
 ## Why it's built this way
 
