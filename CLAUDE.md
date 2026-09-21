@@ -14,6 +14,7 @@ auto-generated.
 | Asta | `asta/DESIGN.md` |
 | OlmoEarth | `olmo-earth/DESIGN.md` (currently a stub — identical to Strata until `olmo-earth/DESIGN.src.md` is populated) |
 | EarthRanger | `earthranger/DESIGN.md` |
+| SERCA (Alliance identity — EarthRanger tokens + SERCA marks) | `serca/DESIGN.md` |
 
 Treat that file's tokens as normative. If a change affects `spec-sheet.html`,
 update both and keep them consistent — do not treat one as authoritative and
@@ -33,4 +34,7 @@ meant for before touching shared CSS/JS.
   base to produce that product's `DESIGN.md` (see `package.json`'s `compose:*`
   scripts) — this exists for Asta/OlmoEarth. EarthRanger's `DESIGN.md` is
   maintained directly, not composed.
+- `serca/DESIGN.md` is also maintained directly. Its `colors:` and `typography:`
+  frontmatter must stay byte-identical to `earthranger/DESIGN.md` — SERCA only
+  changes the assets, Overview, and mark rules.
 - `npm run lint` runs `@google/design.md lint` against strata/asta/olmo-earth.
