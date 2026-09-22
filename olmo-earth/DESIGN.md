@@ -212,6 +212,8 @@ spacing:
   4xl: 36px
   5xl: 40px
   6xl: 48px
+  3xs: 4px
+  4xs: 2px
 
 rounded:
   3xs: 4px
@@ -541,11 +543,36 @@ side effect of writing the role down.
 
 ## Layout
 
-An 8px base unit underlies layout. The spacing scale (`2xs` through `6xl`) is a linear progression from 8px to 48px. All layout decisions should snap to this scale.
+An 8px base unit underlies layout. The spacing scale is a linear progression from
+8px to 48px, and layout decisions should snap to it.
 
-- Use `2xs` (8px) and `xs` (12px) for tight intra-component spacing (icon-to-label gaps, list item padding) and component internal padding.
+- Use `2xs` (8px) and `xs` (12px) for tight intra-component spacing (icon-to-label
+  gaps, list item padding) and component internal padding.
 - Use `md` (16px) through `xl` (20px) for inter-component gaps and section gutters.
 - Use `2xl` (24px) and above for section-level separation.
+
+Studio extends the scale downward with `3xs` (4px) and `4xs` (2px). Much of the
+product is chrome floating over a map — legends, layer panels, annotation cards —
+where padding is taken directly from the thing the user opened the page to see. The
+8px floor is the right floor for a page and too coarse for a row that repeats
+fifteen times inside a 360px panel.
+
+These are a **dense tier, not a smaller default**, and two rules keep them from
+leaking into general layout:
+
+- Reach for them only inside a component's repeating content — legend rows,
+  label/value pairs, the gap between a swatch and its text. Card padding, panel
+  gutters and the space between components stay on `2xs` and up.
+- When a row goes tighter than `2xs`, set its `line-height` explicitly. Below 8px
+  the padding is no longer what separates one row from the next — the text box is.
+  A dense row that inherits a 1.5 line-height hasn't actually been made denser, and
+  one that inherits 1.0 collides with its neighbour.
+
+Density is bought with type and rules as much as with space. Stepping the size down
+(16px → 14px → 12px) and letting a 1px divider do the work that 16px of padding was
+doing buys more than tightening padding alone, and stays legible where padding
+alone stops being. A tighter row that still reads at a glance is the goal; one that
+saves 4px and costs a second look is not.
 
 ## Elevation & Depth
 
