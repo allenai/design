@@ -126,7 +126,7 @@ Re-running is harmless: it skips a version that already exists.
 ## Using these specs in a product
 
 ```bash
-npm install "github:allenai/design.md#semver:^0.1.0"
+npm install "github:allenai/design#semver:^0.1.0"
 ```
 
 The `#semver:` range resolves against this repo's release tags, and your lockfile

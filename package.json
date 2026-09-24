@@ -3,10 +3,10 @@
   "version": "0.2.0",
   "description": "DESIGN.md specs for Ai2's design system and the products that use it",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/allenai/design.md#readme",
+  "homepage": "https://github.com/allenai/design#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/allenai/design.md.git"
+    "url": "git+https://github.com/allenai/design.git"
   },
   "keywords": [
     "design.md",
