@@ -4,7 +4,7 @@ name: Release
 # should trigger. Bump `version` in package.json, merge that, then run this.
 #
 # It tags the commit and creates a GitHub release, which is what makes a version
-# installable — `npm install "github:allenai/design.md#semver:^0.1.0"` resolves
+# installable — `npm install "github:allenai/design#semver:^0.1.0"` resolves
 # against those tags. It also publishes to npm when an NPM_AUTH_TOKEN exists.
 on:
   workflow_dispatch:
@@ -102,7 +102,7 @@ jobs:
         run: |
           echo "::notice::No NPM_AUTH_TOKEN, so nothing was published to npm. \
           Tagging anyway — consumers can install this version straight from git \
-          with 'github:allenai/design.md#semver:^${{ steps.pkg.outputs.version }}'."
+          with 'github:allenai/design#semver:^${{ steps.pkg.outputs.version }}'."
 
       # Tagging is deliberately not gated on npm. A git tag is what makes a
       # version installable and resolvable by semver without a registry, so it
