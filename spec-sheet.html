@@ -2273,6 +2273,13 @@ const RADII = [
   ["lg", 18], ["xl", 20], ["2xl", 24], ["3xl", 32],
 ];
 
+/* OlmoEarth extends Strata's scale downward for dense map-overlay chrome. */
+const OE_SPACING = [
+  ["4xs", 2], ["3xs", 4],
+  ["2xs", 8], ["xs", 12], ["sm", 14], ["md", 16], ["lg", 18], ["xl", 20],
+  ["2xl", 24], ["3xl", 32], ["4xl", 36], ["5xl", 40], ["6xl", 48],
+];
+
 /* Skylight's own scales — an 8px spacing base and near-square corners. */
 const SKY_SPACING = [
   ["2xs", 2], ["xs", 4], ["sm", 8], ["md", 16], ["lg", 24],
@@ -2654,7 +2661,9 @@ function renderTypography() {
 
 function renderSpacing(systemKey) {
   const wrap = document.getElementById("spacing-scale");
-  const scale = systemKey === "skylight" ? SKY_SPACING : SPACING;
+  const scale = systemKey === "skylight"   ? SKY_SPACING
+              : systemKey === "olmo-earth" ? OE_SPACING
+              : SPACING;
   wrap.innerHTML = scale.map(([name, val]) => `
     <div class="scale-row">
       <span class="scale-name">${name}</span>

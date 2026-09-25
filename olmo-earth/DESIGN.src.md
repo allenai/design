@@ -79,6 +79,16 @@ typography:
     fontWeight: 500
     lineHeight: 1.57
 
+spacing:
+  # Two steps beneath Strata's 8px floor, for the chrome that floats over a map.
+  # Strata's scale is right for a page; a legend row inside a 360px panel is not a
+  # page, and 8px of vertical padding on it is 8px of imagery the analyst came to
+  # look at. Skylight reached the same conclusion and put 2px and 4px under its own
+  # base. Named downward rather than renaming the scale, so every existing
+  # {spacing.2xs} reference still means 8px.
+  3xs: 4px
+  4xs: 2px
+
 components:
   # These record what Studio renders today, measured from the browser rather than
   # transcribed from intent. Most of it is MUI's defaults: the point of writing
@@ -215,6 +225,39 @@ for `600` — which is also the weight `heading-md` and `heading-sm` already use
 Changing it here would make all 72 consistent and let Studio delete those 24 local
 overrides. Left as it renders for now so the change is a decision rather than a
 side effect of writing the role down.
+
+## Layout
+
+An 8px base unit underlies layout. The spacing scale is a linear progression from
+8px to 48px, and layout decisions should snap to it.
+
+- Use `2xs` (8px) and `xs` (12px) for tight intra-component spacing (icon-to-label
+  gaps, list item padding) and component internal padding.
+- Use `md` (16px) through `xl` (20px) for inter-component gaps and section gutters.
+- Use `2xl` (24px) and above for section-level separation.
+
+Studio extends the scale downward with `3xs` (4px) and `4xs` (2px). Much of the
+product is chrome floating over a map — legends, layer panels, annotation cards —
+where padding is taken directly from the thing the user opened the page to see. The
+8px floor is the right floor for a page and too coarse for a row that repeats
+fifteen times inside a 360px panel.
+
+These are a **dense tier, not a smaller default**, and two rules keep them from
+leaking into general layout:
+
+- Reach for them only inside a component's repeating content — legend rows,
+  label/value pairs, the gap between a swatch and its text. Card padding, panel
+  gutters and the space between components stay on `2xs` and up.
+- When a row goes tighter than `2xs`, set its `line-height` explicitly. Below 8px
+  the padding is no longer what separates one row from the next — the text box is.
+  A dense row that inherits a 1.5 line-height hasn't actually been made denser, and
+  one that inherits 1.0 collides with its neighbour.
+
+Density is bought with type and rules as much as with space. Stepping the size down
+(16px → 14px → 12px) and letting a 1px divider do the work that 16px of padding was
+doing buys more than tightening padding alone, and stays legible where padding
+alone stops being. A tighter row that still reads at a glance is the goal; one that
+saves 4px and costs a second look is not.
 
 ## Components
 
