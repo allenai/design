@@ -47,14 +47,14 @@ jobs:
 
       - name: Commit anything that changed
         run: |
-          if git diff --quiet -- '*/DESIGN.md' 'olmo-earth/tokens.json'; then
+          if git diff --quiet -- '*/DESIGN.md' '*/tokens.json'; then
             echo "::notice::Generated files were already up to date."
             exit 0
           fi
-          git --no-pager diff --stat -- '*/DESIGN.md' 'olmo-earth/tokens.json'
+          git --no-pager diff --stat -- '*/DESIGN.md' '*/tokens.json'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- '*/DESIGN.md' 'olmo-earth/tokens.json'
+          git add -- '*/DESIGN.md' '*/tokens.json'
           git commit -m "chore: rebuild generated files for v$(node -p "require('./package.json').version")"
           git push
 

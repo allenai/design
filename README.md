@@ -87,16 +87,16 @@ Only define what differs from Strata in the overlay — colors, tokens, or compo
 
 ```bash
 npm install       # once
-npm run build     # recompose the overlay specs, rebuild olmo-earth/tokens.json
+npm run build     # recompose the overlay specs, rebuild asta/ and olmo-earth/tokens.json
 npm run lint      # validate every product's spec
 ```
 
 Rebuild or check a single product while iterating:
 
 ```bash
-npm run compose:olmo-earth
-npm run tokens:olmo-earth
-npx @google/design.md lint olmo-earth/DESIGN.md
+npm run compose:asta          # or compose:olmo-earth
+npm run tokens:asta           # or tokens:olmo-earth
+npx @google/design.md lint asta/DESIGN.md
 ```
 
 Also from the [DESIGN.md CLI](https://github.com/google-labs-code/design.md):
@@ -150,7 +150,7 @@ import logo from "@allenai/design-system/olmo-earth/assets/logo.svg";
 
 TypeScript needs no extra types here: with `resolveJsonModule`, it infers exact keys and per-component shapes from the JSON, so `tokens.colors["dark-teel"]` is a compile error.
 
-The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Only OlmoEarth has a generated `tokens.json`; the others can have one when something needs it.
+The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta and OlmoEarth have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo); the others can have one when something needs it.
 
 ## Why it's built this way
 
@@ -198,7 +198,7 @@ generating tokens itself.
 **1. Check whether it has caught up.**
 
 ```bash
-npm run tokens:upstream     # regenerate olmo-earth/tokens.json using the CLI
+npm run tokens:upstream     # regenerate asta/ and olmo-earth/tokens.json using the CLI
 git diff                    # compare against what our script produced
 ```
 
@@ -213,7 +213,7 @@ tracks it.
 "tokens": "npm run tokens:upstream"
 ```
 
-**3. Delete `scripts/emit-tokens.ts`** and the `tokens:olmo-earth` script.
+**3. Delete `scripts/emit-tokens.ts`** and the `tokens:asta` / `tokens:olmo-earth` scripts.
 
 Consumers see nothing: the file keeps its name, its path and its shape, so no
 product needs a change. If the diff in step 1 isn't empty, it's worth reading

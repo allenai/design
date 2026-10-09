@@ -1,6 +1,6 @@
 {
   "name": "@allenai/design-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "DESIGN.md specs for Ai2's design system and the products that use it",
   "license": "Apache-2.0",
   "homepage": "https://github.com/allenai/design#readme",
@@ -43,6 +43,7 @@
     "./serca/assets/*": "./serca/assets/*",
     "./assets/*": "./strata/assets/*",
     "./package.json": "./package.json",
+    "./asta/tokens.json": "./asta/tokens.json",
     "./olmo-earth/tokens.json": "./olmo-earth/tokens.json"
   },
   "publishConfig": {
@@ -54,9 +55,12 @@
     "compose:asta": "node scripts/compose.ts --base strata/DESIGN.md --overlay asta/DESIGN.src.md --out asta/DESIGN.md",
     "compose:olmo-earth": "node scripts/compose.ts --base strata/DESIGN.md --overlay olmo-earth/DESIGN.src.md --out olmo-earth/DESIGN.md",
     "compose": "npm run compose:asta && npm run compose:olmo-earth",
+    "tokens:asta": "node scripts/emit-tokens.ts --spec asta/DESIGN.md --out asta/tokens.json",
     "tokens:olmo-earth": "node scripts/emit-tokens.ts --spec olmo-earth/DESIGN.md --out olmo-earth/tokens.json",
-    "tokens": "npm run tokens:olmo-earth",
-    "tokens:upstream": "npx @google/design.md@latest export --format dtcg olmo-earth/DESIGN.md > olmo-earth/tokens.json",
+    "tokens": "npm run tokens:asta && npm run tokens:olmo-earth",
+    "tokens:upstream:asta": "npx @google/design.md@latest export --format dtcg asta/DESIGN.md > asta/tokens.json",
+    "tokens:upstream:olmo-earth": "npx @google/design.md@latest export --format dtcg olmo-earth/DESIGN.md > olmo-earth/tokens.json",
+    "tokens:upstream": "npm run tokens:upstream:asta && npm run tokens:upstream:olmo-earth",
     "lint": "npx @google/design.md lint strata/DESIGN.md && npx @google/design.md lint asta/DESIGN.md && npx @google/design.md lint olmo-earth/DESIGN.md && npx @google/design.md lint earthranger/DESIGN.md && npx @google/design.md lint skylight/DESIGN.md && npx @google/design.md lint serca/DESIGN.md"
   },
   "dependencies": {
