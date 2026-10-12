@@ -95,6 +95,9 @@ colors:
   # foreground used by `subtle` loses contrast. Pair it with the
   # standard page text instead.
   on-extra-subtle: "{colors.text}"
+  # Secondary text renders in the same dark teal as body text. Hierarchy comes
+  # from size, not color.
+  text-secondary: "{colors.text}"
 
   # A surface one step lighter than gray-20, for panel and preview backgrounds.
   # The inherited scale goes straight from white to gray-20, so Studio invented
@@ -510,6 +513,14 @@ Studio's primary action is **dark teal**, not the pink Strata specifies. Pink re
 in the palette as an accent; `interactive-primary` points at dark teal, so buttons,
 chips and avatars all follow without being overridden one at a time. The primary
 hover goes *darker* (`#084245`) where Strata's goes lighter.
+
+**Secondary text is not a separate color.** Captions, helper copy and metadata
+render in `text` (dark teal), the same as body copy; `text-secondary` names that so
+it stops being read as teal. What sets secondary text apart is size (`body-sm`,
+`body-xs`), not color. Disabled text in running copy follows the same rule — only
+form controls draw a dimmed disabled state, recorded on `input-disabled`. Unchecked
+checkboxes and radios are the one place teal still appears as a neutral
+text-adjacent color; see Components.
 
 `gray-10` fills a gap rather than adding a shade: the inherited neutral scale steps
 from white straight to `gray-20`, and a panel background needs something in between.
