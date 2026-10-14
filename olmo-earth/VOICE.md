@@ -20,10 +20,18 @@ Voice, audience, and channel are separate dials. Establish the audience before d
 | Governments and institutions | Ministries, research institutes, development agencies | Reliable national-scale intelligence on realistic budgets | Institutional. Defensibility and provenance over novelty. |
 | Ecosystem and funders | Integration partners, public-good funders, donors | Integration paths, public-good impact, a credible roadmap | Systems-level. Where our layer ends and theirs begins. |
 
-Inside these audiences are two people to keep in mind:
+### Personas
 
-- **The ML expert.** Wants every knob and a direct comparison to alternatives. Point at a working example, not documentation, and be explicit about deployment.
-- **The data scientist at a small NGO.** Medium-high GIS, low ML. Lead with what they will see, not how it works. Define every term. Never assume a code path.
+Personas are the people inside these audiences, the ones you write *to*. Judith is not a target user.
+
+| Persona | Who | Wants | Frustrated by | Writing for them |
+|---|---|---|---|---|
+| **Edna, the ML researcher** | Highly technical, foundation model experience. Mostly academics, some applied projects. Tinkers with the model and embeddings. | The art of the possible (every knob and option); to compare methods, especially with embeddings; local deployment for maximum control. | Incomplete documentation; being GPU constrained. | Name the mechanism. Answer the comparison question directly. Link a working example over documentation. Be explicit about local deployment. |
+| **Roger, the applied ML engineer** | Uses ML as a tool, not a raison d'être. Good handle on data and geospatial analysis. | An intuitive, flexible tool that works; top-tier quality; to judge quality with both metrics and maps. | Platform capabilities not quite matching the need; limited APIs; no easy apples-to-apples comparison with other methods. | Lead with results he can verify on a map and in a metric. Show the comparison. Keep the path to a first result short. |
+| **Dana, the data scientist** | Strong on GIS and data. Some experience with random forest models in Earth Engine. | An intuitive tool that works; good inputs with little effort; to judge quality mostly by looking at the map. | Foreign terminology; data needs and iteration that aren't well understood. | Lead with what she will see, not how it works. Define every term. Say up front what data a workflow needs and what fails without it. Never assume a code path. |
+| **Judith, the SME practitioner** | Not a target user. A consumer of geospatial outputs who can validate them and may supply observations and annotations. | Bespoke outputs with little effort; integrations and alerting; a simple way to review predictions and give feedback. | Having to learn a new tool while still wanting a tailored output (cadence, class focus). | Talk about the output and the alert, not the model. Ask for feedback in the simplest possible way. |
+
+When a piece is for "everyone," write it for Dana and make sure it doesn't lose Edna.
 
 Data quality gates are harder than ML fluency. Pitch accordingly.
 
