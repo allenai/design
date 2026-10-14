@@ -256,6 +256,12 @@ typography:
       windows: Arial
       ios: SF Pro
       android: Roboto
+    # Slide decks (Claude Design Slides, Google Slides): Manrope for
+    # both body and headings. PP Telegraf is not available in Google
+    # Slides, so it is never used in decks.
+    slides:
+      body: Manrope
+      heading: Manrope
 
   # ── Strata Text Styles ────────────────────────────────────────────
   # Shared scale (0 letter-spacing, no text-transform on any style).
@@ -325,6 +331,7 @@ typography:
   # Manrope, body text only. Scope: slide decks, SERCA.org, email
   # newsletters, printed materials. Headings in these contexts still use
   # PP Telegraf (see Strata Text Styles above) — only body text changes.
+  # EXCEPTION: slide decks use Manrope for headings too (platform.slides).
   external-comms-body-lg:
     fontFamily: Manrope
     fontStyle: Regular
@@ -423,7 +430,11 @@ SERCA materials are viewed in the same low-bandwidth field conditions as EarthRa
 
 Manrope is a typographic option for **externally-facing communications only**: slide decks, SERCA.org, email newsletters, and printed materials. Most SERCA materials are external communications, so Manrope body text is the common case here. It is **never** used in product UI — product interfaces always use Roboto for body text via the `platform.body` tokens above.
 
-Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`external-comms-body-lg/md/sm/xs`, same sizes/line-heights as the UI Body scale). Headings in external communications still use PP Telegraf, exactly as in product UI — do not substitute Manrope for headings anywhere.
+Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`external-comms-body-lg/md/sm/xs`, same sizes/line-heights as the UI Body scale). Headings in external communications still use PP Telegraf, exactly as in product UI — with one exception: slide decks.
+
+### Slide decks (Manrope for everything)
+
+**Manrope is the default and only font for SERCA slide decks** — body *and* headings (use Manrope Bold for Display and Heading styles, Manrope Regular for body). PP Telegraf is not available in Google Slides, so decks that specify it force a font substitution on export. Claude Design Slides and any deck built from the SERCA Google Slides template should set Manrope everywhere and never reference PP Telegraf or Roboto. This exception applies to slide decks only; SERCA.org, email, and print keep PP Telegraf headings, and product UI keeps Roboto / PP Telegraf.
 
 ## Icons
 
@@ -449,7 +460,7 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 ### Library 3: SERCA Google Slides Template
 
 - **Source:** 2026 SERCA Slide Template (Google Slides, maintained by SERCA Communications) — MAKE A COPY
-- **Usage:** Starting point for external-facing SERCA slide decks (see Typography's External Communications section — Manrope, not Roboto, for body text in this context)
+- **Usage:** Starting point for external-facing SERCA slide decks (see Typography's Slide decks section — Manrope for both body and headings in this context)
 - **Note:** Always duplicate the template rather than editing the source file directly
 
 ## Do's and Don'ts
