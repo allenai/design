@@ -4,21 +4,25 @@ description: SMART-EarthRanger Conservation Alliance (SERCA) identity — booth,
 version: 0.0.1
 
 assets:
-  # Stacked is the primary lockup; horizontal is for wide, short spaces.
-  logo: assets/SERCA-logo.svg
-  logo-horizontal: assets/SERCA-logo-H.svg
-  logo-white: assets/SERCA-logo-white.svg
-  logo-white-horizontal: assets/SERCA-logo-white-H.svg
-  # Icons only (cat | shield) — small sizes, favicons, watermarks.
-  logo-icon: assets/SERCA-logo-icon.svg
-  logo-icon-white: assets/SERCA-logo-icon-white.svg
-  # "A part of" lockup — for Alliance members showing their affiliation.
-  logo-part-of: assets/SERCA-logo-part-of.svg
-  logo-part-of-horizontal: assets/SERCA-logo-part-of-H.svg
-  logo-part-of-white: assets/SERCA-logo-part-of-white.svg
-  logo-part-of-white-horizontal: assets/SERCA-logo-part-of-white-H.svg
-  # 1:1 social avatar — icons on Greyscale/Off-white.
-  logo-social-profile: assets/SERCA-social-profile.svg
+  # The pixel-bear mark. Vertical is the primary lockup; horizontal is for
+  # wide, short spaces. Teal, teal-green, and black are for light grounds;
+  # white, cream-green (and the cream icon) are for dark grounds.
+  logo: assets/SERCA_vertical-teal.svg
+  logo-horizontal: assets/SERCA_horiz-teal.svg
+  logo-teal-green: assets/SERCA_vertical-teal-green.svg
+  logo-teal-green-horizontal: assets/SERCA_horiz-teal-green.svg
+  logo-black: assets/SERCA_vertical-black.svg
+  logo-black-horizontal: assets/SERCA_horiz-black.svg
+  logo-white: assets/SERCA_vertical-white.svg
+  logo-white-horizontal: assets/SERCA_horiz-white.svg
+  logo-cream-green: assets/SERCA_vertical-cream-green.svg
+  logo-cream-green-horizontal: assets/SERCA_horiz-cream-green.svg
+  # Icon only (bear + pixel) — small sizes, favicons, avatars, watermarks.
+  logo-icon: assets/SERCA_icon-teal.svg
+  logo-icon-teal-green: assets/SERCA_icon-teal-green.svg
+  logo-icon-black: assets/SERCA_icon-black.svg
+  logo-icon-white: assets/SERCA_icon-white.svg
+  logo-icon-cream: assets/SERCA_icon-cream.svg
   # Alliance member logos — secondary, never top billing (see Overview).
   # Their own brand colors; "-white" files are the members' reverse versions
   # for dark grounds. PNG where that is what the member supplied.
@@ -355,7 +359,7 @@ typography:
 
 The SMART-EarthRanger Conservation Alliance (SERCA) is a global collaboration that unites SMART and EarthRanger — the world's most widely used conservation management platforms — with proven field experience and training resources into a single, free support system for the people safeguarding protected and conserved areas. The Alliance is governed by nine member organizations; no single organization leads it. SMART and EarthRanger remain the platforms practitioners use today.
 
-This file is the **Alliance identity, not a product interface**. Use it for booth and event materials, partner decks and one-pagers, social profiles, and the "A part of" lockup an Alliance member uses to show its affiliation. It is not a primary product mark — SMART and EarthRanger keep their own marks on their own product surfaces. The SERCA platform brings together SERCA Web, SERCA Mobile, Ecoscope, and Gundi — tools built around data-driven decision making and adaptive management.
+This file is the **Alliance identity, not a product interface**. Use it for booth and event materials, partner decks and one-pagers, social profiles, and Alliance members' materials showing their affiliation. It is not a primary product mark — SMART and EarthRanger keep their own marks on their own product surfaces. The SERCA platform brings together SERCA Web, SERCA Mobile, Ecoscope, and Gundi — tools built around data-driven decision making and adaptive management.
 
 SERCA's colors and typography are EarthRanger's, token for token: every color value, text style, size, and weight below is identical, so Alliance materials sit naturally beside EarthRanger materials. What SERCA adds is the mark and the rules for applying it.
 
@@ -363,17 +367,27 @@ SERCA materials reach practitioners, protected-area managers, Alliance member or
 
 ### The mark
 
-Two silhouettes separated by a hairline divider — a walking big cat on the left and the striped shield on the right, one from each founding platform's lineage — with the wordmark set as "SMART-EarthRanger" over "Conservation Alliance". The whole mark is a single color: `Teal/Ai2 Dark Teal` (`#0a3235`) on light grounds, white on dark grounds. There is no multi-color version.
+The pixel bear: a bear silhouette looking up toward a single square pixel, with the wordmark "SERCA" set below it (vertical) or beside it (horizontal). The pixel is part of the mark — it is never dropped, moved, or resized independently.
 
-| Variant | Use it for |
+The mark ships in single-color and two-color versions:
+
+| Colorway | Files | Ground |
+| --- | --- | --- |
+| **Teal** — the default | `logo`, `logo-horizontal`, `logo-icon` | White and `Greyscale/Off-white` |
+| **Teal-green** — teal bear and wordmark, green pixel | `logo-teal-green`, `logo-teal-green-horizontal`, `logo-icon-teal-green` | White and `Greyscale/Off-white` |
+| **Black** — one-color reproduction | `logo-black`, `logo-black-horizontal`, `logo-icon-black` | Light grounds where color printing isn't available |
+| **White** | `logo-white`, `logo-white-horizontal`, `logo-icon-white` | `Teal/Ai2 Dark Teal`, `Teal/Ai2 Extra Dark Teal`, and photography |
+| **Cream-green** — cream bear and wordmark, green pixel | `logo-cream-green`, `logo-cream-green-horizontal` (icon: `logo-icon-cream`, single-color cream) | `Teal/Ai2 Dark Teal`, `Teal/Ai2 Extra Dark Teal` |
+
+| Lockup | Use it for |
 | --- | --- |
-| **Stacked** — `logo`, `logo-white` | The primary lockup. Booth banners, slide title pages, one-pager headers — anywhere with room for a roughly 2.2:1 block. |
-| **Horizontal** — `logo-horizontal`, `logo-white-horizontal` | Wide, short spaces: web headers and footers, email signatures, table-top banners, lanyard strips. |
-| **Icons only** — `logo-icon`, `logo-icon-white` | Below about 120px wide, favicons, app-badge sizes, watermarks, and wherever the wordmark would not be legible. |
-| **"A part of"** — `logo-part-of`, `logo-part-of-horizontal` and white versions | Alliance members and partners showing affiliation on their own materials. Never SERCA's own primary mark. |
-| **Social profile** — `logo-social-profile` | 1:1 avatars. The icons on `Greyscale/Off-white` (`#faf2e9`) — the only variant that ships with its own ground. |
+| **Vertical** — `logo` and its colorways | The primary lockup. Booth banners, slide title pages, one-pager headers, and anywhere with room for a roughly square block (about 1.1:1). |
+| **Horizontal** — `logo-horizontal` and its colorways | Wide, short spaces (about 2.6:1): web headers and footers, email signatures, table-top banners, lanyard strips. |
+| **Icon** — `logo-icon` and its colorways | Below about 120px wide, favicons, app-badge sizes, social avatars, watermarks, and anywhere the wordmark would not be legible. |
 
-Use the teal artwork on white and off-white grounds and the white artwork on `Teal/Ai2 Dark Teal`, `Teal/Ai2 Extra Dark Teal`, and photography. Give the mark clear space on every side of at least the shield's width, and keep the ground behind it solid or quiet. The "A part of" byline in the teal lockups is set in `#055256` inside the artwork itself — that value is not a UI token and is not reused anywhere else.
+The artwork's colors are fixed inside the files and are **not UI tokens**: teal `#005458`, green `#00f2a6`, cream `#fcf2e8`, and black `#231f20`. They sit close to `Teal/T100` (`#105257`) and `Greyscale/Off-white` (`#faf2e9`) but are not the same values. Never sample them for UI, type, or backgrounds; use the EarthRanger tokens below. Give the mark clear space on every side of at least the width of the pixel, and keep the ground behind it solid or quiet.
+
+There is no pixel-bear "A part of" lockup yet. Until one exists, Alliance members showing affiliation use the standard mark, following the member rules below.
 
 ### Alliance members
 
@@ -382,7 +396,7 @@ Nine organizations govern SERCA equally: Ai2, Frankfurt Zoological Society (FZS)
 Member logos never get top billing. The SERCA mark leads every Alliance piece, and member marks appear only when a member needs highlighting — a workshop or training a member hosts, a use case or field story from a member's landscape, a co-presented session, or a governance slide that lists the Alliance.
 
 - **All nine, or only the ones involved.** When showing governance, show all nine at equal optical size in one row or a 3×3 grid, in the order above, under an "Alliance members" or "Governed by" label in `body-sm`. When highlighting one member, show only that member — don't imply the others are absent.
-- **Smaller than SERCA, and separated.** A member mark is never larger than the SERCA mark on the same surface. Cap it at the height of the SERCA icons (cat and shield), and separate the two with a hairline divider (`UI/Divider Lines`) or clear space of at least the shield's width.
+- **Smaller than SERCA, and separated.** A member mark is never larger than the SERCA mark on the same surface. Cap it at the height of the SERCA bear, and separate the two with a hairline divider (`UI/Divider Lines`) or clear space of at least the width of the pixel.
 - **Their colors, not ours.** Reproduce member logos in their own brand colors on light grounds and use their supplied white versions on dark grounds. Never recolor a member mark, and never apply SERCA teal to it. Ai2's mark is pink — that is a member mark reproduced faithfully, not a SERCA color; the no-pink rule covers SERCA's own design.
 - **Use what was supplied.** FZS, WCS, WWF, and ZSL exist in one version only (WWF's file carries its own white ground) — on a dark ground, put them on a white or `Greyscale/Off-white` panel rather than inventing a reverse. `member-nc-zoo` is a one-color `Teal/Ai2 Dark Teal` rendering, matching the Alliance kit's teal treatment, because no full-color vector was supplied; swap in the member's own artwork when it is available. PNG members should be placed at or below their pixel size.
 
@@ -456,15 +470,13 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 
 **Don't place `UI/Text/Primary Text` (or the raw dark-teal/`extra-dark-teal` primitives) on a solid `UI/CTA Primary` or `Brand/Accent Green` fill (Green/12 in light mode).** It measures ~3:1 contrast — under the 4.5:1 WCAG AA minimum for normal text, only clearing the 3:1 floor for large text/UI outlines. Use `UI/Text/Primary Text Reversed` instead, which resolves to white in light mode. In dark mode this isn't an issue — Green/7 is bright enough that dark text reads fine there.
 
-**Don't recolor, outline, or add effects to the mark.** Teal artwork (`Teal/Ai2 Dark Teal`) on light grounds, white artwork on dark grounds — nothing else. No gradients, drop shadows, strokes, or a green (`UI/CTA Primary`) mark.
+**Don't recolor, outline, or add effects to the mark.** Use only the supplied colorways (teal, teal-green, black, white, cream-green, cream). No gradients, drop shadows, or strokes; don't swap in `UI/CTA Primary` or any other token for the artwork's own colors; and the green pixel appears only in the two-color files, never on a single-color bear you've recolored yourself.
 
-**Don't separate the cat from the shield, drop the divider, or rearrange the lockup.** The icons-only files are the only approved partial mark, and the wordmark never appears without the icons.
+**Don't separate the bear from the pixel, drop or move the pixel, or rearrange the lockup.** The icon files are the only approved partial mark, and the wordmark never appears without the bear.
 
 **Don't give an Alliance member logo top billing or set it larger than the SERCA mark.** Member marks appear only where a member is being highlighted (a workshop they host, a use case from their landscape, a governance list), always after and smaller than the SERCA mark, in their own brand colors.
 
-**Don't use the "A part of" lockup as SERCA's own mark.** It exists for Alliance members and partners to show affiliation. SERCA's own materials use `logo` or `logo-horizontal`.
-
-**Don't place the teal mark on `Teal/Ai2 Dark Teal`, `Teal/Ai2 Extra Dark Teal`, or busy photography.** Switch to the white artwork, or put the mark on a solid white / `Greyscale/Off-white` panel.
+**Don't place the teal, teal-green, or black mark on `Teal/Ai2 Dark Teal`, `Teal/Ai2 Extra Dark Teal`, or busy photography.** Switch to the white or cream-green artwork, or put the mark on a solid white / `Greyscale/Off-white` panel.
 
 **Don't write "suite of tools", "users", or "available now" in SERCA materials.** SERCA is a unified platform; the people it serves are practitioners and conservation teams; SMART and EarthRanger are available today, while SERCA Web and Mobile follow a milestone-based roadmap.
 
