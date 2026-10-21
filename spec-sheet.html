@@ -1545,6 +1545,7 @@
       <button data-system="asta"          aria-pressed="false">Asta</button>
       <button data-system="olmo-earth"    aria-pressed="false">OlmoEarth</button>
       <button data-system="earthranger"   aria-pressed="false">EarthRanger</button>
+      <button data-system="serca"         aria-pressed="false">SERCA</button>
       <button data-system="skylight"      aria-pressed="false">Skylight</button>
     </div>
     <div class="er-mode-toggle" role="group" aria-label="EarthRanger color mode">
@@ -2182,7 +2183,7 @@
 
 <footer>
   Spec sheet · single static HTML · drives off
-  <code>strata/DESIGN.md</code>, <code>asta/DESIGN.md</code>, <code>olmo-earth/DESIGN.md</code>, <code>earthranger/DESIGN.md</code>.
+  <code>strata/DESIGN.md</code>, <code>asta/DESIGN.md</code>, <code>olmo-earth/DESIGN.md</code>, <code>earthranger/DESIGN.md</code>, <code>serca/DESIGN.md</code>.
   OlmoEarth's product overlay is currently a stub; populate <code>olmo-earth/DESIGN.src.md</code> to differentiate.
 </footer>
 
@@ -2587,6 +2588,23 @@ const META = {
     wordmark: "earthranger/assets/EarthRanger-logo-H.svg",
     wordmarkDark: "earthranger/assets/EarthRanger-logo-White-H.svg",
   },
+  /* SERCA's colors and typography are EarthRanger's token for token, so it
+     renders through EarthRanger's styling (`tokens`) and only swaps the
+     copy and the mark. */
+  serca: {
+    name: "SERCA",
+    tokens: "earthranger",
+    /* Manually bumped from serca/DESIGN.md's `version:` frontmatter field. */
+    version: "0.0.1",
+    description: "SMART-EarthRanger Conservation Alliance (SERCA) identity — booth, event, partner, and Alliance-member materials",
+    heroBlurb: "The SMART-EarthRanger Conservation Alliance unites SMART and EarthRanger into a single, free support system for the people safeguarding protected and conserved areas. SERCA uses EarthRanger's colors and typography token for token; what it adds is the pixel-bear mark and the rules for applying it. Try the Light/Dark mode selector above.",
+    formTitle: "Sample form",
+    formBlurb: "A real form composed from inputs, select, radio, and switch.",
+    cardTitle: "Blog post card",
+    cardBlurb: "Body copy, chip tags, an author byline, and a primary action — composed from the foundations and components above.",
+    wordmark: "serca/assets/SERCA_horiz-teal-green.svg",
+    wordmarkDark: "serca/assets/SERCA_horiz-cream-green.svg",
+  },
 };
 
 /* ─────────────────────────────────────────────────────────────────
@@ -2793,7 +2811,7 @@ function bindMeta(systemKey) {
   document.querySelectorAll('[data-bind="form-blurb"]').forEach((el) => (el.innerHTML = meta.formBlurb));
   document.querySelectorAll('[data-bind="card-title"]').forEach((el) => (el.textContent = meta.cardTitle));
   document.querySelectorAll('[data-bind="card-blurb"]').forEach((el) => (el.textContent = meta.cardBlurb));
-  const isErDark = systemKey === "earthranger" && document.documentElement.dataset.erMode === "dark";
+  const isErDark = (meta.tokens || systemKey) === "earthranger" && document.documentElement.dataset.erMode === "dark";
   const wordmarkSrc = (isErDark && meta.wordmarkDark) ? meta.wordmarkDark : meta.wordmark;
   document.querySelectorAll('[data-bind="wordmark"]').forEach((el) => {
     if (wordmarkSrc) { el.src = wordmarkSrc; el.style.display = "block"; }
@@ -2801,12 +2819,16 @@ function bindMeta(systemKey) {
   });
 }
 
-function applySystem(systemKey) {
+/* `data-system` drives the token CSS; `data-brand` is the picked tab. They
+   differ only for systems that borrow another's tokens (SERCA → EarthRanger). */
+function applySystem(brandKey) {
+  const systemKey = META[brandKey].tokens || brandKey;
   document.documentElement.dataset.system = systemKey;
+  document.documentElement.dataset.brand = brandKey;
   document.querySelectorAll(".segmented button").forEach((btn) => {
-    btn.setAttribute("aria-pressed", btn.dataset.system === systemKey ? "true" : "false");
+    btn.setAttribute("aria-pressed", btn.dataset.system === brandKey ? "true" : "false");
   });
-  bindMeta(systemKey);
+  bindMeta(brandKey);
   renderAliases(systemKey);
   renderRadii(systemKey);
   renderSpacing(systemKey);
@@ -2821,7 +2843,7 @@ function applyErMode(mode) {
   });
   renderAliases("earthranger");
   renderErSections();
-  bindMeta("earthranger");
+  bindMeta(document.documentElement.dataset.brand);
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -2843,13 +2865,13 @@ document.querySelectorAll(".er-mode-toggle button").forEach((btn) => {
 
 /* Arrow-key swap so users can A/B between systems quickly without leaving
    the scroll position. Skips when the user is typing into a field. */
-const SYSTEM_ORDER = ["strata", "asta", "olmo-earth", "earthranger", "skylight"];
+const SYSTEM_ORDER = ["strata", "asta", "olmo-earth", "earthranger", "serca", "skylight"];
 document.addEventListener("keydown", (e) => {
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   if (e.target.matches("input, textarea, select, [contenteditable]")) return;
   if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
   e.preventDefault();
-  const current = document.documentElement.dataset.system;
+  const current = document.documentElement.dataset.brand;
   const idx = SYSTEM_ORDER.indexOf(current);
   const next = e.key === "ArrowRight"
     ? SYSTEM_ORDER[(idx + 1) % SYSTEM_ORDER.length]
