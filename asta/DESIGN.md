@@ -5,8 +5,11 @@ version: 0.0.1
 
 assets:
   # ── Assets that align with the design system ──────────────────────
-  logo: assets/logo.svg
-  wordmark: assets/wordmark.svg
+  logo: assets/logos/logo.svg
+  wordmark: assets/logos/wordmark.svg
+  slide-background-1: assets/slide backgrounds/1.png
+  slide-background-2: assets/slide backgrounds/2.png
+  slide-background-3: assets/slide backgrounds/3.png
 
 colors:
   # ── Primitive palette ─────────────────────────────────────────────
