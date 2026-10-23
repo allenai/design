@@ -5,8 +5,8 @@ version: 0.0.1
 
 assets:
   # ── Assets that align with the design system ──────────────────────
-  logo: assets/logo.svg
-  wordmark: assets/wordmark.svg
+  logo: assets/logos/logo.svg
+  wordmark: assets/logos/wordmark.svg
 
 colors:
   # ── Primitive palette ─────────────────────────────────────────────
