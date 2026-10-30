@@ -365,6 +365,8 @@ EarthRanger shares Strata's unified text-style scale — Display, Heading (XL/LG
 | iOS | SF Pro | SF Pro |
 | Android | Roboto | Roboto |
 
+**PP Telegraf font files and license:** the font files, along with the Ai2 font license README for PP Telegraf, are in this [Google Drive folder](https://drive.google.com/drive/folders/1GQnBozz9Gbsevr7vuj_BQ4WdiSY1hyzl?usp=drive_link). Read the license README before using or distributing the font.
+
 Always reference a text-style token (e.g. `body-md`, `heading-lg`) rather than hardcoding font properties directly — the platform's font-family resolves automatically. `body-md` (16px / 25.6px line height) is the default reading size. All styles use 0 letter-spacing and no text-transform.
 
 ### Fallback stack (performance)
