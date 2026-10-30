@@ -401,7 +401,7 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 ### Library 3: ER Google Slides Template
 
 - **Source:** [EarthRanger Slide Template](https://docs.google.com/presentation/d/1rm7CEqJaps473VlnG1n8CIznZONLk7yXBwCNGfKg0CE/edit?usp=sharing) — MAKE A COPY
-- **Backup:** If you cannot access the URL above, reference the PDF export at `earthranger/assets/EarthRanger-Slide-Template.pdf` or the editable PowerPoint copy at `earthranger/assets/EarthRanger-Slide-Template.pptx` to recreate the template.
+- **Backup:** If you cannot access the URL above, reference the PDF export at `earthranger/assets/EarthRanger-Slide-Template.pdf` to recreate the template.
 - **Usage:** Starting point for external-facing slide decks (see Typography's External Communications section — Manrope, not Roboto, for body text in this context)
 - **Note:** Always duplicate the template rather than editing the source file directly. When asked to make a deck, copy the template, build from its layouts, and apply the rules below.
 - **Fonts:** Manrope for everything in slide decks, headings included — decks are the exception to PP Telegraf headings
