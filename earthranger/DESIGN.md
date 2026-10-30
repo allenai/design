@@ -377,7 +377,7 @@ EarthRanger is used in low-bandwidth field conditions where a delayed web font c
 
 Manrope is a typographic option for **externally-facing communications only**: slide decks, EarthRanger.com, email newsletters, and printed materials. It is **never** used in product UI — product interfaces always use Roboto for body text via the `platform.body` tokens above.
 
-Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`external-comms-body-lg/md/sm/xs`, same sizes/line-heights as the UI Body scale). Headings in external communications still use PP Telegraf, exactly as in product UI — do not substitute Manrope for headings anywhere.
+Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`external-comms-body-lg/md/sm/xs`, same sizes/line-heights as the UI Body scale). Headings in external communications still use PP Telegraf, exactly as in product UI — do not substitute Manrope for headings, with one exception: slide decks, which use Manrope for everything.
 
 ## Icons
 
@@ -405,7 +405,10 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 - **Source:** [EarthRanger Slide Template](https://docs.google.com/presentation/d/1rm7CEqJaps473VlnG1n8CIznZONLk7yXBwCNGfKg0CE/edit?usp=sharing) — MAKE A COPY
 - **Backup:** If you cannot access the URL above, reference the PDF export at `earthranger/assets/EarthRanger-Slide-Template.pdf` to recreate the template.
 - **Usage:** Starting point for external-facing slide decks (see Typography's External Communications section — Manrope, not Roboto, for body text in this context)
-- **Note:** Always duplicate the template rather than editing the source file directly
+- **Note:** Always duplicate the template rather than editing the source file directly. When asked to make a deck, copy the template, build from its layouts, and apply the rules below.
+- **Fonts:** Manrope for everything in slide decks, headings included — decks are the exception to PP Telegraf headings
+- **Layouts:** Add slides from the Layout menu so titles keep the same placement, font and size on every slide
+- **Content:** About 3 bullets max per slide. Put detail in speaker notes, not on the slide
 
 ## Do's and Don'ts
 
