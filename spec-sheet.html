@@ -170,6 +170,18 @@
     --max-w: 1280px;
     --pad-x: 32px;
 
+    /* Floating surfaces (dropdown menus, info tips): input fill, field
+       stroke, one soft shadow. Highlight and check re-tone in Asta. */
+    --c-float-bg: var(--c-input-bg);
+    --c-float-text: var(--c-input-text);
+    --c-float-shadow: 0 4px 12px rgba(3, 38, 41, 0.08);
+    --c-menu-highlight: var(--c-teal-20);
+    --c-menu-check: var(--c-int-default);
+    --c-muted: rgba(3, 38, 41, 0.7);
+    --c-faint: rgba(3, 38, 41, 0.6);
+    --c-itip-ring: rgba(3, 38, 41, 0.4);
+    --c-itip-active: var(--c-int-default);
+
     /* Field outline defaults to the generic stroke color; EarthRanger
        overrides this distinctly from divider lines (--c-stroke). */
     --c-field-outline: var(--c-stroke);
@@ -202,6 +214,15 @@
 
     /* Strata's overlay literally still uses pink-20 here; rendering faithful. */
     --c-outlined-primary-hover-bg: var(--c-pink-20);
+
+    /* Asta: floating panels on the dark input surface */
+    --c-float-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    --c-menu-highlight: var(--c-teal-80);
+    --c-menu-check: var(--c-teal-40);
+    --c-muted: rgba(250, 242, 233, 0.7);
+    --c-faint: rgba(250, 242, 233, 0.6);
+    --c-itip-ring: rgba(250, 242, 233, 0.4);
+    --c-itip-active: var(--c-teal-40);
 
     /* Asta overrides for the re-toned button slots (contrast on dark) */
     --btn-default-out-fg:        var(--c-teal-40);
@@ -689,6 +710,50 @@
 
   /* "force focused" preview state for the docs */
   .field-focus { border-color: var(--c-int-default); box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-int-default) 35%, transparent); }
+
+  /* ────────────────────────────────────────────────────────────────
+     Dropdowns
+  ──────────────────────────────────────────────────────────────── */
+  .dd-demo { display: flex; flex-direction: column; gap: 4px; width: 100%; max-width: 280px; }
+  .dd-trigger { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; }
+  .dd-trigger .placeholder { color: var(--c-faint); }
+  .dd-caret { font-size: 12px; color: var(--c-muted); }
+  .dd-panel {
+    background: var(--c-float-bg);
+    color: var(--c-float-text);
+    border: 1px solid var(--c-field-outline);
+    border-radius: 4px;
+    box-shadow: var(--c-float-shadow);
+    overflow: hidden;
+    font-family: Manrope, sans-serif;
+  }
+  .dd-list { padding: 4px; }
+  .dd-item { position: relative; display: flex; align-items: center; border-radius: 4px; padding: 8px 32px 8px 12px; font-size: 14px; line-height: 1.4; }
+  .dd-item.hl { background: var(--c-menu-highlight); }
+  .dd-item.sel { font-weight: 600; }
+  .dd-item .check { position: absolute; right: 12px; color: var(--c-menu-check); }
+  .dd-item .hint { margin-left: 8px; color: var(--c-faint); font-weight: 400; }
+  .dd-group { padding: 8px 12px 2px; font-size: 12px; font-weight: 600; color: var(--c-muted); }
+  .dd-search { display: block; width: 100%; border: 0; border-bottom: 1px solid var(--c-field-outline); background: transparent; color: inherit; padding: 8px 12px; font: inherit; font-size: 14px; outline: none; }
+  .dd-search::placeholder { color: var(--c-faint); }
+
+  /* ────────────────────────────────────────────────────────────────
+     Info tips
+  ──────────────────────────────────────────────────────────────── */
+  .itip-row { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+  .itip {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; flex-shrink: 0; padding: 0;
+    border-radius: 999px; border: 1px solid var(--c-itip-ring); background: transparent;
+    color: var(--c-muted); font: 600 11px/1 Manrope, sans-serif; cursor: pointer;
+    transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+  }
+  .itip:hover, .itip.open, .itip:focus-visible { color: var(--c-itip-active); border-color: var(--c-itip-active); outline: none; }
+  .itip-panel {
+    max-width: 320px; padding: 12px 14px; font-size: 14px; line-height: 1.45; font-weight: 400;
+    background: var(--c-float-bg); color: var(--c-float-text);
+    border: 1px solid var(--c-field-outline); border-radius: 4px; box-shadow: var(--c-float-shadow);
+  }
 
   /* ────────────────────────────────────────────────────────────────
      Form controls
@@ -1895,10 +1960,91 @@
     </div>
   </section>
 
+  <!-- ─────────── Dropdowns ─────────── -->
+  <section class="spec" id="dropdowns">
+    <div class="spec-head">
+      <div class="label">07 — Dropdowns</div>
+      <div>
+        <h2>Dropdowns</h2>
+        <p>The closed trigger is an input with a caret. The open menu is a floating surface: input fill, field stroke and one soft shadow. Long lists add a search field and group headings.</p>
+      </div>
+    </div>
+
+    <div class="vtable" style="grid-template-columns:130px 1fr 1fr;">
+      <div class="cell head"></div>
+      <div class="cell head">plain · short lists</div>
+      <div class="cell head">searchable · long lists</div>
+
+      <div class="cell row-label">closed</div>
+      <div class="cell">
+        <div class="dd-demo"><div class="field field-md dd-trigger"><span class="placeholder">Choose a level</span><span class="dd-caret">▾</span></div></div>
+      </div>
+      <div class="cell">
+        <div class="dd-demo"><div class="field field-md dd-trigger"><span>Ada Lovelace</span><span class="dd-caret">▾</span></div></div>
+      </div>
+
+      <div class="cell row-label">open</div>
+      <div class="cell">
+        <div class="dd-demo">
+          <div class="field field-md field-focus dd-trigger"><span>Level 3</span><span class="dd-caret">▾</span></div>
+          <div class="dd-panel"><div class="dd-list">
+            <div class="dd-item">Level 2</div>
+            <div class="dd-item sel">Level 3<span class="check">✓</span></div>
+            <div class="dd-item hl">Level 4</div>
+            <div class="dd-item">Level 5</div>
+          </div></div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="dd-demo">
+          <div class="field field-md field-focus dd-trigger"><span>Ada Lovelace</span><span class="dd-caret">▾</span></div>
+          <div class="dd-panel">
+            <input class="dd-search" placeholder="Search people" aria-label="Search people" />
+            <div class="dd-list">
+              <div class="dd-group">Your team</div>
+              <div class="dd-item sel">Ada Lovelace<span class="hint">(4)</span><span class="check">✓</span></div>
+              <div class="dd-item hl">Alan Turing<span class="hint">(2)</span></div>
+              <div class="dd-group">Everyone else</div>
+              <div class="dd-item">Grace Hopper</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── Info tips ─────────── -->
+  <section class="spec" id="info-tips">
+    <div class="spec-head">
+      <div class="label">08 — Info tips</div>
+      <div>
+        <h2>Info tips</h2>
+        <p>A circled "i" after a label opens a short explanation above it. Click or tap to open — not hover — so it works on touch and from the keyboard.</p>
+      </div>
+    </div>
+
+    <div class="vtable" style="grid-template-columns:130px 1fr 1fr;">
+      <div class="cell head"></div>
+      <div class="cell head">closed</div>
+      <div class="cell head">open</div>
+
+      <div class="cell row-label">default</div>
+      <div class="cell">
+        <div class="itip-row">Autonomy <button type="button" class="itip" aria-label="About Autonomy">i</button></div>
+      </div>
+      <div class="cell">
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div class="itip-panel">Degree to which someone is expected to work independently, with little or no direction.</div>
+          <div class="itip-row">Autonomy <button type="button" class="itip open" aria-label="About Autonomy" aria-expanded="true">i</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─────────── Composed: Form ─────────── -->
   <section class="spec" id="composed-form">
     <div class="spec-head">
-      <div class="label">07 — Composed · Form</div>
+      <div class="label">09 — Composed · Form</div>
       <div>
         <h2 data-bind="form-title">Research query form</h2>
         <p data-bind="form-blurb">A real form composed from inputs, select, radio, and switch. The <em>Submit query</em> CTA is large in Strata/OlmoEarth and gracefully shrinks to medium when Asta is active — Asta forbids large interactive elements, so the CTA degrades rather than disappearing.</p>
@@ -1977,7 +2123,7 @@
   <!-- ─────────── Composed: Paper card ─────────── -->
   <section class="spec" id="composed-card">
     <div class="spec-head">
-      <div class="label">08 — Composed · Card</div>
+      <div class="label">10 — Composed · Card</div>
       <div>
         <h2 data-bind="card-title">Paper card</h2>
         <p data-bind="card-blurb">Body copy, chip tags, stacked author avatars, and a primary action — composed from the foundations and components above.</p>
@@ -2064,7 +2210,7 @@
   <!-- ─────────── Composed: Toolbar ─────────── -->
   <section class="spec" id="composed-toolbar">
     <div class="spec-head">
-      <div class="label">09 — Composed · Toolbar</div>
+      <div class="label">11 — Composed · Toolbar</div>
       <div>
         <h2>Toolbar</h2>
         <p>Search, filter chips, and actions in one tight row. Demonstrates that <code>sm</code> is the right size for compact contexts — the same toolbar reads correctly in both Strata and Asta.</p>

@@ -306,6 +306,50 @@ components:
     padding: "{spacing.md}"
     typography: "{typography.body-md}"
 
+  # ── Dropdowns ─────────────────────────────────────────────────────
+  # The closed trigger is an input: it reuses input-default, input-error,
+  # input-disabled and the input-size-* scale, plus a caret.
+  dropdown-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.3xs}"
+    padding: 4px
+  dropdown-item:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.2xs}"
+  dropdown-item-highlighted:
+    backgroundColor: "{colors.teal-20}"
+  dropdown-item-check:
+    textColor: "{colors.interactive-default}"
+  dropdown-group-label:
+    textColor: "{colors.extra-dark-teal-70}"
+    typography: "{typography.body-xs}"
+    padding: "{spacing.xs}"
+  dropdown-search:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    padding: "{spacing.xs}"
+
+  # ── Info tips ─────────────────────────────────────────────────────
+  info-tip-trigger:
+    textColor: "{colors.extra-dark-teal-70}"
+    typography: "{typography.body-xs}"
+    rounded: "{rounded.3xl}"
+    size: 18px
+  info-tip-trigger-hover:
+    textColor: "{colors.interactive-default}"
+  info-tip-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.xs}"
+    width: 320px
+
   # ── Form controls ─────────────────────────────────────────────────
   # Checkbox
   checkbox-default:
@@ -472,6 +516,8 @@ Heavy shadows are not used. Depth is expressed through tonal layering — surfac
 - `opacity-10` (10%): Light container backgrounds, hover states on text buttons.
 - `opacity-20` (20%): Stroke/border level — input field borders, dividers.
 
+**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and a single soft shadow, `0 4px 12px` at 8% `extra-dark-teal`, so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
+
 ## Shapes
 
 Border radii follow the same numeric scale as spacing (`3xs` through `3xl`). The scale is intentionally wide to support the full range from sharp (`3xs: 4px`) to pill-shaped (`3xl: 32px`).
@@ -496,6 +542,22 @@ Filled hover states lighten to a solid tint (the base color blended at 60% on cr
 
 Inputs use a white fill with a low-opacity `extra-dark-teal` stroke in their default state. On focus the stroke transitions to \`interactive-default\` (teal). On error the stroke becomes `error-red-dark` and text adopts the same color. Disabled inputs use a `gray-20` fill with `dark-teal` text.
 
+### Dropdowns
+
+A dropdown's closed state is an input: same fill, `extra-dark-teal-20` stroke, focus, error and disabled states, and the `sm`/`md`/`lg` size scale, with a small caret at the right in `extra-dark-teal-70`. Placeholder text uses `extra-dark-teal-60`. Focus shows the teal stroke only for keyboard focus, so the trigger doesn't stay highlighted after a mouse click.
+
+The open menu is a floating surface (see Elevation & Depth): `dropdown-panel`, at least as wide as the trigger, 4px below it, scrolling past 320px tall. Items are `body-sm` with 8px vertical padding and room on the right for a check mark. The item under the pointer or keyboard cursor takes `dropdown-item-highlighted`; the selected item is semibold with a `dropdown-item-check` mark at the right.
+
+Use a plain dropdown for short, fixed lists (levels, categories). For long lists such as people, add a `dropdown-search` field at the top of the panel, separated from the items by an `extra-dark-teal-20` divider, that filters as you type and shows "No matches." when nothing fits. Long lists can be grouped under `dropdown-group-label` headings. An item may carry faint secondary text after its label in `extra-dark-teal-60`; it is searchable too.
+
+Dropdowns must work from the keyboard: arrow keys move the highlight, Enter selects, Escape closes, and typing in a searchable dropdown filters.
+
+### Info tips
+
+An info tip keeps secondary explanation — a definition, a rule of thumb — out of the layout until someone asks for it. The trigger is a small circled "i": 18px, `info-tip-trigger` text inside an `extra-dark-teal-40` ring, turning `interactive-default` (ring and letter) on hover, on keyboard focus, and while open. Place it right after the label it explains.
+
+Clicking the trigger opens `info-tip-panel`, a floating surface above the trigger, aligned to its start, up to 320px wide. It opens on click or tap rather than hover so it works on touch screens and from the keyboard, and closes on Escape or a click outside. Keep the content to a sentence or two of plain text; anything longer belongs on the page. Give the trigger an accessible name that says what it explains (for example "About Autonomy").
+
 ### Form Controls
 
 Checkbox, radio, and switch all share the same color logic: unchecked state uses a white fill with a `teal-80` stroke; checked state fills with \`interactive-default\` (teal) and uses `cream` for the mark or thumb. The switch thumb is 14×14px, inset 2px from the track edge.
@@ -519,3 +581,4 @@ Avatars display initials, icons, or images in a fixed square container with 4px 
 - **Don't** use status colors (`error-red`, `success-green`, etc.) for decorative or categorical purposes.
 - **Don't** mix button intents within a single action group — pick one hierarchy and apply it consistently.
 - **Don't** use `mono` for UI copy — reserve it for code and model output.
+- **Don't** use the floating-surface shadow on anything that sits in the page flow — it's only for menus and info tips that open over content.

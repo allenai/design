@@ -365,6 +365,50 @@ components:
     padding: "{spacing.md}"
     typography: "{typography.body-md}"
 
+  # ── Dropdowns ─────────────────────────────────────────────────────
+  # The closed trigger is an input: it reuses input-default, input-error,
+  # input-disabled and the input-size-* scale, plus a caret.
+  dropdown-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.3xs}"
+    padding: 4px
+  dropdown-item:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.2xs}"
+  dropdown-item-highlighted:
+    backgroundColor: "{colors.teal-20}"
+  dropdown-item-check:
+    textColor: "{colors.interactive-default}"
+  dropdown-group-label:
+    textColor: "{colors.extra-dark-teal-70}"
+    typography: "{typography.body-xs}"
+    padding: "{spacing.xs}"
+  dropdown-search:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    padding: "{spacing.xs}"
+
+  # ── Info tips ─────────────────────────────────────────────────────
+  info-tip-trigger:
+    textColor: "{colors.extra-dark-teal-70}"
+    typography: "{typography.body-xs}"
+    rounded: "{rounded.3xl}"
+    size: 18px
+  info-tip-trigger-hover:
+    textColor: "{colors.interactive-default}"
+  info-tip-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.xs}"
+    width: 320px
+
   # ── Form controls ─────────────────────────────────────────────────
   # Checkbox
   checkbox-default:
@@ -592,6 +636,8 @@ Heavy shadows are not used. Depth is expressed through tonal layering — surfac
 - `opacity-4` (4%): Subtle differentiation, barely perceptible — used for overlay headers and footers.
 - `opacity-10` (10%): Light container backgrounds, hover states on text buttons.
 - `opacity-20` (20%): Stroke/border level — input field borders, dividers.
+
+**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and a single soft shadow, `0 4px 12px` at 8% `extra-dark-teal`, so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
 
 ## Shapes
 
