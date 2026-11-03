@@ -306,6 +306,15 @@ components:
     padding: "{spacing.md}"
     typography: "{typography.body-md}"
 
+  # ── Elevation ─────────────────────────────────────────────────────
+  # The one shadow in the system, for surfaces that float over content
+  # (dropdown menus, info tips). See Elevation & Depth.
+  elevation-floating:
+    shadowColor: "{colors.extra-dark-teal-10}"
+    shadowOffsetX: 0px
+    shadowOffsetY: "{rounded.3xs}"
+    shadowBlur: "{spacing.xs}"
+
   # ── Dropdowns ─────────────────────────────────────────────────────
   # The closed trigger is an input: it reuses input-default, input-error,
   # input-disabled and the input-size-* scale, plus a caret.
@@ -313,7 +322,7 @@ components:
     backgroundColor: "{colors.white}"
     textColor: "{colors.text}"
     rounded: "{rounded.3xs}"
-    padding: 4px
+    padding: "{rounded.3xs}"
   dropdown-item:
     backgroundColor: "{colors.white}"
     textColor: "{colors.text}"
@@ -339,7 +348,7 @@ components:
     textColor: "{colors.extra-dark-teal-70}"
     typography: "{typography.body-xs}"
     rounded: "{rounded.3xl}"
-    size: 18px
+    size: "{spacing.lg}"
   info-tip-trigger-hover:
     textColor: "{colors.interactive-default}"
   info-tip-panel:
@@ -348,7 +357,6 @@ components:
     typography: "{typography.body-sm}"
     rounded: "{rounded.3xs}"
     padding: "{spacing.xs}"
-    width: 320px
 
   # ── Form controls ─────────────────────────────────────────────────
   # Checkbox
@@ -516,7 +524,7 @@ Heavy shadows are not used. Depth is expressed through tonal layering — surfac
 - `opacity-10` (10%): Light container backgrounds, hover states on text buttons.
 - `opacity-20` (20%): Stroke/border level — input field borders, dividers.
 
-**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and a single soft shadow, `0 4px 12px` at 8% `extra-dark-teal`, so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
+**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and the `elevation-floating` shadow (`extra-dark-teal-10`, 4px down, 12px blur), so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
 
 ## Shapes
 
@@ -556,7 +564,7 @@ Dropdowns must work from the keyboard: arrow keys move the highlight, Enter sele
 
 An info tip keeps secondary explanation — a definition, a rule of thumb — out of the layout until someone asks for it. The trigger is a small circled "i": 18px, `info-tip-trigger` text inside an `extra-dark-teal-40` ring, turning `interactive-default` (ring and letter) on hover, on keyboard focus, and while open. Place it right after the label it explains.
 
-Clicking the trigger opens `info-tip-panel`, a floating surface above the trigger, aligned to its start, up to 320px wide. It opens on click or tap rather than hover so it works on touch screens and from the keyboard, and closes on Escape or a click outside. Keep the content to a sentence or two of plain text; anything longer belongs on the page. Give the trigger an accessible name that says what it explains (for example "About Autonomy").
+Clicking the trigger opens `info-tip-panel`, a floating surface above the trigger, aligned to its start. It sizes to its content and wraps at a comfortable reading width, roughly 40–50 characters per line. It opens on click or tap rather than hover so it works on touch screens and from the keyboard, and closes on Escape or a click outside. Keep the content to a sentence or two of plain text; anything longer belongs on the page. Give the trigger an accessible name that says what it explains (for example "About Autonomy").
 
 ### Form Controls
 

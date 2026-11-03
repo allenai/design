@@ -309,6 +309,15 @@ components:
     padding: "{spacing.md}"
     typography: "{typography.body-md}"
 
+  # ── Elevation ─────────────────────────────────────────────────────
+  # The one shadow in the system, for surfaces that float over content
+  # (dropdown menus, info tips). See Elevation & Depth.
+  elevation-floating:
+    shadowColor: "{colors.extra-dark-teal-10}"
+    shadowOffsetX: 0px
+    shadowOffsetY: "{rounded.3xs}"
+    shadowBlur: "{spacing.xs}"
+
   # ── Dropdowns ─────────────────────────────────────────────────────
   # The closed trigger is an input: it reuses input-default, input-error,
   # input-disabled and the input-size-* scale, plus a caret.
@@ -316,7 +325,7 @@ components:
     backgroundColor: "{colors.dark-teal}"
     textColor: "{colors.cream}"
     rounded: "{rounded.3xs}"
-    padding: 4px
+    padding: "{rounded.3xs}"
   dropdown-item:
     backgroundColor: "{colors.dark-teal}"
     textColor: "{colors.cream}"
@@ -342,7 +351,7 @@ components:
     textColor: "{colors.cream-70}"
     typography: "{typography.body-xs}"
     rounded: "{rounded.3xl}"
-    size: 18px
+    size: "{spacing.lg}"
   info-tip-trigger-hover:
     textColor: "{colors.teal-40}"
   info-tip-panel:
@@ -351,7 +360,6 @@ components:
     typography: "{typography.body-sm}"
     rounded: "{rounded.3xs}"
     padding: "{spacing.xs}"
-    width: 320px
 
   # ── Form controls ─────────────────────────────────────────────────
   # Checkbox
@@ -517,7 +525,7 @@ Heavy shadows are not used. Depth is expressed through tonal layering — surfac
 - `opacity-10` (10%): Light container backgrounds, hover states on text buttons.
 - `opacity-20` (20%): Stroke/border level — input field borders, dividers.
 
-**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and a single soft shadow, `0 4px 12px` at 8% `extra-dark-teal`, so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
+**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and the `elevation-floating` shadow (`extra-dark-teal-10`, 4px down, 12px blur), so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
 
 ## Shapes
 

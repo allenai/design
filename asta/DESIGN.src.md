@@ -46,7 +46,7 @@ components:
     backgroundColor: "{colors.dark-teal}"
     textColor: "{colors.cream}"
     rounded: "{rounded.3xs}"
-    padding: 4px
+    padding: "{rounded.3xs}"
   dropdown-item:
     backgroundColor: "{colors.dark-teal}"
     textColor: "{colors.cream}"
@@ -70,7 +70,7 @@ components:
     textColor: "{colors.cream-70}"
     typography: "{typography.body-xs}"
     rounded: "{rounded.3xl}"
-    size: 18px
+    size: "{spacing.lg}"
   info-tip-trigger-hover:
     textColor: "{colors.teal-40}"
   info-tip-panel:
@@ -79,7 +79,6 @@ components:
     typography: "{typography.body-sm}"
     rounded: "{rounded.3xs}"
     padding: "{spacing.xs}"
-    width: 320px
 
   # ── Buttons ───────────────────────────────────────────────────────
   # `teal` (#105257) falls below 1.5:1 on the extra-dark-teal page

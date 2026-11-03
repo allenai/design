@@ -174,7 +174,7 @@
        stroke, one soft shadow. Highlight and check re-tone in Asta. */
     --c-float-bg: var(--c-input-bg);
     --c-float-text: var(--c-input-text);
-    --c-float-shadow: 0 4px 12px rgba(3, 38, 41, 0.08);
+    --c-float-shadow: 0 4px 12px rgba(3, 38, 41, 0.1); /* elevation-floating */
     --c-menu-highlight: var(--c-teal-20);
     --c-menu-check: var(--c-int-default);
     --c-muted: rgba(3, 38, 41, 0.7);
@@ -750,7 +750,7 @@
   }
   .itip:hover, .itip.open, .itip:focus-visible { color: var(--c-itip-active); border-color: var(--c-itip-active); outline: none; }
   .itip-panel {
-    max-width: 320px; padding: 12px 14px; font-size: 14px; line-height: 1.45; font-weight: 400;
+    max-width: 46ch; padding: 12px; font-size: 14px; line-height: 1.45; font-weight: 400;
     background: var(--c-float-bg); color: var(--c-float-text);
     border: 1px solid var(--c-field-outline); border-radius: 4px; box-shadow: var(--c-float-shadow);
   }
