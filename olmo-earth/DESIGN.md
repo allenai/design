@@ -365,6 +365,58 @@ components:
     padding: "{spacing.md}"
     typography: "{typography.body-md}"
 
+  # ── Elevation ─────────────────────────────────────────────────────
+  # The one shadow in the system, for surfaces that float over content
+  # (dropdown menus, info tips). See Elevation & Depth.
+  elevation-floating:
+    shadowColor: "{colors.extra-dark-teal-10}"
+    shadowOffsetX: 0px
+    shadowOffsetY: "{rounded.3xs}"
+    shadowBlur: "{spacing.xs}"
+
+  # ── Dropdowns ─────────────────────────────────────────────────────
+  # The closed trigger is an input: it reuses input-default, input-error,
+  # input-disabled and the input-size-* scale, plus a caret.
+  dropdown-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.3xs}"
+    padding: "{rounded.3xs}"
+  dropdown-item:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.2xs}"
+  dropdown-item-highlighted:
+    backgroundColor: "{colors.teal-20}"
+  dropdown-item-check:
+    textColor: "{colors.interactive-default}"
+  dropdown-group-label:
+    textColor: "{colors.extra-dark-teal-70}"
+    typography: "{typography.body-xs}"
+    padding: "{spacing.xs}"
+  dropdown-search:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    padding: "{spacing.xs}"
+
+  # ── Info tips ─────────────────────────────────────────────────────
+  info-tip-trigger:
+    textColor: "{colors.extra-dark-teal-70}"
+    typography: "{typography.body-xs}"
+    rounded: "{rounded.3xl}"
+    size: "{spacing.lg}"
+  info-tip-trigger-hover:
+    textColor: "{colors.interactive-default}"
+  info-tip-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.text}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.xs}"
+
   # ── Form controls ─────────────────────────────────────────────────
   # Checkbox
   checkbox-default:
@@ -592,6 +644,8 @@ Heavy shadows are not used. Depth is expressed through tonal layering — surfac
 - `opacity-4` (4%): Subtle differentiation, barely perceptible — used for overlay headers and footers.
 - `opacity-10` (10%): Light container backgrounds, hover states on text buttons.
 - `opacity-20` (20%): Stroke/border level — input field borders, dividers.
+
+**Floating surfaces** are the one exception. Panels that open over other content — dropdown menus and info tips — use the same fill as inputs with an `extra-dark-teal-20` border and the `elevation-floating` shadow (`extra-dark-teal-10`, 4px down, 12px blur), so they read as above the page rather than part of it. Nothing that sits in the page flow uses this shadow.
 
 ## Shapes
 

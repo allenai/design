@@ -39,6 +39,46 @@ components:
     backgroundColor: "{colors.extra-dark-teal}"
     textColor: "{colors.gray-40}"
     rounded: "{rounded.3xs}"
+  # ── Dropdowns and info tips ───────────────────────────────────────
+  # Floating panels use the same dark surface as inputs. `teal` is too
+  # dark to read here, so highlights use teal-80 and marks use teal-40.
+  dropdown-panel:
+    backgroundColor: "{colors.dark-teal}"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.3xs}"
+    padding: "{rounded.3xs}"
+  dropdown-item:
+    backgroundColor: "{colors.dark-teal}"
+    textColor: "{colors.cream}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.2xs}"
+  dropdown-item-highlighted:
+    backgroundColor: "{colors.teal-80}"
+  dropdown-item-check:
+    textColor: "{colors.teal-40}"
+  dropdown-group-label:
+    textColor: "{colors.cream-70}"
+    typography: "{typography.body-xs}"
+    padding: "{spacing.xs}"
+  dropdown-search:
+    backgroundColor: "{colors.dark-teal}"
+    textColor: "{colors.cream}"
+    typography: "{typography.body-sm}"
+    padding: "{spacing.xs}"
+  info-tip-trigger:
+    textColor: "{colors.cream-70}"
+    typography: "{typography.body-xs}"
+    rounded: "{rounded.3xl}"
+    size: "{spacing.lg}"
+  info-tip-trigger-hover:
+    textColor: "{colors.teal-40}"
+  info-tip-panel:
+    backgroundColor: "{colors.dark-teal}"
+    textColor: "{colors.cream}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.3xs}"
+    padding: "{spacing.xs}"
 
   # ── Buttons ───────────────────────────────────────────────────────
   # `teal` (#105257) falls below 1.5:1 on the extra-dark-teal page
