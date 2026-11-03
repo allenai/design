@@ -1,0 +1,3 @@
+#!/bin/sh
+# Shell entry point: `checkpoint save -m "label"`, `checkpoint list`, …
+exec python3 "$(dirname "$0")/checkpoint.py" "$@"

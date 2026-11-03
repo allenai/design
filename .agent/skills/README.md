@@ -48,6 +48,12 @@ live. The remaining genres are described in `worked-shapes.md` as transferable
 moves rather than reproduced, so this repository carries no unpublished Ai2
 drafts.
 
+### Working-tree checkpoints
+
+| Skill | Use it for |
+| --- | --- |
+| [`ai2-checkpoint`](ai2-checkpoint/SKILL.md) | Saving, listing, comparing and restoring local snapshots of the working tree, kept apart from git commits — so there is always a "before" to diff against or roll back to around big changes. Ships the small `checkpoint.py` tool the skill drives. |
+
 ## Layout
 
 Each skill is a directory containing a `SKILL.md`, plus any supporting files it
