@@ -25,12 +25,14 @@ colors:
   # tokens shift to lighter/more-saturated primitive steps for contrast.
 
   # Background
-  # Dark-mode surfaces form one continuous teal ladder — Primary (darkest)
-  # → Elevated → Secondary (lightest) — rather than mixing in grey.
+  # Dark-mode surfaces form one continuous teal ladder — Secondary/Tertiary
+  # (darkest) → Primary/Elevated → Selected (lightest) — rather than mixing
+  # in grey.
   "UI/Background/Primary Background": { light: "#ffffff", dark: "#032629" }
-  "UI/Background/Secondary Background": { light: "#faf2e9", dark: "#0a3235" }
-  "UI/Background/Tertiary Background": { light: "#e7eeee", dark: "#0a3235" }
+  "UI/Background/Secondary Background": { light: "#faf2e9", dark: "#02191b" }
+  "UI/Background/Tertiary Background": { light: "#e7eeee", dark: "#02191b" }
   "UI/Background/Elevated Component": { light: "#ffffff", dark: "#032629" }
+  "UI/Background/Selected Background": { light: "#f2f9f9", dark: "#105257" }
 
   # Text
   "UI/Text/Primary Text": { light: "#0a3235", dark: "#ffffff" }
@@ -42,9 +44,9 @@ colors:
   "UI/Text/Disabled": { light: "#767676", dark: "#888b8d" }
 
   # UI Chrome
-  "UI/Icons": { light: "#767676", dark: "#888b8d" }
-  "UI/Field Outline": { light: "#b1b3b3", dark: "#333333" }
-  "UI/Divider Lines": { light: "#dddddd", dark: "#63666a" }
+  "UI/Icons": { light: "#407579", dark: "#70979a" }
+  "UI/Field Outline": { light: "#b7cbcd", dark: "#355154" }
+  "UI/Divider Lines": { light: "#cfdcdd", dark: "#1c3c3e" }
 
   # Actions
   "UI/CTA Primary": { light: "#0f865d", dark: "#0fcb8c" }
@@ -79,17 +81,18 @@ colors:
   "UI/Patrol Status/Track Line (Mobile)": { light: "#e76826", dark: "#e76826" }
   "UI/Patrol Status/Done (Mobile)": { light: "#767676", dark: "#888b8d" }
 
-  # Data Visualization — Categorical
-  "UI/Data/Categorical/Category 1": "#3e35a3"
-  "UI/Data/Categorical/Category 2": "#488a00"
-  "UI/Data/Categorical/Category 3": "#00958f"
-  "UI/Data/Categorical/Category 4": "#b62879"
-  "UI/Data/Categorical/Category 5": "#c6880c"
-  "UI/Data/Categorical/Category 6": "#00d0c8"
-  "UI/Data/Categorical/Category 7": "#78d811"
-  "UI/Data/Categorical/Category 8": "#5c4fe7"
-  "UI/Data/Categorical/Category 9": "#f4db20"
-  "UI/Data/Categorical/Category 10": "#ed3ea2"
+  # Data Visualization — Categorical (mode-specific: dark values are the
+  # brighter/darker counterparts; slots 6–10 swap the light/dark steps)
+  "UI/Data/Categorical/Category 1": { light: "#00958f", dark: "#00d0c8" }
+  "UI/Data/Categorical/Category 2": { light: "#3e35a3", dark: "#5c4fe7" }
+  "UI/Data/Categorical/Category 3": { light: "#488a00", dark: "#78d811" }
+  "UI/Data/Categorical/Category 4": { light: "#b62879", dark: "#ed3ea2" }
+  "UI/Data/Categorical/Category 5": { light: "#c6880c", dark: "#f4db20" }
+  "UI/Data/Categorical/Category 6": { light: "#00d0c8", dark: "#00958f" }
+  "UI/Data/Categorical/Category 7": { light: "#5c4fe7", dark: "#3e35a3" }
+  "UI/Data/Categorical/Category 8": { light: "#78d811", dark: "#488a00" }
+  "UI/Data/Categorical/Category 9": { light: "#f4db20", dark: "#c6880c" }
+  "UI/Data/Categorical/Category 10": { light: "#ed3ea2", dark: "#b62879" }
 
   # Data Visualization — Tracks
   "UI/Data/Tracks/Track 1": "#3e35a3"
@@ -116,6 +119,10 @@ colors:
   # Brand
   "Brand/Acorn Logo": { light: "#008586", dark: "#008586" }
   "Brand/Accent Green": { light: "#0f865d", dark: "#0fcb8c" }
+  "Brand/Background/Primary Background": { light: "#ffffff", dark: "#0a3235" }
+  "Brand/Background/Secondary Background": { light: "#faf2e9", dark: "#105257" }
+  "Brand/Text/Primary Text": { light: "#0a3235", dark: "#ffffff" }
+  "Brand/Text/Secondary Text": { light: "#105257", dark: "#faf2e9" }
 
   # ── Primitive Palette ─────────────────────────────────────────────
   # Use only when no semantic token fits. Single mode (HEX) — not used
@@ -176,6 +183,9 @@ colors:
   "Teal/5": "#00d0c8"
   "Teal/Ai2 Dark Teal": "#0a3235"
   "Teal/Ai2 Extra Dark Teal": "#032629"
+  "Teal/darkest": "#02191b"
+  "Teal/dark-90": "#1c3c3e"
+  "Teal/dark-80": "#355154"
   "Teal/T100": "#105257"
   "Teal/T90": "#27545f"
   "Teal/T80": "#407579"
@@ -186,6 +196,7 @@ colors:
   "Teal/T30": "#b7cbcd"
   "Teal/T20": "#cfdcdd"
   "Teal/T10": "#e7eeee"
+  "Teal/3-05": "#f2f9f9"
 
   # Red
   "Red/1": "#3e2125"
@@ -338,7 +349,7 @@ EarthRanger is used by a broad range of conservation professionals: protected ar
 
 The design language prioritizes **usability and data security above all else**. EarthRanger is trustworthy, innovative, and approachable. Every interface decision should reinforce that the platform is reliable and built for serious work — without being intimidating or opaque.
 
-EarthRanger's visual identity is grounded in Ai2's brand standards, using the same three-layer token architecture as Strata (Primitives → Tokens → Platform). The primary CTA color is green; teal is the brand/secondary accent and appears in navigation, headers, and brand moments. Pink is never used in EarthRanger interfaces. Dark mode is a first-class, fully-defined mode (not just light-mode tokens dimmed) — it inverts rather than darkens: backgrounds swap from white/off-white to deep teal, text flips accordingly, and status colors shift to lighter/more-saturated steps for contrast on the dark surface. Data colors (categorical, tracks, sequential) are mode-stable — the same primitives work on both light and dark backgrounds.
+EarthRanger's visual identity is grounded in Ai2's brand standards, using the same three-layer token architecture as Strata (Primitives → Tokens → Platform). The primary CTA color is green; teal is the brand/secondary accent and appears in navigation, headers, and brand moments. Pink is never used in EarthRanger interfaces. Dark mode is a first-class, fully-defined mode (not just light-mode tokens dimmed) — it inverts rather than darkens: backgrounds swap from white/off-white to deep teal, text flips accordingly, and status colors shift to lighter/more-saturated steps for contrast on the dark surface. Track and sequential data colors are mode-stable — the same primitives work on both light and dark backgrounds. Categorical data colors have separate light and dark values.
 
 ## Colors
 
@@ -352,7 +363,7 @@ Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#0a3235` dark — the in
 
 Pink is not part of the EarthRanger palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
 
-For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute brand colors. These scales are designed for perceptual distinctiveness and accessibility across the full range of values, and are intentionally identical in Light and Dark mode.
+For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute brand colors. These scales are designed for perceptual distinctiveness and accessibility across the full range of values. Tracks and sequential are intentionally identical in Light and Dark mode; categorical uses a separate value per mode, so always resolve it through the token rather than copying a hex.
 
 ## Typography
 
@@ -389,7 +400,7 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 - **Style:** Outlined (default); filled variants exist for some icons
 - **Default size:** 24×24px
 - **Usage:** Primary icon library — search for any standard UI icon here first
-- **Color:** Use `UI/Icons` token (`#767676`) by default unless the design specifies otherwise
+- **Color:** Use `UI/Icons` token (`#407579` light / `#70979a` dark) by default unless the design specifies otherwise
 
 ### Library 2: ER Design System Custom Icons
 
