@@ -1585,8 +1585,8 @@
     <!-- EarthRanger-only tokens, merged into Foundations, above Semantic aliases.
          EarthRanger has its own primitive ramp plus Status, Patrol Status, Event
          Priority, and Data Visualization tokens. Use the Light/Dark toggle above —
-         status-driven tokens shift with mode; Data Viz and the primitives
-         themselves are mode-stable by design. -->
+         status-driven tokens and categorical Data Viz shift with mode; tracks,
+         sequential, and the primitives themselves are mode-stable by design. -->
     <div class="er-only">
       <div class="subhead">Primitives</div>
       <div class="swatch-grid" id="er-primitives-grid"></div>
@@ -2310,7 +2310,8 @@ const ER_PRIMITIVES = {
 
   "teal-1": "#107283", "teal-2": "#62bfd0", "teal-3": "#008586",
   "teal-4": "#00958f", "teal-5": "#00d0c8", "teal-dark": "#0a3235",
-  "teal-extra-dark": "#032629",
+  "teal-extra-dark": "#032629", "teal-darkest": "#02191b",
+  "teal-dark-90": "#1c3c3e", "teal-dark-80": "#355154", "teal-3-05": "#f2f9f9",
   "teal-t100": "#105257", "teal-t90": "#27545f", "teal-t80": "#407579",
   "teal-t70": "#588689", "teal-t60": "#70979a", "teal-t50": "#87a8ab",
   "teal-t40": "#9fbabc", "teal-t30": "#b7cbcd", "teal-t20": "#cfdcdd",
@@ -2398,6 +2399,7 @@ ALIASES["earthranger"] = {
     ["background/secondary",     "off-white"],
     ["background/tertiary",      "teal-t10"],
     ["background/elevated",      "white"],
+    ["background/selected",      "teal-3-05"],
     ["text/primary",             "teal-dark"],
     ["text/primary-reversed",    "white"],
     ["text/secondary",           "teal-t100"],
@@ -2405,9 +2407,9 @@ ALIASES["earthranger"] = {
     ["text/form-labels",         "teal-t100"],
     ["text/tabs",                "teal-t100"],
     ["text/disabled",            "grey-6"],
-    ["icons",                    "grey-6"],
-    ["field-outline",            "grey-8"],
-    ["divider-lines",            "grey-9"],
+    ["icons",                    "teal-t80"],
+    ["field-outline",            "teal-t30"],
+    ["divider-lines",            "teal-t20"],
     ["cta-primary",              "green-12"],
     ["cta-secondary-blue",       "teal-t20"],
     ["status/error-destructive", "red-3"],
@@ -2433,12 +2435,17 @@ ALIASES["earthranger"] = {
     ["event-priority/grey",      "grey-7"],
     ["brand/acorn-logo",         "teal-3"],
     ["brand/accent-green",       "green-12"],
+    ["brand/background/primary",   "white"],
+    ["brand/background/secondary", "off-white"],
+    ["brand/text/primary",         "teal-dark"],
+    ["brand/text/secondary",       "teal-t100"],
   ],
   dark: [
     ["background/primary",       "teal-extra-dark"],
-    ["background/secondary",     "teal-dark"],
-    ["background/tertiary",      "teal-dark"],
-    ["background/elevated",      "teal-dark"],
+    ["background/secondary",     "teal-darkest"],
+    ["background/tertiary",      "teal-darkest"],
+    ["background/elevated",      "teal-extra-dark"],
+    ["background/selected",      "teal-t100"],
     ["text/primary",             "white"],
     ["text/primary-reversed",    "teal-dark"],
     ["text/secondary",           "off-white"],
@@ -2446,9 +2453,9 @@ ALIASES["earthranger"] = {
     ["text/form-labels",         "white"],
     ["text/tabs",                "white"],
     ["text/disabled",            "grey-7"],
-    ["icons",                    "grey-7"],
-    ["field-outline",            "grey-3"],
-    ["divider-lines",            "grey-5"],
+    ["icons",                    "teal-t60"],
+    ["field-outline",            "teal-dark-80"],
+    ["divider-lines",            "teal-dark-90"],
     ["cta-primary",              "green-7"],
     ["cta-secondary-blue",       "teal-t90"],
     ["status/error-destructive", "red-5"],
@@ -2474,6 +2481,10 @@ ALIASES["earthranger"] = {
     ["event-priority/grey",      "grey-7"],
     ["brand/acorn-logo",         "teal-3"],
     ["brand/accent-green",       "green-7"],
+    ["brand/background/primary",   "teal-dark"],
+    ["brand/background/secondary", "teal-t100"],
+    ["brand/text/primary",         "white"],
+    ["brand/text/secondary",       "off-white"],
   ],
 };
 
@@ -2503,11 +2514,15 @@ ALIASES["skylight"] = [
     ["deck-text",                  "deep-sea"],
 ];
 
-/* EarthRanger data-visualization ramps — mode-stable (same primitives
-   in Light and Dark), shown as dedicated swatch strips rather than
-   alias rows since they're ramps, not 1:1 semantic aliases. */
+/* EarthRanger data-visualization ramps — tracks and sequential are
+   mode-stable (same primitives in Light and Dark); categorical has a
+   separate light and dark value per slot. Shown as dedicated strips
+   rather than alias rows since they're ramps, not 1:1 semantic aliases. */
 const ER_DATAVIZ = {
-  categorical: ["indigo-2", "green-9", "teal-4", "magenta-2", "yellow-2", "teal-5", "green-10", "indigo-3", "yellow-4", "magenta-3"],
+  categorical: {
+    light: ["teal-4", "indigo-2", "green-9", "magenta-2", "yellow-2", "teal-5", "indigo-3", "green-10", "yellow-4", "magenta-3"],
+    dark:  ["teal-5", "indigo-3", "green-10", "magenta-3", "yellow-4", "teal-4", "indigo-2", "green-9", "yellow-2", "magenta-2"],
+  },
   tracks: ["indigo-2", "magenta-2", "amber-4", "magenta-3", "blue-7", "red-2", "purple-2", "green-5", "blue-6", "red-4"],
   sequential: ["yellow-4", "yellow-3", "magenta-3", "purple-2", "indigo-3", "blue-1", "green-3", "green-10"],
 };
@@ -2711,7 +2726,7 @@ function renderRadii(systemKey) {
    EarthRanger-only sections (Status, Patrol, Event Priority, Data
    Viz, Platform fonts) — hidden unless data-system="earthranger".
    Status/Patrol/Event-Priority/Status-Bg vary with data-er-mode;
-   Data Viz and Primitives are mode-stable.
+   Categorical Data Viz varies with mode; Tracks, Sequential and Primitives are mode-stable.
 ───────────────────────────────────────────────────────────────── */
 function erAliasRows(pairs) {
   return pairs.map(([alias, prim]) => `
@@ -2759,9 +2774,11 @@ function renderErEventPriority() {
   document.getElementById("er-event-priority-list").innerHTML = erAliasRows(erModeRows("event-priority/"));
 }
 function renderErDataViz() {
+  const mode = document.documentElement.dataset.erMode || "light";
   ["categorical", "tracks", "sequential"].forEach((key) => {
+    const ramp = Array.isArray(ER_DATAVIZ[key]) ? ER_DATAVIZ[key] : ER_DATAVIZ[key][mode];
     document.getElementById(`er-dataviz-${key}`).innerHTML = erAliasRows(
-      ER_DATAVIZ[key].map((prim, i) => [`${key} ${i + 1}`, prim])
+      ramp.map((prim, i) => [`${key} ${i + 1}`, prim])
     );
   });
 }
