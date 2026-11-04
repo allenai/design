@@ -45,14 +45,15 @@
     "./package.json": "./package.json",
     "./asta/tokens.json": "./asta/tokens.json",
     "./olmo-earth/tokens.json": "./olmo-earth/tokens.json",
-    "./earthranger/tokens.json": "./earthranger/tokens.json"
+    "./earthranger/tokens.json": "./earthranger/tokens.json",
+    "./earthranger/tokens.css": "./earthranger/tokens.css"
   },
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
   "scripts": {
-    "build": "npm run compose && npm run tokens",
+    "build": "npm run compose && npm run tokens && npm run css",
     "compose:asta": "node scripts/compose.ts --base strata/DESIGN.md --overlay asta/DESIGN.src.md --out asta/DESIGN.md",
     "compose:olmo-earth": "node scripts/compose.ts --base strata/DESIGN.md --overlay olmo-earth/DESIGN.src.md --out olmo-earth/DESIGN.md",
     "compose": "npm run compose:asta && npm run compose:olmo-earth",
@@ -60,6 +61,8 @@
     "tokens:olmo-earth": "node scripts/emit-tokens.ts --spec olmo-earth/DESIGN.md --out olmo-earth/tokens.json",
     "tokens:earthranger": "node scripts/emit-tokens.ts --spec earthranger/DESIGN.md --out earthranger/tokens.json",
     "tokens": "npm run tokens:asta && npm run tokens:olmo-earth && npm run tokens:earthranger",
+    "css:earthranger": "node scripts/emit-css.ts --tokens earthranger/tokens.json --prefix er --out earthranger/tokens.css",
+    "css": "npm run css:earthranger",
     "tokens:upstream:asta": "npx @google/design.md@latest export --format dtcg asta/DESIGN.md > asta/tokens.json",
     "tokens:upstream:olmo-earth": "npx @google/design.md@latest export --format dtcg olmo-earth/DESIGN.md > olmo-earth/tokens.json",
     "tokens:upstream": "npm run tokens:upstream:asta && npm run tokens:upstream:olmo-earth",
