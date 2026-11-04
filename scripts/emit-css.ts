@@ -1,31 +1,17 @@
 /**
- * Emits a product's DTCG `tokens.json` as CSS custom properties, for anything
- * that renders CSS — Sass modules, plain CSS, Tailwind, Bootstrap's `--bs-*`
- * theming — where the JSON serves JavaScript consumers.
- *
- * It reads the generated `tokens.json` rather than the DESIGN.md, so the JSON is
- * the one machine-readable contract and the two files can never disagree. That
- * also means swapping `emit-tokens.ts` for `@google/design.md export --format
- * dtcg` (see the README's migration notes) changes nothing here.
+ * Emits a product's DTCG `tokens.json` as CSS custom properties. Reading the
+ * JSON rather than the DESIGN.md keeps the two files from disagreeing.
  *
  * Usage:
  *   node scripts/emit-css.ts --tokens earthranger/tokens.json --prefix er --out earthranger/tokens.css
  *
- * What it does:
- *   - Names each variable after its token path, kebab-cased, under a required
- *     prefix: `color` › `UI/CTA Primary` becomes `--er-ui-cta-primary`. Names
- *     come from the designers' token names with no hand-picked renames, so
- *     renaming a token renames its variable — a breaking change for consumers.
- *   - Turns a `{ light, dark }` pair into one variable: the light value under
- *     `:root, [data-theme="light"]`, the dark value under `[data-theme="dark"]`.
- *     There is deliberately no `prefers-color-scheme` block: an app that isn't
- *     dark-ready would go half-dark for every user with a dark OS. Apps opt in.
- *   - Declares custom properties and nothing else, so importing the file never
- *     changes how a page looks — only reading the variables does.
- *   - Fails on anything it doesn't recognise (an unknown `$type`, a leftover
- *     reference, a lone `light`, two tokens that kebab-case to the same name)
- *     rather than guessing, because a guess here ships the wrong colour to
- *     every product that imports the file.
+ *   - Variables are the token path, kebab-cased, under the prefix:
+ *     `color` › `UI/CTA Primary` is `--er-ui-cta-primary`. Renaming a token
+ *     renames its variable.
+ *   - A `{ light, dark }` pair becomes one variable: light on `:root`, dark on
+ *     `[data-theme="dark"]`. No `prefers-color-scheme`: apps opt in to dark.
+ *   - Only variables are declared, so importing the file changes nothing alone.
+ *   - Anything unrecognised fails the build rather than being guessed.
  */
 
 import { readFileSync, writeFileSync } from 'fs';
@@ -43,8 +29,7 @@ const tokensFile = get('--tokens');
 const prefix = get('--prefix');
 const outFile = get('--out');
 
-// The prefix is required so variables can never land in a page's global
-// namespace without one — `--ui-cta-primary` would collide with anything.
+// Required, so variables never land unprefixed in a page's global namespace.
 if (!tokensFile || !prefix) {
   console.error('Usage: emit-css.ts --tokens <tokens.json> --prefix <name> [--out <file>]');
   process.exit(1);
@@ -67,33 +52,26 @@ const isToken = (node: unknown): node is Tree =>
 const isGroup = (node: unknown): node is Tree =>
   typeof node === 'object' && node !== null && !Array.isArray(node) && !isToken(node);
 
-/** `$schema`, `$description` and friends describe a group; they aren't tokens. */
+/** Skips `$schema`, `$description` and other group metadata. */
 const childKeys = (group: Tree) => Object.keys(group).filter((key) => !key.startsWith('$'));
 
 const display = (path: string[]) => path.join(' › ');
 
 // ── Naming ─────────────────────────────────────────────────────────
 
-/** `fontSize` -> `font-size`, `UI/CTA Primary` -> `ui-cta-primary`,
- *  `Track Line (Mobile)` -> `track-line-mobile`. Runs of capitals stay whole, so
- *  `CTA` is one word rather than `c-t-a`. */
+/** `fontSize` -> `font-size`, `UI/CTA Primary` -> `ui-cta-primary`. */
 function kebab(segment: string, path: string[]): string {
   const out = segment
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
-  // A key made only of punctuation would vanish from the name and leave the
-  // variable meaning something other than the token it came from.
   if (!out) fail(`${display(path)}: key "${segment}" has no letters or digits to name a variable with`);
   return out;
 }
 
-/** The path segments that make up a variable's name. `color` is dropped because
- *  every colour key already starts with its category (`UI/`, `Teal/`); every
- *  other top-level group keeps its name so `typography-…` can't collide with a
- *  colour. EarthRanger writes `fontStyle: Bold` to mean a weight, so a variable
- *  called `font-style` holding `700` would mislead whoever reads it. */
+/** Drops `color`, since colour keys already start with their category (`UI/`).
+ *  EarthRanger's `fontStyle: Bold` is a weight, so it's named `font-weight`. */
 function nameSegments(path: string[], type: string): string[] {
   const segments = path[0] === 'color' ? path.slice(1) : [...path];
   const last = segments.length - 1;
@@ -103,8 +81,7 @@ function nameSegments(path: string[], type: string): string[] {
 
 // ── Values ─────────────────────────────────────────────────────────
 
-/** `hex` is DTCG's six-digit fallback and alpha lives separately, so a
- *  translucent colour goes back to eight-digit hex — which every browser reads. */
+/** Alpha is separate from DTCG's six-digit `hex`, so it's appended as hex. */
 function colorCss(value: unknown, path: string[]): string {
   const v = value as Tree;
   if (typeof v !== 'object' || v === null) fail(`${display(path)}: colour $value is not an object`);
@@ -121,8 +98,7 @@ function colorCss(value: unknown, path: string[]): string {
   return hex + Math.round(v.alpha * 255).toString(16).padStart(2, '0');
 }
 
-/** Written exactly as the spec states it. No px -> rem conversion: that would
- *  mean inventing a root font size the spec never declares. */
+/** Written as the spec states it, with no px -> rem conversion. */
 function dimensionCss(value: unknown, path: string[]): string {
   const v = value as Tree;
   if (typeof v !== 'object' || v === null || typeof v.value !== 'number' || !Number.isFinite(v.value)) {
@@ -132,22 +108,8 @@ function dimensionCss(value: unknown, path: string[]): string {
   return `${String(v.value)}${v.unit}`;
 }
 
-const GENERIC_FAMILIES = new Set([
-  'serif',
-  'sans-serif',
-  'monospace',
-  'cursive',
-  'fantasy',
-  'system-ui',
-  'ui-sans-serif',
-  'ui-serif',
-  'ui-monospace',
-  'ui-rounded',
-]);
-
-/** Quote any family that isn't a plain identifier — `PP Telegraf`, `SF Pro` — so
- *  the stack parses the same everywhere, but never a generic family, which
- *  quoting would turn into a font literally named "sans-serif". */
+/** Quotes any family that isn't a plain identifier, such as `PP Telegraf`.
+ *  Generic families (`sans-serif`) are identifiers, so they stay unquoted. */
 function fontFamilyCss(value: unknown, path: string[]): string {
   let names: unknown[];
   if (typeof value === 'string') names = value.split(',');
@@ -160,15 +122,13 @@ function fontFamilyCss(value: unknown, path: string[]): string {
       const name = raw.trim();
       if (!name) fail(`${display(path)}: empty font family name`);
       if (/^(["']).*\1$/.test(name)) return name;
-      if (GENERIC_FAMILIES.has(name.toLowerCase())) return name;
       if (/^[A-Za-z][A-Za-z0-9-]*$/.test(name)) return name;
       return `"${name.replace(/["\\]/g, '\\$&')}"`;
     })
     .join(', ');
 }
 
-/** DTCG's weight aliases. They have to become numbers: `regular`, which
- *  EarthRanger uses, isn't a valid CSS `font-weight`. */
+/** DTCG's weight aliases; CSS doesn't accept names like `regular`. */
 const FONT_WEIGHTS: Record<string, number> = {
   thin: 100,
   hairline: 100,
@@ -204,15 +164,11 @@ function numberCss(value: unknown, path: string[]): string {
   return String(value);
 }
 
-/** One CSS value per suffix. Most tokens are a single variable (empty suffix); a
- *  composite `typography` token expands into five, named the same way as
- *  EarthRanger's primitive groups so both shapes read alike to a consumer. */
+/** One CSS value per name suffix; a composite `typography` token expands into five. */
 type Declaration = { suffix: string[]; value: string };
 
 function tokenCss(token: Tree, path: string[]): Declaration[] {
   const { $type: type, $value: value } = token;
-  // emit-tokens resolves every reference, so one surviving here means something
-  // upstream broke — and `var(--…)` has no way to follow `{colors.x}`.
   if (typeof value === 'string' && /^\{.*\}$/.test(value.trim())) {
     fail(`${display(path)}: $value ${value} is an unresolved reference`);
   }
@@ -230,9 +186,6 @@ function tokenCss(token: Tree, path: string[]): Declaration[] {
     case 'typography': {
       const v = value as Tree;
       if (typeof v !== 'object' || v === null) fail(`${display(path)}: typography $value is not an object`);
-      for (const key of ['fontFamily', 'fontSize', 'fontWeight', 'letterSpacing', 'lineHeight']) {
-        if (v[key] === undefined) fail(`${display(path)}: typography is missing ${key}`);
-      }
       return [
         { suffix: ['fontFamily'], value: fontFamilyCss(v.fontFamily, [...path, 'fontFamily']) },
         { suffix: ['fontSize'], value: dimensionCss(v.fontSize, [...path, 'fontSize']) },
@@ -248,10 +201,9 @@ function tokenCss(token: Tree, path: string[]): Declaration[] {
 
 // ── Walking the tree ───────────────────────────────────────────────
 
-type Variable = { name: string; path: string[]; light: string; dark?: string };
+type Variable = { name: string; light: string; dark?: string };
 
-/** Variables per top-level group, in source order, so the output can put a blank
- *  line between groups. */
+/** Variables per top-level group, so the output can space the groups apart. */
 const groups = new Map<string, Variable[]>();
 const owners = new Map<string, string>();
 
@@ -261,21 +213,19 @@ function emit(path: string[], type: string, light: Declaration[], dark?: Declara
     const segments = [...base, ...declaration.suffix];
     const name = `--${prefix}-${segments.map((segment) => kebab(segment, path)).join('-')}`;
     const source = display([...path, ...declaration.suffix]);
-    // A silent overwrite would hand consumers one of two colours at random.
     const owner = owners.get(name);
     if (owner) fail(`${owner} and ${source} both become ${name}`);
     owners.set(name, source);
 
-    const variable: Variable = { name, path, light: declaration.value };
+    const variable: Variable = { name, light: declaration.value };
     if (dark) variable.dark = dark[i].value;
     if (!groups.has(path[0])) groups.set(path[0], []);
     groups.get(path[0])!.push(variable);
   });
 }
 
-/** A group whose keys are exactly `light` and `dark` is one token in two modes.
- *  `light` or `dark` next to anything else, or on its own, is almost certainly a
- *  mistake in the spec, and guessing which value to ship would hide it. */
+/** A group with exactly the keys `light` and `dark` is one token in two modes.
+ *  Either key alongside anything else is treated as a spec mistake. */
 function modePair(group: Tree, path: string[]): { light: Tree; dark: Tree } | undefined {
   const keys = childKeys(group);
   if (!keys.includes('light') && !keys.includes('dark')) return undefined;
@@ -341,21 +291,17 @@ const block = (selector: string, pick: (variable: Variable) => string | undefine
   return sections.length ? `${selector} {\n${sections.join('\n\n')}\n}\n` : undefined;
 };
 
-// The light block holds every variable, so importing the file alone gives a
-// complete light theme. Listing `[data-theme="light"]` too lets a light region
-// nested inside a dark one revert.
+// Every variable, so the file alone is a complete light theme. `[data-theme="light"]`
+// lets a light subtree inside a dark one switch back.
 const light = block(':root,\n[data-theme="light"]', (variable) => variable.light);
 
-// Only what actually changes in dark: a pair with the same value in both modes
-// already inherits the right one from :root. The bare attribute selector (not
-// `:root[data-theme="dark"]`) lets an app darken just a subtree, such as a
-// sidebar; it has the light block's specificity and comes later, so it wins.
+// Only values that differ. A bare attribute selector lets a subtree go dark; it
+// matches :root's specificity and comes later, so it wins.
 const dark = block('[data-theme="dark"]', (variable) =>
   variable.dark !== undefined && variable.dark !== variable.light ? variable.dark : undefined,
 );
 
-// Relative and forward-slashed, so the header is the same on every machine and a
-// release never commits a diff that is only a path.
+// Relative and forward-slashed, so the header is the same on every machine.
 const source = relative(process.cwd(), resolve(tokensFile)).split(sep).join('/');
 const header = `/* Generated by scripts/emit-css.ts from ${source}. Do not edit: run \`npm run build\`. */\n`;
 const output = [header + (light ?? ''), dark].filter(Boolean).join('\n');

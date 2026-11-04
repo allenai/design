@@ -38,7 +38,7 @@ jobs:
       - run: npm ci
 
       # Nobody should need a toolchain on their machine to cut a release: a spec edited in
-      # the browser leaves the composed DESIGN.md, tokens.json and tokens.css behind, so the
+      # the browser leaves the composed DESIGN.md and tokens.json behind, so the
       # release rebuilds them and commits the result before tagging. This also
       # makes a hand-edited generated file harmless — it gets overwritten rather
       # than shipped, which is what the old staleness check was protecting against.

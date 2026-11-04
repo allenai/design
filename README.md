@@ -60,16 +60,8 @@ olmo-earth/         ← OlmoEarth product system
   DESIGN.src.md     ← product overrides and additions (edit this)
   DESIGN.md         ← generated output (use this with agents)
 
-earthranger/        ← EarthRanger product system
-  DESIGN.md         ← maintained directly, not composed (edit this)
-  tokens.json       ← generated DTCG tokens (don't edit)
-  tokens.css        ← generated CSS custom properties (don't edit)
-  assets/           ← logos
-
 scripts/
   compose.ts        ← merges base + overlay → DESIGN.md
-  emit-tokens.ts    ← DESIGN.md → tokens.json
-  emit-css.ts       ← tokens.json → tokens.css
 ```
 
 ### Strata (Base)
@@ -95,8 +87,7 @@ Only define what differs from Strata in the overlay — colors, tokens, or compo
 
 ```bash
 npm install       # once
-npm run build     # recompose the overlay specs, rebuild asta/ and olmo-earth/tokens.json,
-                  # and EarthRanger's tokens.json and tokens.css
+npm run build     # recompose the overlay specs, rebuild every tokens.json and tokens.css
 npm run lint      # validate every product's spec
 ```
 
@@ -105,7 +96,6 @@ Rebuild or check a single product while iterating:
 ```bash
 npm run compose:asta          # or compose:olmo-earth
 npm run tokens:asta           # or tokens:olmo-earth, tokens:earthranger
-npm run css:earthranger       # after tokens:earthranger — the CSS is built from the JSON
 npx @google/design.md lint asta/DESIGN.md
 ```
 
@@ -158,32 +148,17 @@ const specPath = require.resolve("@allenai/design-system/olmo-earth");
 import logo from "@allenai/design-system/olmo-earth/assets/logo.svg";
 ```
 
-EarthRanger ships its tokens as JSON for JavaScript (React Native, theme objects,
-Mapbox styling) and as CSS custom properties for anything that renders CSS:
-
-```js
-import tokens from "@allenai/design-system/earthranger/tokens.json";
-tokens.color["UI/CTA Primary"].light.$value.hex;   // "#0f865d"
-tokens.color["UI/CTA Primary"].dark.$value.hex;    // "#0fcb8c"
-```
-
-```css
-/* Once, from the app's entry stylesheet (or `import` it from the JS entry point) */
-@import "@allenai/design-system/earthranger/tokens.css";
-
-.panel {
-  background: var(--er-ui-background-primary-background);
-  color: var(--er-ui-text-primary-text);
-}
-```
-
-Importing the file gives the light theme. Dark mode is opt-in: put
-`data-theme="dark"` on `<html>`, or on any element to darken just that subtree
-(and `data-theme="light"` inside it to switch back).
-
 TypeScript needs no extra types here: with `resolveJsonModule`, it infers exact keys and per-component shapes from the JSON, so `tokens.colors["dark-teel"]` is a compile error.
 
-The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta and OlmoEarth have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo), and EarthRanger has a generated `tokens.json` and `tokens.css`, shared by every EarthRanger product; the others can have them when something needs them.
+The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta, OlmoEarth and EarthRanger have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo); the others can have one when something needs it.
+
+EarthRanger also ships its tokens as CSS custom properties. Importing them gives the light theme; `data-theme="dark"` on `<html>`, or on any subtree, switches to dark:
+
+```css
+@import "@allenai/design-system/earthranger/tokens.css";
+
+.panel { background: var(--er-ui-background-primary-background); }
+```
 
 ## Why it's built this way
 
@@ -213,30 +188,13 @@ declares ([design.md#172](https://github.com/google-labs-code/design.md/issues/1
   tokens stays valid and loses nothing, where converting 28.8px into a multiplier
   would mean inventing a number the spec never states.
 
-**`tokens.css` is generated from `tokens.json`, not from the DESIGN.md.** The JSON
-is the one machine-readable contract, so the CSS and JSON can't disagree, and
-`scripts/emit-css.ts` is unaffected when [the CLI's exporter](#migrating-to-the-clis-exporter)
-replaces `emit-tokens.ts`.
+**`tokens.css` is generated from `tokens.json`**, so the two can't disagree. Its
+variables are the token names, kebab-cased (`UI/CTA Primary` is
+`--er-ui-cta-primary`), so renaming a token is a first-number bump. Dark mode is
+opt-in through `data-theme` rather than following the OS, so no app goes dark
+before its screens are ready.
 
-- **Names come straight from the token names**: the path, kebab-cased, under a
-  product prefix, with the top-level `color` group dropped. So `UI/CTA Primary` is
-  `--er-ui-cta-primary`, `Teal/T100` is `--er-teal-t100`, and typography's
-  `body-md` › `fontSize` is `--er-typography-body-md-font-size`. EarthRanger's
-  `fontStyle: Bold` becomes `-font-weight: 700`, because that's what it means.
-  There are no hand-picked renames, which means **renaming a token renames its
-  variable** — every product reading it breaks, so it's a first-number bump.
-  Two tokens that would get the same name fail the build rather than overwrite
-  each other.
-- **Dark mode is a `data-theme` attribute, not `prefers-color-scheme`.** Light
-  values sit on `:root`; the dark values that differ sit on `[data-theme="dark"]`.
-  Following the OS would turn every app dark for dark-OS users the day it
-  upgraded, whether or not its screens are ready, so each app opts in when it is.
-  The attribute also works on a subtree, which a media query can't.
-- **It declares variables and nothing else** — no element styles, no
-  `color-scheme`, no `@font-face`. Importing it never changes how a page looks on
-  its own; only reading the variables does.
-
-**Node, not bun.** Both scripts are plain TypeScript that Node runs directly, and
+**Node, not bun.** The scripts are plain TypeScript that Node runs directly, and
 the CLI is invoked with `npx`, so a second runtime and a second lockfile bought
 nothing.
 
@@ -269,9 +227,8 @@ tracks it.
 "tokens": "npm run tokens:upstream"
 ```
 
-**3. Delete `scripts/emit-tokens.ts`** and the `tokens:asta` / `tokens:olmo-earth` /
-`tokens:earthranger` scripts (add EarthRanger to `tokens:upstream` first).
-`scripts/emit-css.ts` stays: it reads `tokens.json`, whichever tool wrote it.
+**3. Delete `scripts/emit-tokens.ts`** and the `tokens:asta` / `tokens:olmo-earth` scripts.
+EarthRanger keeps it until the CLI stops flattening its light/dark pairs.
 
 Consumers see nothing: the file keeps its name, its path and its shape, so no
 product needs a change. If the diff in step 1 isn't empty, it's worth reading
