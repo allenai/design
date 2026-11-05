@@ -95,7 +95,7 @@ Rebuild or check a single product while iterating:
 
 ```bash
 npm run compose:asta          # or compose:olmo-earth
-npm run tokens:asta           # or tokens:olmo-earth, tokens:earthranger
+npm run tokens:asta           # or tokens:olmo-earth, tokens:earthranger, tokens:serca
 npx @google/design.md lint asta/DESIGN.md
 ```
 
@@ -150,9 +150,9 @@ import logo from "@allenai/design-system/olmo-earth/assets/logo.svg";
 
 TypeScript needs no extra types here: with `resolveJsonModule`, it infers exact keys and per-component shapes from the JSON, so `tokens.colors["dark-teel"]` is a compile error.
 
-The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta, OlmoEarth and EarthRanger have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo); the others can have one when something needs it.
+The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta, OlmoEarth, EarthRanger and SERCA have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo); the others can have one when something needs it.
 
-EarthRanger also ships its tokens as CSS custom properties. Importing them gives the light theme; `data-theme="dark"` on `<html>`, or on any subtree, switches to dark:
+EarthRanger and SERCA also ship their tokens as CSS custom properties (`--er-*`, `--serca-*`). Importing them gives the light theme; `data-theme="dark"` on `<html>`, or on any subtree, switches to dark:
 
 ```css
 @import "@allenai/design-system/earthranger/tokens.css";

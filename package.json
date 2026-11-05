@@ -46,7 +46,9 @@
     "./asta/tokens.json": "./asta/tokens.json",
     "./olmo-earth/tokens.json": "./olmo-earth/tokens.json",
     "./earthranger/tokens.json": "./earthranger/tokens.json",
-    "./earthranger/tokens.css": "./earthranger/tokens.css"
+    "./earthranger/tokens.css": "./earthranger/tokens.css",
+    "./serca/tokens.json": "./serca/tokens.json",
+    "./serca/tokens.css": "./serca/tokens.css"
   },
   "publishConfig": {
     "access": "public",
@@ -60,7 +62,8 @@
     "tokens:asta": "node scripts/emit-tokens.ts --spec asta/DESIGN.md --out asta/tokens.json",
     "tokens:olmo-earth": "node scripts/emit-tokens.ts --spec olmo-earth/DESIGN.md --out olmo-earth/tokens.json",
     "tokens:earthranger": "node scripts/emit-tokens.ts --spec earthranger/DESIGN.md --out earthranger/tokens.json && node scripts/emit-css.ts --tokens earthranger/tokens.json --prefix er --out earthranger/tokens.css",
-    "tokens": "npm run tokens:asta && npm run tokens:olmo-earth && npm run tokens:earthranger",
+    "tokens:serca": "node scripts/emit-tokens.ts --spec serca/DESIGN.md --out serca/tokens.json && node scripts/emit-css.ts --tokens serca/tokens.json --prefix serca --out serca/tokens.css",
+    "tokens": "npm run tokens:asta && npm run tokens:olmo-earth && npm run tokens:earthranger && npm run tokens:serca",
     "tokens:upstream:asta": "npx @google/design.md@latest export --format dtcg asta/DESIGN.md > asta/tokens.json",
     "tokens:upstream:olmo-earth": "npx @google/design.md@latest export --format dtcg olmo-earth/DESIGN.md > olmo-earth/tokens.json",
     "tokens:upstream": "npm run tokens:upstream:asta && npm run tokens:upstream:olmo-earth",
