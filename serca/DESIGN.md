@@ -53,101 +53,101 @@ colors:
   # Dark-mode surfaces form one continuous teal ladder — Secondary/Tertiary
   # (darkest) → Primary/Elevated → Selected (lightest) — rather than mixing
   # in grey.
-  "UI/Background/Primary Background": { light: "#ffffff", dark: "#032629" }
-  "UI/Background/Secondary Background": { light: "#faf2e9", dark: "#02191b" }
-  "UI/Background/Tertiary Background": { light: "#e7eeee", dark: "#02191b" }
-  "UI/Background/Elevated Component": { light: "#ffffff", dark: "#032629" }
-  "UI/Background/Selected Background": { light: "#f2f9f9", dark: "#105257" }
+  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
+  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-darkest}" }
+  "UI/Background/Tertiary Background": { light: "{colors.teal-t10}", dark: "{colors.teal-darkest}" }
+  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
+  "UI/Background/Selected Background": { light: "{colors.teal-3-05}", dark: "{colors.teal-t100}" }
 
   # Text
-  "UI/Text/Primary Text": { light: "#0a3235", dark: "#ffffff" }
-  "UI/Text/Primary Text Reversed": { light: "#ffffff", dark: "#0a3235" }
-  "UI/Text/Secondary Text": { light: "#105257", dark: "#faf2e9" }
-  "UI/Text/Secondary Text Reversed": { light: "#faf2e9", dark: "#105257" }
-  "UI/Text/Form Labels": { light: "#105257", dark: "#ffffff" }
-  "UI/Text/Tabs": { light: "#105257", dark: "#ffffff" }
-  "UI/Text/Disabled": { light: "#767676", dark: "#888b8d" }
+  "UI/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
+  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-dark-teal}" }
+  "UI/Text/Secondary Text": { light: "{colors.teal-t100}", dark: "{colors.greyscale-off-white}" }
+  "UI/Text/Secondary Text Reversed": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-t100}" }
+  "UI/Text/Form Labels": { light: "{colors.teal-t100}", dark: "{colors.greyscale-white}" }
+  "UI/Text/Tabs": { light: "{colors.teal-t100}", dark: "{colors.greyscale-white}" }
+  "UI/Text/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
 
   # UI Chrome
-  "UI/Icons": { light: "#407579", dark: "#70979a" }
-  "UI/Field Outline": { light: "#b7cbcd", dark: "#355154" }
-  "UI/Divider Lines": { light: "#cfdcdd", dark: "#1c3c3e" }
+  "UI/Icons": { light: "{colors.teal-t80}", dark: "{colors.teal-t60}" }
+  "UI/Field Outline": { light: "{colors.teal-t30}", dark: "{colors.teal-dark-80}" }
+  "UI/Divider Lines": { light: "{colors.teal-t20}", dark: "{colors.teal-dark-90}" }
 
   # Actions
-  "UI/CTA Primary": { light: "#0f865d", dark: "#0fcb8c" }
-  "UI/CTA Secondary Blue": { light: "#cfdcdd", dark: "#27545f" }
+  "UI/CTA Primary": { light: "{colors.green-12}", dark: "{colors.green-7}" }
+  "UI/CTA Secondary Blue": { light: "{colors.teal-t20}", dark: "{colors.teal-t90}" }
 
   # Status
-  "UI/Status/Error-Destructive": { light: "#d0031b", dark: "#f06374" }
-  "UI/Status/Success": { light: "#0f865d", dark: "#53aa71" }
-  "UI/Status/Running": { light: "#0056c7", dark: "#76b0ff" }
-  "UI/Status/Warning": { light: "#e76826", dark: "#fd9964" }
-  "UI/Status/Disabled": { light: "#767676", dark: "#888b8d" }
-  "UI/Status/Ready": { light: "#ffb700", dark: "#ffb700" }
+  "UI/Status/Error-Destructive": { light: "{colors.red-3}", dark: "{colors.red-5}" }
+  "UI/Status/Success": { light: "{colors.green-12}", dark: "{colors.green-4}" }
+  "UI/Status/Running": { light: "{colors.blue-1}", dark: "{colors.blue-3}" }
+  "UI/Status/Warning": { light: "{colors.amber-3}", dark: "{colors.amber-5}" }
+  "UI/Status/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
+  "UI/Status/Ready": { light: "{colors.yellow-3}", dark: "{colors.yellow-3}" }
 
   # Status Backgrounds
-  "UI/Status Bg/Synced Bg": { light: "#f5f7f3", dark: "#53693a" }
-  "UI/Status Bg/Pending Sync Bg": { light: "#f3f3f3", dark: "#63666a" }
-  "UI/Status Bg/Error Bg": { light: "#fdf2f4", dark: "#3e2125" }
-  "UI/Status Bg/Draft Bg": { light: "#dde8f8", dark: "#2a394d" }
-  "UI/Status Bg/Active Bg": { light: "#f5f5fa", dark: "#57528c" }
-  "UI/Status Bg/Warning Bg": { light: "#fef7f4", dark: "#362922" }
+  "UI/Status Bg/Synced Bg": { light: "{colors.green-6}", dark: "{colors.green-8}" }
+  "UI/Status Bg/Pending Sync Bg": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-5}" }
+  "UI/Status Bg/Error Bg": { light: "{colors.red-6}", dark: "{colors.red-1}" }
+  "UI/Status Bg/Draft Bg": { light: "{colors.blue-2}", dark: "{colors.blue-5}" }
+  "UI/Status Bg/Active Bg": { light: "{colors.indigo-6}", dark: "{colors.indigo-4}" }
+  "UI/Status Bg/Warning Bg": { light: "{colors.amber-6}", dark: "{colors.amber-1}" }
 
   # Event Priority
-  "UI/Event Priority/Green": { light: "#006842", dark: "#83af52" }
-  "UI/Event Priority/Red": { light: "#d0031b", dark: "#f06374" }
-  "UI/Event Priority/Amber": { light: "#e76826", dark: "#fd9964" }
-  "UI/Event Priority/Grey": { light: "#888b8d", dark: "#888b8d" }
+  "UI/Event Priority/Green": { light: "{colors.green-1}", dark: "{colors.green-2}" }
+  "UI/Event Priority/Red": { light: "{colors.red-3}", dark: "{colors.red-5}" }
+  "UI/Event Priority/Amber": { light: "{colors.amber-3}", dark: "{colors.amber-5}" }
+  "UI/Event Priority/Grey": { light: "{colors.greyscale-7}", dark: "{colors.greyscale-7}" }
 
   # Patrol Status
-  "UI/Patrol Status/Active": { light: "#3e35a3", dark: "#867ede" }
-  "UI/Patrol Status/Overdue": { light: "#b62879", dark: "#e76eb3" }
-  "UI/Patrol Status/Scheduled": { light: "#107283", dark: "#62bfd0" }
-  "UI/Patrol Status/Track Line (Mobile)": { light: "#e76826", dark: "#e76826" }
-  "UI/Patrol Status/Done (Mobile)": { light: "#767676", dark: "#888b8d" }
+  "UI/Patrol Status/Active": { light: "{colors.indigo-2}", dark: "{colors.indigo-5}" }
+  "UI/Patrol Status/Overdue": { light: "{colors.magenta-2}", dark: "{colors.magenta-4}" }
+  "UI/Patrol Status/Scheduled": { light: "{colors.teal-1}", dark: "{colors.teal-2}" }
+  "UI/Patrol Status/Track Line (Mobile)": { light: "{colors.amber-3}", dark: "{colors.amber-3}" }
+  "UI/Patrol Status/Done (Mobile)": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
 
   # Data Visualization — Categorical (mode-specific: dark values are the
   # brighter/darker counterparts; slots 6–10 swap the light/dark steps)
-  "UI/Data/Categorical/Category 1": { light: "#00958f", dark: "#00d0c8" }
-  "UI/Data/Categorical/Category 2": { light: "#3e35a3", dark: "#5c4fe7" }
-  "UI/Data/Categorical/Category 3": { light: "#488a00", dark: "#78d811" }
-  "UI/Data/Categorical/Category 4": { light: "#b62879", dark: "#ed3ea2" }
-  "UI/Data/Categorical/Category 5": { light: "#c6880c", dark: "#f4db20" }
-  "UI/Data/Categorical/Category 6": { light: "#00d0c8", dark: "#00958f" }
-  "UI/Data/Categorical/Category 7": { light: "#5c4fe7", dark: "#3e35a3" }
-  "UI/Data/Categorical/Category 8": { light: "#78d811", dark: "#488a00" }
-  "UI/Data/Categorical/Category 9": { light: "#f4db20", dark: "#c6880c" }
-  "UI/Data/Categorical/Category 10": { light: "#ed3ea2", dark: "#b62879" }
+  "UI/Data/Categorical/Category 1": { light: "{colors.teal-4}", dark: "{colors.teal-5}" }
+  "UI/Data/Categorical/Category 2": { light: "{colors.indigo-2}", dark: "{colors.indigo-3}" }
+  "UI/Data/Categorical/Category 3": { light: "{colors.green-9}", dark: "{colors.green-10}" }
+  "UI/Data/Categorical/Category 4": { light: "{colors.magenta-2}", dark: "{colors.magenta-3}" }
+  "UI/Data/Categorical/Category 5": { light: "{colors.yellow-2}", dark: "{colors.yellow-4}" }
+  "UI/Data/Categorical/Category 6": { light: "{colors.teal-5}", dark: "{colors.teal-4}" }
+  "UI/Data/Categorical/Category 7": { light: "{colors.indigo-3}", dark: "{colors.indigo-2}" }
+  "UI/Data/Categorical/Category 8": { light: "{colors.green-10}", dark: "{colors.green-9}" }
+  "UI/Data/Categorical/Category 9": { light: "{colors.yellow-4}", dark: "{colors.yellow-2}" }
+  "UI/Data/Categorical/Category 10": { light: "{colors.magenta-3}", dark: "{colors.magenta-2}" }
 
   # Data Visualization — Tracks
-  "UI/Data/Tracks/Track 1": "#3e35a3"
-  "UI/Data/Tracks/Track 2": "#b62879"
-  "UI/Data/Tracks/Track 3": "#ff803e"
-  "UI/Data/Tracks/Track 4": "#ed3ea2"
-  "UI/Data/Tracks/Track 5": "#3089ff"
-  "UI/Data/Tracks/Track 6": "#8c1700"
-  "UI/Data/Tracks/Track 7": "#a100cb"
-  "UI/Data/Tracks/Track 8": "#004e26"
-  "UI/Data/Tracks/Track 9": "#002960"
-  "UI/Data/Tracks/Track 10": "#f23b0e"
+  "UI/Data/Tracks/Track 1": "{colors.indigo-2}"
+  "UI/Data/Tracks/Track 2": "{colors.magenta-2}"
+  "UI/Data/Tracks/Track 3": "{colors.amber-4}"
+  "UI/Data/Tracks/Track 4": "{colors.magenta-3}"
+  "UI/Data/Tracks/Track 5": "{colors.blue-7}"
+  "UI/Data/Tracks/Track 6": "{colors.red-2}"
+  "UI/Data/Tracks/Track 7": "{colors.purple-2}"
+  "UI/Data/Tracks/Track 8": "{colors.green-5}"
+  "UI/Data/Tracks/Track 9": "{colors.blue-6}"
+  "UI/Data/Tracks/Track 10": "{colors.red-4}"
 
   # Data Visualization — Sequential
-  "UI/Data/Sequential/Sequential 1": "#f4db20"
-  "UI/Data/Sequential/Sequential 2": "#ffb700"
-  "UI/Data/Sequential/Sequential 3": "#ed3ea2"
-  "UI/Data/Sequential/Sequential 4": "#a100cb"
-  "UI/Data/Sequential/Sequential 5": "#5c4fe7"
-  "UI/Data/Sequential/Sequential 6": "#0056c7"
-  "UI/Data/Sequential/Sequential 7": "#00882e"
-  "UI/Data/Sequential/Sequential 8": "#78d811"
+  "UI/Data/Sequential/Sequential 1": "{colors.yellow-4}"
+  "UI/Data/Sequential/Sequential 2": "{colors.yellow-3}"
+  "UI/Data/Sequential/Sequential 3": "{colors.magenta-3}"
+  "UI/Data/Sequential/Sequential 4": "{colors.purple-2}"
+  "UI/Data/Sequential/Sequential 5": "{colors.indigo-3}"
+  "UI/Data/Sequential/Sequential 6": "{colors.blue-1}"
+  "UI/Data/Sequential/Sequential 7": "{colors.green-3}"
+  "UI/Data/Sequential/Sequential 8": "{colors.green-10}"
 
   # Brand
-  "Brand/Acorn Logo": { light: "#008586", dark: "#008586" }
-  "Brand/Accent Green": { light: "#0f865d", dark: "#0fcb8c" }
-  "Brand/Background/Primary Background": { light: "#ffffff", dark: "#0a3235" }
-  "Brand/Background/Secondary Background": { light: "#faf2e9", dark: "#105257" }
-  "Brand/Text/Primary Text": { light: "#0a3235", dark: "#ffffff" }
-  "Brand/Text/Secondary Text": { light: "#105257", dark: "#faf2e9" }
+  "Brand/Acorn Logo": { light: "{colors.teal-3}", dark: "{colors.teal-3}" }
+  "Brand/Accent Green": { light: "{colors.green-12}", dark: "{colors.green-7}" }
+  "Brand/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-dark-teal}" }
+  "Brand/Background/Secondary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-t100}" }
+  "Brand/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
+  "Brand/Text/Secondary Text": { light: "{colors.teal-t100}", dark: "{colors.greyscale-off-white}" }
 
   # ── Primitive Palette ─────────────────────────────────────────────
   # Use only when no semantic token fits. Single mode (HEX) — not used
