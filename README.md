@@ -87,7 +87,7 @@ Only define what differs from Strata in the overlay — colors, tokens, or compo
 
 ```bash
 npm install       # once
-npm run build     # recompose the overlay specs, rebuild asta/ and olmo-earth/tokens.json
+npm run build     # recompose the overlay specs, rebuild every tokens.json and tokens.css
 npm run lint      # validate every product's spec
 ```
 
@@ -95,7 +95,7 @@ Rebuild or check a single product while iterating:
 
 ```bash
 npm run compose:asta          # or compose:olmo-earth
-npm run tokens:asta           # or tokens:olmo-earth
+npm run tokens:asta           # or tokens:olmo-earth, tokens:earthranger, tokens:serca
 npx @google/design.md lint asta/DESIGN.md
 ```
 
@@ -150,7 +150,15 @@ import logo from "@allenai/design-system/olmo-earth/assets/logo.svg";
 
 TypeScript needs no extra types here: with `resolveJsonModule`, it infers exact keys and per-component shapes from the JSON, so `tokens.colors["dark-teel"]` is a compile error.
 
-The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta and OlmoEarth have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo); the others can have one when something needs it.
+The other products' specs and assets are exported the same way — `strata`, `asta`, `earthranger`, `serca`, and `<product>/voice` where a `VOICE.md` exists. Asta, OlmoEarth, EarthRanger and SERCA have a generated `tokens.json` (`asta/tokens.json` feeds the Asta theme builder in the varnish repo); the others can have one when something needs it.
+
+EarthRanger and SERCA also ship their tokens as CSS custom properties (`--er-*`, `--serca-*`). Importing them gives the light theme; `data-theme="dark"` on `<html>`, or on any subtree, switches to dark:
+
+```css
+@import "@allenai/design-system/earthranger/tokens.css";
+
+.panel { background: var(--er-ui-background-primary-background); }
+```
 
 ## Why it's built this way
 
@@ -180,7 +188,13 @@ declares ([design.md#172](https://github.com/google-labs-code/design.md/issues/1
   tokens stays valid and loses nothing, where converting 28.8px into a multiplier
   would mean inventing a number the spec never states.
 
-**Node, not bun.** Both scripts are plain TypeScript that Node runs directly, and
+**`tokens.css` is generated from `tokens.json`**, so the two can't disagree. Its
+variables are the token names, kebab-cased (`UI/CTA Primary` is
+`--er-ui-cta-primary`), so renaming a token is a first-number bump. Dark mode is
+opt-in through `data-theme` rather than following the OS, so no app goes dark
+before its screens are ready.
+
+**Node, not bun.** The scripts are plain TypeScript that Node runs directly, and
 the CLI is invoked with `npx`, so a second runtime and a second lockfile bought
 nothing.
 
@@ -214,6 +228,7 @@ tracks it.
 ```
 
 **3. Delete `scripts/emit-tokens.ts`** and the `tokens:asta` / `tokens:olmo-earth` scripts.
+EarthRanger keeps it until the CLI stops flattening its light/dark pairs.
 
 Consumers see nothing: the file keeps its name, its path and its shape, so no
 product needs a change. If the diff in step 1 isn't empty, it's worth reading
