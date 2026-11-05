@@ -185,6 +185,18 @@
   --er-typography-heading-sm-font-weight: 700;
   --er-typography-heading-sm-font-size: 20px;
   --er-typography-heading-sm-line-height: 28px;
+  --er-typography-heading-ui-lg-font-family: Roboto;
+  --er-typography-heading-ui-lg-font-weight: 500;
+  --er-typography-heading-ui-lg-font-size: 32px;
+  --er-typography-heading-ui-md-font-family: Roboto;
+  --er-typography-heading-ui-md-font-weight: 500;
+  --er-typography-heading-ui-md-font-size: 24px;
+  --er-typography-button-sm-font-family: Roboto;
+  --er-typography-button-sm-font-weight: 600;
+  --er-typography-button-sm-font-size: 18px;
+  --er-typography-button-xs-font-family: Roboto;
+  --er-typography-button-xs-font-weight: 600;
+  --er-typography-button-xs-font-size: 16px;
   --er-typography-body-lg-font-family: Roboto;
   --er-typography-body-lg-font-weight: 400;
   --er-typography-body-lg-font-size: 18px;

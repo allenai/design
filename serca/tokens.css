@@ -187,6 +187,18 @@
   --serca-typography-heading-sm-font-weight: 700;
   --serca-typography-heading-sm-font-size: 20px;
   --serca-typography-heading-sm-line-height: 28px;
+  --serca-typography-heading-ui-lg-font-family: Roboto;
+  --serca-typography-heading-ui-lg-font-weight: 500;
+  --serca-typography-heading-ui-lg-font-size: 32px;
+  --serca-typography-heading-ui-md-font-family: Roboto;
+  --serca-typography-heading-ui-md-font-weight: 500;
+  --serca-typography-heading-ui-md-font-size: 24px;
+  --serca-typography-button-sm-font-family: Roboto;
+  --serca-typography-button-sm-font-weight: 600;
+  --serca-typography-button-sm-font-size: 18px;
+  --serca-typography-button-xs-font-family: Roboto;
+  --serca-typography-button-xs-font-weight: 600;
+  --serca-typography-button-xs-font-size: 16px;
   --serca-typography-body-lg-font-family: Roboto;
   --serca-typography-body-lg-font-weight: 400;
   --serca-typography-body-lg-font-size: 18px;

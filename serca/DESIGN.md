@@ -311,6 +311,29 @@ typography:
     fontSize: 20px
     lineHeight: 28px
 
+  # UI headings: Roboto Medium, for headings inside product UI. No
+  # line-height set (Figma uses auto) — the layout decides.
+  heading-ui-lg:
+    fontFamily: Roboto
+    fontWeight: 500
+    fontSize: 32px
+
+  heading-ui-md:
+    fontFamily: Roboto
+    fontWeight: 500
+    fontSize: 24px
+
+  # Button labels: Roboto SemiBold. No line-height set (Figma uses auto).
+  button-sm:
+    fontFamily: Roboto
+    fontWeight: 600
+    fontSize: 18px
+
+  button-xs:
+    fontFamily: Roboto
+    fontWeight: 600
+    fontSize: 16px
+
   body-lg:
     fontFamily: Roboto
     fontStyle: Regular
@@ -446,6 +469,8 @@ SERCA shares Strata's unified text-style scale — Display, Heading (XL/LG/MD/SM
 | Android | Roboto | Roboto |
 
 Always reference a text-style token (e.g. `body-md`, `heading-lg`) rather than hardcoding font properties directly — the platform's font-family resolves automatically. `body-md` (16px / 25.6px line height) is the default reading size. All styles use 0 letter-spacing and no text-transform.
+
+Two groups sit alongside the PP Telegraf Display/Heading scale: `heading-ui-lg` (32px) and `heading-ui-md` (24px) are Roboto Medium headings, and `button-sm` (18px) and `button-xs` (16px) are Roboto SemiBold styles for button labels. Unlike the other styles they don't set a line height.
 
 ### Fallback stack (performance)
 

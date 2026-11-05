@@ -1697,6 +1697,9 @@
       </div>
       <div id="er-platform-fonts"></div>
 
+      <div class="subhead">UI headings and button labels</div>
+      <div id="er-ui-type-scale"></div>
+
       <div class="subhead">External communications typography</div>
       <div class="er-warning-note">
         <strong>Not for UI.</strong> Manrope is for externally-facing communications only —
@@ -2681,6 +2684,15 @@ const ER_PLATFORM_FONTS = [
   ["Android",   "Roboto",      "Roboto"],
 ];
 
+/* UI headings (Roboto Medium) and button labels (Roboto SemiBold) — no
+   line-height is set in DESIGN.md (Figma uses auto), so it renders as normal. */
+const ER_UI_TYPE = [
+  ["heading-ui-lg", "Roboto", "32px", 500],
+  ["heading-ui-md", "Roboto", "24px", 500],
+  ["button-sm",     "Roboto", "18px", 600],
+  ["button-xs",     "Roboto", "16px", 600],
+];
+
 /* External-communications body type — same sizes/ratios as the UI Body
    scale, Manrope instead of Roboto. Slide decks, EarthRanger.com, email
    newsletters, printed materials ONLY — never product UI. Headings stay
@@ -2938,6 +2950,20 @@ function renderErPlatformFonts() {
     </div>
   `).join("");
 }
+function renderErUiType() {
+  const wrap = document.getElementById("er-ui-type-scale");
+  wrap.innerHTML = ER_UI_TYPE.map(([name, family, size, weight]) => `
+    <div class="type-row">
+      <div class="type-label">${name}</div>
+      <div class="type-spec">
+        <span style="font-family:${family},Arial,sans-serif;font-size:${size};font-weight:${weight};">
+          The quick brown fox
+        </span>
+        <span class="type-meta">${family} · ${size} · ${weight} · lh auto</span>
+      </div>
+    </div>
+  `).join("");
+}
 function renderErExternalType() {
   const wrap = document.getElementById("er-external-type-scale");
   wrap.innerHTML = ER_EXTERNAL_TYPE.map(([name, family, size, weight, lh]) => `
@@ -2960,6 +2986,7 @@ function renderErSections() {
   renderErEventPriority();
   renderErDataViz();
   renderErPlatformFonts();
+  renderErUiType();
   renderErExternalType();
 }
 
