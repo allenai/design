@@ -199,21 +199,21 @@
 }
 
 [data-theme="dark"] {
-  --er-ui-background-primary-background: #222222;
-  --er-ui-background-secondary-background: #111111;
+  --er-ui-background-primary-background: #111111;
+  --er-ui-background-secondary-background: #000000;
   --er-ui-background-tertiary-background: #333333;
-  --er-ui-background-elevated-component: #333333;
+  --er-ui-background-elevated-component: #111111;
   --er-ui-background-selected-background: #2a394d;
   --er-ui-text-primary-text: #ffffff;
-  --er-ui-text-primary-text-reversed: #0a3235;
+  --er-ui-text-primary-text-reversed: #111111;
   --er-ui-text-secondary-text: #b1b3b3;
   --er-ui-text-secondary-text-reversed: #76b0ff;
   --er-ui-text-form-labels: #888b8d;
   --er-ui-text-tabs: #888b8d;
   --er-ui-text-disabled: #888b8d;
   --er-ui-icons: #888b8d;
-  --er-ui-field-outline: #333333;
-  --er-ui-divider-lines: #63666a;
+  --er-ui-field-outline: #444444;
+  --er-ui-divider-lines: #333333;
   --er-ui-cta-primary: #76b0ff;
   --er-ui-cta-secondary: #2a394d;
   --er-ui-cta-text: #76b0ff;

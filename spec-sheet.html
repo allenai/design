@@ -1540,7 +1540,7 @@
      revert the light-mode cream override. */
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-primary,
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .chip-primary {
-    color: var(--c-extra-dark-teal);
+    color: var(--c-text-reversed);
   }
 
 
@@ -1656,6 +1656,7 @@
     --er-grey-0:  #000000;
     --er-grey-1:  #111111;
     --er-grey-2:  #222222;
+    --er-grey-4:  #444444;
     --er-grey-11: #f9f9f9;
     --er-blue-4:  #f4f7fd;
 
@@ -1693,10 +1694,9 @@
   }
 
   html[data-system="er-legacy"][data-er-mode="dark"] {
-    --c-bg:               var(--er-grey-1);
+    --c-bg:               var(--er-grey-0);              /* Secondary Background */
     --c-bg-reversed:      var(--er-grey-11);
     --c-text:             var(--er-white);
-    --c-text-reversed:    var(--er-grey-2);
     --c-text-disabled:    var(--er-grey-7);
     --c-text-error:       var(--er-red-5);
 
@@ -1712,11 +1712,10 @@
     --c-link:               var(--er-blue-3);
     --c-link-reversed:      var(--er-blue-1);
 
-    --c-surface:        var(--er-grey-3);
-    --c-surface-strong: var(--er-grey-3);
-    --c-text-reversed:  var(--er-teal-dark);
-    --c-input-bg:       var(--er-grey-2);
-    --c-input-disabled-bg: var(--er-grey-1);
+    --c-surface:        var(--er-grey-1);                 /* Primary Background */
+    --c-surface-strong: var(--er-grey-1);                 /* Elevated Component */
+    --c-text-reversed:  var(--er-grey-1);                 /* Primary Text Reversed */
+    --c-input-bg:       var(--er-grey-1);                 /* Elevated Component */
 
     --c-subtle:          rgba(255, 255, 255, 0.5);
     --c-extra-subtle:    rgba(255, 255, 255, 0.1);
@@ -1728,8 +1727,8 @@
     --c-cta-secondary:  var(--er-blue-5);
     --c-surface-quiet:  var(--er-grey-3);
 
-    --c-stroke:         var(--er-grey-5);
-    --c-field-outline:  var(--er-grey-3);
+    --c-stroke:         var(--er-grey-3);                 /* Divider Lines */
+    --c-field-outline:  var(--er-grey-4);                 /* Field Outline */
     --c-outlined-primary-hover-bg: var(--er-blue-5);
   }
 

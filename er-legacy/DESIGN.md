@@ -30,18 +30,18 @@ colors:
   # tokens shift to lighter/more-saturated primitive steps for contrast.
 
   # Background
-  # Dark-mode surfaces form one continuous teal ladder — Secondary/Tertiary
-  # (darkest) → Primary/Elevated → Selected (lightest) — rather than mixing
-  # in grey.
-  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-2}" }
-  "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-1}" }
+  # Dark-mode surfaces climb a neutral grey ladder — Secondary (black) →
+  # Primary/Elevated → Tertiary → Selected (lightest). Elevated shares a step
+  # with Primary, so a raised surface reads by its stroke, not its tone.
+  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
+  "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
   "UI/Background/Tertiary Background": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-3}" }   # quiet surfaces: filter chips, map controls, read-only fields
-  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-3}" }
+  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.greyscale-0}", dark: "{colors.greyscale-white}" }
-  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-dark-teal}" }
+  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Text/Secondary Text": { light: "{colors.greyscale-5}", dark: "{colors.greyscale-8}" }
   "UI/Text/Secondary Text Reversed": { light: "{colors.blue-1}", dark: "{colors.blue-3}" }
   "UI/Text/Form Labels": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
@@ -50,8 +50,8 @@ colors:
 
   # UI Chrome
   "UI/Icons": { light: "{colors.greyscale-5}", dark: "{colors.greyscale-7}" }
-  "UI/Field Outline": { light: "{colors.greyscale-8}", dark: "{colors.greyscale-3}" }
-  "UI/Divider Lines": { light: "{colors.greyscale-9}", dark: "{colors.greyscale-5}" }
+  "UI/Field Outline": { light: "{colors.greyscale-8}", dark: "{colors.greyscale-4}" }
+  "UI/Divider Lines": { light: "{colors.greyscale-9}", dark: "{colors.greyscale-3}" }
 
   # Actions
   "UI/CTA Primary": { light: "{colors.blue-1}", dark: "{colors.blue-3}" }
@@ -386,7 +386,7 @@ ER Design System Figma file `gQJAI5XKeENQsqkCaFBev3`, Icons page. Custom filled 
 
 ## Do's and Don'ts
 
-**Don't put `UI/Text/Primary Text` on a solid `UI/CTA Primary` fill.** In light mode it measures 3.16:1, under the 4.5:1 AA minimum for normal text — use `UI/Text/Primary Text Reversed`, which is white and measures 6.65:1. In dark mode the rule flips: `Blue/3` is light enough that **dark** text is correct at 9.42:1, while white falls to 2.23:1.
+**Don't put `UI/Text/Primary Text` on a solid `UI/CTA Primary` fill.** In light mode it measures 3.16:1, under the 4.5:1 AA minimum for normal text — use `UI/Text/Primary Text Reversed`, which is white and measures 6.65:1. In dark mode the rule flips: `Blue/3` is light enough that **dark** text is correct at 8.47:1, while white falls to 2.23:1.
 
 **Don't mix ER Legacy and EarthRanger on one screen.** They share token names deliberately, so loading both breaks nothing visibly — one quietly wins and you get a screen that is neither palette. Pick one per product.
 
