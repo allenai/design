@@ -317,55 +317,41 @@ typography:
 
 ## Overview
 
-EarthRanger is a platform for conservationists to collect data from the field, integrate cutting-edge technology, see wildlife and teams in real time, and develop strategies that accelerate conservation impact. The platform encompasses EarthRanger Web, EarthRanger Mobile, Ecoscope, Gundi, and the Buoy app — a suite of tools built around data-driven decision making and adaptive management.
+EarthRanger is a real-time platform for conservation: field reports, sensor telemetry and partner data on one map, used by protected-area managers, rangers, analysts and operations staff. Interfaces serve both field teams making time-sensitive decisions and analysts working through dense data at a desk, so the design language prioritizes **usability and data security above all else** — reliable and built for serious work, without being intimidating.
 
-EarthRanger is used by a broad range of conservation professionals: protected area managers, field personnel, analysts, operations coordinators, and technologists. Interfaces must serve both experts in the field making time-sensitive decisions and analysts working through complex data sets at a desk.
+**ER Legacy is a bridge, not a fork.** EarthRanger Web adopted the design tokens and was repainted in the new palette in one step — blue calls to action became green, grey neutrals teal, blue selection teal. The architecture was the win; the whole palette change at the same moment was more than the product was ready for.
 
-The design language prioritizes **usability and data security above all else**. EarthRanger is trustworthy, innovative, and approachable. Every interface decision should reinforce that the platform is reliable and built for serious work — without being intimidating or opaque.
+ER Legacy separates those. A product takes the token architecture now and the new colors when it suits, keeping the palette its users know in the meantime. **The second step is the point:** because both palettes share every token name, moving to EarthRanger is a change of token file — no redlines change, no component is touched. `UI/CTA Primary` is still `UI/CTA Primary`; it resolves to blue here and green there. A product adopts ER Legacy to make that move cheap, not to avoid it.
 
-**ER Legacy is a bridge, not a fork.** EarthRanger Web adopted the design tokens and was repainted in the new palette in a single step — blue calls to action became green, grey neutrals became teal, blue selection became teal. The architecture was the win; landing the whole palette change at the same moment was more than the product was ready for.
-
-ER Legacy separates those two things. A product takes the token architecture now and the new colors when it suits, keeping the palette its users already know in the meantime. Every value still flows through the same named tokens EarthRanger uses, so nothing is hard-coded and nothing has to be unpicked later.
-
-**The second step is the point.** Because the two palettes share every token name, moving a product onto the EarthRanger palette is a matter of which token file it loads — no redline changes, no component is touched, no screen is redesigned. `UI/CTA Primary` is still `UI/CTA Primary`; it simply resolves to blue here and green there. A product adopts ER Legacy to make that move cheap, not to avoid it.
-
-The flip side is that a product picks one and stays on it until it switches, the way you would not run two themes on the same screen. There is no blending the two, and no screen that is half of each.
-
-Use it where a palette change would land alongside other disruption, or where users navigate by color and need continuity while they learn the rest. New surfaces should use EarthRanger. Anything that improves here should usually improve in EarthRanger too — this is a staging post, not a design direction.
+So a product picks one and stays on it until it switches. There is no blending the two. Use ER Legacy where a palette change would land alongside other disruption, or where users navigate by color; new surfaces should use EarthRanger. Anything that improves here should usually improve in EarthRanger too — this is a staging post, not a design direction.
 
 ## Colors
 
-Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw primitive values wherever possible. Semantic tokens carry intent, provide both a Light and Dark value, and will automatically adapt if the design system is updated.
+Always use **semantic tokens** (`UI/Text/Primary Text`) rather than raw primitives. They carry intent, give a Light and a Dark value, and adapt if the system changes.
 
-ER Legacy uses EarthRanger's primitives unchanged. **No new color values are introduced** — every token here resolves to a primitive EarthRanger already publishes. What differs is which primitive each semantic token points at. Twenty-three semantic tokens differ; the rest are identical and are repeated here so the spec stands on its own.
+**No new color values are introduced.** Every token resolves to a primitive EarthRanger already publishes; what differs is which primitive each points at. Seventeen tokens differ — the rest are identical, and are repeated so the spec stands alone.
 
-The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3) — used for calls to action, links, and active states. **This is the defining difference from EarthRanger, whose CTA is green.** Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Blue also covers in-progress state and general informational messaging via `UI/Status/Running`, which shares the CTA's value here — so in ER Legacy, unlike EarthRanger, interactive and informational blues are the same color. Rely on placement and component, not hue, to tell them apart.
+The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3), for calls to action, links and active states. **That is the defining difference from EarthRanger, whose CTA is green.** Note that `UI/Status/Running` shares the CTA's value here, so interactive and informational blue are the same color — rely on placement and component, not hue, to tell them apart. Status colors are otherwise strictly functional: use them to communicate meaning, never decoratively.
 
-**Neutrals are grey, not teal.** `UI/Text/Secondary Text` and `UI/Icons` are `Greyscale/5` (`#63666a`), dividers are `Greyscale/9` (`#dddddd`), field outlines are `Greyscale/8` (`#b1b3b3`), and the tertiary and secondary backgrounds are `Greyscale/10` and `Greyscale/11`. EarthRanger tints all of these toward teal; ER Legacy does not. Selection is blue-tinted (`UI/Background/Selected Background`, `Blue/4` `#f4f7fd`) rather than teal.
+**Neutrals are grey, not teal.** Secondary text and icons are `Greyscale/5`, dividers `Greyscale/9`, field outlines `Greyscale/8`, and the secondary and tertiary backgrounds are both `Greyscale/11` — ER Legacy has no third surface tone. Selection is blue-tinted (`Blue/4`), not teal. Icons share their value with secondary text, so an icon and its label read as one tier.
 
-`UI/Icons` shares its value with `UI/Text/Secondary Text`, so an icon and the label beside it read as one tier.
+Teal survives as a primitive, used by `UI/Patrol Status/Scheduled`, but it is **not** a brand accent here and should not appear in navigation, headers or chrome — use `Greyscale/3` for dark chrome. **ER Legacy defines no brand tokens at all:** logo lockups, accent green and the brand backgrounds belong to EarthRanger and SERCA, and a surface needing them is a brand surface. Pink is never used, in either palette.
 
-The 2026 by-Ai2 logo is drawn in this palette rather than EarthRanger's: `Greyscale/3` for the EarthRanger wordmark, `Greyscale/5` for the by-Ai2 lockup, `Teal/3` for the mark, and `Greyscale/9` for the lockup on the white variants. It needs no recoloring here.
+Use `UI/Text/Primary Text Reversed` for text or icon marks sitting on a filled CTA or other saturated surface.
 
-Teal remains available as a primitive and is still used by `UI/Patrol Status/Scheduled` (`Teal/1`), but it is **not** a brand accent in ER Legacy and should not appear in navigation, headers, or chrome. Use `Greyscale/3` (`#333333`) for dark chrome instead.
-
-**ER Legacy defines no brand tokens.** It covers product UI, and the brand surfaces — logo lockups, accent green, the cream and teal brand backgrounds — belong to EarthRanger and SERCA. A surface that needs them is a brand surface, and should take them from there.
-
-Use `UI/Text/Primary Text Reversed` (`#ffffff` light) for text or icon marks that sit directly on a filled CTA or other saturated surface. Pink is not part of the EarthRanger palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
-
-For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute brand colors. **The data scales are EarthRanger's, unchanged**, including the separate light and dark values on categorical. Tracks and sequential are intentionally identical in both modes. Always resolve a data color through its token rather than copying a hex, so a chart built in ER Legacy keeps working when a product moves to EarthRanger.
+The data scales — categorical, tracks and sequential — are **EarthRanger's, unchanged**, including the separate light and dark values on categorical. Use them in order, and resolve each through its token rather than copying a hex, so a chart keeps working when a product moves to EarthRanger.
 
 ### Dark mode
 
-ER Legacy's dark mode is a **greyscale ladder, not EarthRanger's teal one**. Backgrounds step `Greyscale/1` `#111111` (secondary) up through `Greyscale/2` `#222222` (primary) to `Greyscale/3` `#333333` (elevated). Dividers are `Greyscale/5`, field outlines `Greyscale/3`. Primary text inverts to white, secondary text to `Greyscale/8` `#b1b3b3`, and icons, form labels and tabs to `Greyscale/7` `#888b8d`.
+A **greyscale ladder, not EarthRanger's teal one.** Backgrounds step `Greyscale/1` (secondary and tertiary) → `Greyscale/2` (primary) → `Greyscale/3` (elevated). Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/5`.
 
-The CTA lightens from `Blue/1` to `Blue/3` (`#76b0ff`); the secondary blue moves from `Blue/2` to `Blue/5` (`#2a394d`). Status and priority colors shift to lighter, softer steps so they read on a dark surface without glowing: error to `Red/5`, warning and amber to `Amber/5`, success to `Green/4`, event-priority green to `Green/2`, patrol active to `Indigo/5`, and patrol overdue to `Magenta/4`.
+The CTA lightens to `Blue/3` and the secondary blue deepens to `Blue/5`. Status and priority colors move to softer steps so they read without glowing: error `Red/5`, warning `Amber/5`, success `Green/4`, priority green `Green/2`, patrol active `Indigo/5`, overdue `Magenta/4`.
 
-Three tokens have no value in the legacy frame in either mode, and the values given are proposed rather than drawn: tertiary background, selected background, and reversed secondary text. Each is marked in the frontmatter.
+One value is proposed rather than drawn — the dark selected background — and is marked in the frontmatter.
 
 ## Typography
 
-ER Legacy is **Roboto throughout** — headings and body share one family and differ only by weight and size. There is no separate heading face.
+**Roboto throughout.** Headings and body share one family and differ only by weight and size; there is no separate heading face.
 
 | Platform | Body | Heading |
 | --- | --- | --- |
@@ -374,53 +360,34 @@ ER Legacy is **Roboto throughout** — headings and body share one family and di
 | iOS | SF Pro | SF Pro |
 | Android | Roboto | Roboto |
 
-Always reference a text-style token (e.g. `body-md`, `heading-lg`) rather than hardcoding font properties — the platform's font-family resolves automatically. `body-md` (16px) is the default reading size. All styles use 0 letter-spacing and no text-transform.
+Reference a text-style token (`body-md`, `heading-lg`) rather than hardcoding font properties — the platform family resolves automatically. `body-md` (16px) is the default reading size. 0 letter-spacing, no text-transform.
 
-**No style sets a line height.** The layout decides, so the same token can sit in a dense table row and a roomy card without fighting either.
+**No style sets a line height.** The layout decides, so one token suits a dense table row and a roomy card alike.
 
-The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, and two button labels (`button-sm` 18px, `button-xs` 16px, Roboto SemiBold). Display and Headings are Bold; Body and Mono are Regular.
+The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, and two button labels (`button-sm` 18px, `button-xs` 16px, SemiBold). Display and Headings are Bold; Body and Mono Regular.
 
-### Fallback stack (performance)
-
-EarthRanger is used in low-bandwidth field conditions where a delayed web font can mean delayed information in high-stakes moments (active patrols, incident response). Always pair the web font with a fast, native fallback — never a generic one. See Do's and Don'ts below for the full performance checklist.
-
-### Externally-facing communications
-
-ER Legacy covers **product UI only**. For websites, slide decks, newsletters and printed materials, see SERCA, which owns the Alliance's externally-facing identity and type.
+ER Legacy covers **product UI only**. For websites, decks, newsletters and print, see SERCA.
 
 ## Icons
 
-> **Never substitute a different icon for the one shown in the design.** Always match exactly what is specified.
+> **Never substitute a different icon for the one shown in the design.**
 
-### Library 1: Material Design Icons
+**Material Design Icons** — Figma library `x3D0XAL06JEEEi12suKcGs`. Outlined by default, 24×24px. The primary library: look here first for any standard UI icon. Color them with `UI/Icons` (`#63666a` light / `#888b8d` dark) unless the design says otherwise.
 
-- **Source:** Material Design Icons Figma library (`x3D0XAL06JEEEi12suKcGs`)
-- **Style:** Outlined (default); filled variants exist for some icons
-- **Default size:** 24×24px
-- **Usage:** Primary icon library — search for any standard UI icon here first
-- **Color:** Use `UI/Icons` token (`#63666a` light / `#888b8d` dark) by default unless the design specifies otherwise
-
-### Library 2: ER Design System Custom Icons
-
-- **Source:** ER Design System Figma file (`gQJAI5XKeENQsqkCaFBev3`), Icons page
-- **Style:** Custom filled icons specific to the EarthRanger domain
-- **Default size:** 18×18px for most icons; 16×16px for menu bar and inline UI icons
-- **Usage:** Use these for domain-specific concepts not covered by Material (e.g. Patrol, Spoor, Basemap, Fence, Wildlife Sighting, GPS, Report, Observation Patrol, Deforestation, etc.)
-- **Variants:** Some icons have filled/outline or state variants (e.g. Cloud Online/Offline, Eye Open/Closed, Active/Inactive, Download states) — use the variant that matches the design exactly
-- **Note:** The ER icon library references Material Design as its base — for any icon not listed as a custom symbol, search the Material Design library
+**ER Design System Custom Icons** — ER Design System Figma file `gQJAI5XKeENQsqkCaFBev3`, Icons page. Custom filled icons for EarthRanger concepts Material does not cover (Patrol, Spoor, Basemap, Fence, Wildlife Sighting, GPS, Report, Deforestation). 18×18px, or 16×16px in menu bars and inline. Some have filled/outline or state variants — match the design exactly. Anything not listed as a custom symbol comes from Material.
 
 ## Do's and Don'ts
 
-**Don't place `UI/Text/Primary Text` (or the raw `Greyscale/0` primitive) on a solid `UI/CTA Primary` fill (Blue/1 in light mode).** It measures 3.16:1 — under the 4.5:1 WCAG AA minimum for normal text, only clearing the 3:1 floor for large text and UI outlines. Use `UI/Text/Primary Text Reversed` instead, which resolves to white and measures 6.65:1. In dark mode the rule flips: `Blue/3` is light enough that **dark** text is the correct pairing, at 9.42:1, while white on it falls to 2.23:1.
+**Don't put `UI/Text/Primary Text` on a solid `UI/CTA Primary` fill.** In light mode it measures 3.16:1, under the 4.5:1 AA minimum for normal text — use `UI/Text/Primary Text Reversed`, which is white and measures 6.65:1. In dark mode the rule flips: `Blue/3` is light enough that **dark** text is correct at 9.42:1, while white falls to 2.23:1.
 
-**Don't mix ER Legacy and EarthRanger on the same screen.** They share token names on purpose, so nothing visibly breaks if a product loads both — one simply wins, quietly, and you get a screen that is neither palette. Pick one per product.
+**Don't mix ER Legacy and EarthRanger on one screen.** They share token names deliberately, so loading both breaks nothing visibly — one quietly wins and you get a screen that is neither palette. Pick one per product.
 
-**Don't use emojis in EarthRanger interfaces — use an icon library instead.** See the Icons section above: Material Design Icons for standard UI icons, ER Design System Custom Icons for domain-specific concepts (Patrol, Spoor, Basemap, Fence, Wildlife Sighting, etc.). Emojis render inconsistently across platforms/fonts and don't carry the states (filled/outline, active/inactive, etc.) the icon libraries provide.
+**Don't use emojis — use an icon library.** Emojis render inconsistently across platforms and carry none of the states (filled/outline, active/inactive) the libraries provide.
 
-**Don't load web fonts without these performance safeguards.** EarthRanger is used in low-bandwidth field conditions where a delayed font can mean delayed information in high-stakes moments (active patrols, incident response).
+**Don't load web fonts without these safeguards.** EarthRanger runs in low-bandwidth field conditions where a delayed font means delayed information during an active patrol or incident.
 
-- **Native OS fallback** if the web font hasn't loaded — Windows: Arial, Android: Roboto, iOS: SF Pro, macOS: SF Pro
-- **Subset fonts** to strip unneeded characters, using `glyphhanger` or `fonttools`
-- **Regular and Bold weights only** — don't ship the full weight range
-- **`font-display: optional`** so a slow-loading web font never blocks rendering or shifts layout
-- **Self-host fonts** — don't depend on a third-party CDN round trip
+- **Native OS fallback** — Windows: Arial, Android: Roboto, iOS and macOS: SF Pro
+- **Subset fonts** with `glyphhanger` or `fonttools`
+- **Regular and Bold only** — don't ship the full weight range
+- **`font-display: optional`** so a slow font never blocks rendering or shifts layout
+- **Self-host** — no third-party CDN round trip
