@@ -68,12 +68,6 @@
   --er-ui-data-sequential-sequential-6: #0056c7;
   --er-ui-data-sequential-sequential-7: #00882e;
   --er-ui-data-sequential-sequential-8: #78d811;
-  --er-brand-acorn-logo: #008586;
-  --er-brand-accent-green: #0fcb8c;
-  --er-brand-background-primary-background: #faf2e9;
-  --er-brand-background-secondary-background: #ffffff;
-  --er-brand-text-primary-text: #0a3235;
-  --er-brand-text-secondary-text: #105257;
   --er-greyscale-0: #000000;
   --er-greyscale-1: #111111;
   --er-greyscale-2: #222222;
@@ -251,8 +245,4 @@
   --er-ui-data-categorical-category-8: #488a00;
   --er-ui-data-categorical-category-9: #c6880c;
   --er-ui-data-categorical-category-10: #b62879;
-  --er-brand-background-primary-background: #0a3235;
-  --er-brand-background-secondary-background: #105257;
-  --er-brand-text-primary-text: #ffffff;
-  --er-brand-text-secondary-text: #faf2e9;
 }

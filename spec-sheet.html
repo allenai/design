@@ -1613,7 +1613,7 @@
 
     --c-cta-text:       var(--er-blue-1);
     --c-cta-secondary:  var(--er-blue-2);
-    --c-surface-quiet:  var(--er-grey-11);
+    --c-surface-quiet:  var(--er-grey-10);
 
     --c-stroke:         var(--er-grey-9);
     --c-field-outline:  var(--er-grey-8);
@@ -2778,9 +2778,12 @@ const ER_LEGACY_ALIASES = {
     "cta-secondary-blue": "blue-5"
   }
 };
+/* ER Legacy covers product UI only, so the brand rows are dropped rather
+   than inherited — those surfaces belong to EarthRanger and SERCA. */
+const notBrand = ([k]) => !k.startsWith("brand/");
 ALIASES["er-legacy"] = {
-  light: ALIASES["earthranger"].light.map(([k, v]) => [k, ER_LEGACY_ALIASES.light[k] || v]),
-  dark:  ALIASES["earthranger"].dark.map(([k, v]) => [k, ER_LEGACY_ALIASES.dark[k] || v]),
+  light: ALIASES["earthranger"].light.filter(notBrand).map(([k, v]) => [k, ER_LEGACY_ALIASES.light[k] || v]),
+  dark:  ALIASES["earthranger"].dark.filter(notBrand).map(([k, v]) => [k, ER_LEGACY_ALIASES.dark[k] || v]),
 };
 
 /* Skylight is single-mode (no dark theme), so it takes the plain

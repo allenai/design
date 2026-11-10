@@ -122,13 +122,6 @@ colors:
   "UI/Data/Sequential/Sequential 7": "{colors.green-3}"
   "UI/Data/Sequential/Sequential 8": "{colors.green-10}"
 
-  # Brand
-  "Brand/Acorn Logo": { light: "{colors.teal-3}", dark: "{colors.teal-3}" }
-  "Brand/Accent Green": { light: "{colors.green-7}", dark: "{colors.green-7}" }
-  "Brand/Background/Primary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-ai2-dark-teal}" }
-  "Brand/Background/Secondary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-t100}" }
-  "Brand/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
-  "Brand/Text/Secondary Text": { light: "{colors.teal-t100}", dark: "{colors.greyscale-off-white}" }
 
   # ── Primitive Palette ─────────────────────────────────────────────
   # Use only when no semantic token fits. Single mode (HEX) — not used
@@ -356,6 +349,8 @@ The 2026 by-Ai2 logo is drawn in this palette rather than EarthRanger's: `Greysc
 
 Teal remains available as a primitive and is still used by `UI/Patrol Status/Scheduled` (`Teal/1`), but it is **not** a brand accent in ER Legacy and should not appear in navigation, headers, or chrome. Use `Greyscale/3` (`#333333`) for dark chrome instead.
 
+**ER Legacy defines no brand tokens.** It covers product UI, and the brand surfaces — logo lockups, accent green, the cream and teal brand backgrounds — belong to EarthRanger and SERCA. A surface that needs them is a brand surface, and should take them from there.
+
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light) for text or icon marks that sit directly on a filled CTA or other saturated surface. Pink is not part of the EarthRanger palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
 
 For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute brand colors. **The data scales are EarthRanger's, unchanged**, including the separate light and dark values on categorical. Tracks and sequential are intentionally identical in both modes. Always resolve a data color through its token rather than copying a hex, so a chart built in ER Legacy keeps working when a product moves to EarthRanger.
@@ -417,10 +412,6 @@ ER Legacy covers **product UI only**. For websites, slide decks, newsletters and
 ## Do's and Don'ts
 
 **Don't place `UI/Text/Primary Text` (or the raw `Greyscale/0` primitive) on a solid `UI/CTA Primary` fill (Blue/1 in light mode).** It measures 3.16:1 — under the 4.5:1 WCAG AA minimum for normal text, only clearing the 3:1 floor for large text and UI outlines. Use `UI/Text/Primary Text Reversed` instead, which resolves to white and measures 6.65:1. In dark mode the rule flips: `Blue/3` is light enough that **dark** text is the correct pairing, at 9.42:1, while white on it falls to 2.23:1.
-
-**Don't place white or `UI/Text/Primary Text Reversed` on `Brand/Accent Green` (Green/7).** ER Legacy's accent green is a bright mint, the inverse of EarthRanger's, so white on it measures 2.11:1 and fails outright. Use `UI/Text/Primary Text` there instead, which measures 9.94:1. This is the one place where ER Legacy's text-on-fill rule is the opposite of EarthRanger's — check the fill's lightness rather than carrying the habit across.
-
-**Don't use the full by-Ai2 lockup below 56px of rendered logo height.** Use the `-short` variants (`logo-ai2-horizontal-short`, `logo-ai2-white-horizontal-short`), which scale the by-Ai2 mark up relative to the EarthRanger wordmark so the attribution stays legible. Above 56px, use the standard lockups.
 
 **Don't mix ER Legacy and EarthRanger on the same screen.** They share token names on purpose, so nothing visibly breaks if a product loads both — one simply wins, quietly, and you get a screen that is neither palette. Pick one per product.
 
