@@ -1239,6 +1239,11 @@
     --c-input-disabled-text: var(--c-text-disabled);
 
     --c-chip-default-bg: var(--c-int-default);
+    /* Text and marks on a CTA Secondary Blue fill, and the quiet grey
+       the default button and filter chips sit on. */
+    --c-cta-text:      var(--er-green-12);
+    --c-cta-secondary: var(--er-teal-t20);
+    --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
        teal-dark dark) — reuse it here instead of a hardcoded cream,
        since EarthRanger's int-default background goes light in dark
@@ -1435,8 +1440,6 @@
 
   /* Ai2 Dark Teal (light-mode secondary fill) is near-black — the shared
      hardcoded extra-dark-teal text would be almost invisible on it. */
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="light"] .btn-secondary,
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="light"] .chip-secondary,
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="light"] .av-secondary {
     color: var(--c-text-reversed);
   }
@@ -1445,9 +1448,7 @@
      rather than inheriting --c-int-default-fg — same value today, but
      explicit so hover text doesn't silently drift if --c-int-default-fg
      ever changes for a reason unrelated to hover. */
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default:hover {
-    color: var(--c-text-reversed);
-  }
+
 
   /* Primary outlined button hover, light mode: Teal/T10 fill, Ai2 Dark
      Teal text/border (dark mode keeps its own green-tinted hover below). */
@@ -1536,9 +1537,7 @@
      their Teal/T20 fill. The :hover override below is required — without
      it, this rule's higher specificity would win over .btn-default:hover
      and mask the hover state entirely. */
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-default {
-    background: var(--er-white);
-  }
+
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-default:hover {
     background: var(--c-int-default-hover);
   }
@@ -1547,15 +1546,36 @@
   }
   /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
      unlike the pale Teal/T20 secondary fill used in light mode. */
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-secondary,
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .chip-secondary {
-    color: var(--c-cream);
-  }
+
 
   /* EarthRanger's Web-Fonts platform uses Roboto for body copy
      (headings stay PP Telegraf, same as Strata). */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) body {
     font-family: Roboto, Manrope, Arial, sans-serif;
+  }
+
+  /* Secondary is the CTA Secondary Blue fill with CTA Text on it, and the
+     default button is the quiet grey the filter chips use, with primary
+     text. Both read the same way in either mode because the variables
+     flip rather than the rules. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-secondary,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .chip-secondary {
+    background: var(--c-cta-secondary);
+    color: var(--c-cta-text);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-secondary:hover {
+    background: color-mix(in srgb, var(--c-cta-secondary), black 5%);
+    color: var(--c-cta-text);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .chip-default {
+    background: var(--c-surface-quiet);
+    color: var(--c-text);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default:hover {
+    background: color-mix(in srgb, var(--c-surface-quiet), black 5%);
+    color: var(--c-text);
   }
 
   /* ── ER Legacy ──────────────────────────────────────────────────
@@ -1591,6 +1611,10 @@
     --c-subtle:          rgba(0, 0, 0, 0.5);
     --c-extra-subtle:    rgba(0, 0, 0, 0.1);
 
+    --c-cta-text:       var(--er-blue-1);
+    --c-cta-secondary:  var(--er-blue-2);
+    --c-surface-quiet:  var(--er-grey-11);
+
     --c-stroke:         var(--er-grey-9);
     --c-field-outline:  var(--er-grey-8);
     --c-outlined-primary-hover-bg: var(--er-blue-4);
@@ -1623,6 +1647,10 @@
 
     --c-subtle:          rgba(255, 255, 255, 0.5);
     --c-extra-subtle:    rgba(255, 255, 255, 0.1);
+
+    --c-cta-text:       var(--er-blue-3);
+    --c-cta-secondary:  var(--er-blue-5);
+    --c-surface-quiet:  var(--er-grey-2);
 
     --c-stroke:         var(--er-grey-5);
     --c-field-outline:  var(--er-grey-3);
