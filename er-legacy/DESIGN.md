@@ -37,7 +37,7 @@ colors:
   "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-1}" }
   "UI/Background/Tertiary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-1}" }   # the same as Secondary Background: ER Legacy has no third surface tone
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-3}" }
-  "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }   # dark is proposed: the legacy frame has no selected background
+  "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.greyscale-0}", dark: "{colors.greyscale-white}" }
@@ -49,7 +49,7 @@ colors:
   "UI/Text/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
 
   # UI Chrome
-  "UI/Icons": { light: "{colors.greyscale-5}", dark: "{colors.greyscale-7}" }   # deviates from the Figma legacy frame, which has Greyscale/6
+  "UI/Icons": { light: "{colors.greyscale-5}", dark: "{colors.greyscale-7}" }
   "UI/Field Outline": { light: "{colors.greyscale-8}", dark: "{colors.greyscale-3}" }
   "UI/Divider Lines": { light: "{colors.greyscale-9}", dark: "{colors.greyscale-5}" }
 
@@ -346,8 +346,6 @@ The data scales — categorical, tracks and sequential — are **EarthRanger's, 
 A **greyscale ladder, not EarthRanger's teal one.** Backgrounds step `Greyscale/1` (secondary and tertiary) → `Greyscale/2` (primary) → `Greyscale/3` (elevated). Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/5`.
 
 The CTA lightens to `Blue/3` and the secondary blue deepens to `Blue/5`. Status and priority colors move to softer steps so they read without glowing: error `Red/5`, warning `Amber/5`, success `Green/4`, priority green `Green/2`, patrol active `Indigo/5`, overdue `Magenta/4`.
-
-One value is proposed rather than drawn — the dark selected background — and is marked in the frontmatter.
 
 ## Typography
 
