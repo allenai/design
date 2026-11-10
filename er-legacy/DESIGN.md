@@ -364,15 +364,25 @@ Reference a text-style token (`body-md`, `heading-lg`) rather than hardcoding fo
 
 The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, and two button labels (`button-sm` 18px, `button-xs` 16px, SemiBold). Display and Headings are Bold; Body and Mono Regular.
 
+### Fallback stack (performance)
+
+EarthRanger runs in low-bandwidth field conditions where a delayed web font can mean delayed information at a bad moment. Always pair the web font with a fast, native fallback, never a generic one — see Do's and Don'ts for the checklist.
+
+### Externally-facing communications
+
 ER Legacy covers **product UI only**. For websites, decks, newsletters and print, see SERCA.
 
 ## Icons
 
 > **Never substitute a different icon for the one shown in the design.**
 
-**Material Design Icons** — Figma library `x3D0XAL06JEEEi12suKcGs`. Outlined by default, 24×24px. The primary library: look here first for any standard UI icon. Color them with `UI/Icons` (`#63666a` light / `#888b8d` dark) unless the design says otherwise.
+### Library 1: Material Design Icons
 
-**ER Design System Custom Icons** — ER Design System Figma file `gQJAI5XKeENQsqkCaFBev3`, Icons page. Custom filled icons for EarthRanger concepts Material does not cover (Patrol, Spoor, Basemap, Fence, Wildlife Sighting, GPS, Report, Deforestation). 18×18px, or 16×16px in menu bars and inline. Some have filled/outline or state variants — match the design exactly. Anything not listed as a custom symbol comes from Material.
+Figma library `x3D0XAL06JEEEi12suKcGs`. Outlined by default, 24×24px. The primary library: look here first for any standard UI icon. Color them with `UI/Icons` (`#63666a` light / `#888b8d` dark) unless the design says otherwise.
+
+### Library 2: ER Design System Custom Icons
+
+ER Design System Figma file `gQJAI5XKeENQsqkCaFBev3`, Icons page. Custom filled icons for EarthRanger concepts Material does not cover (Patrol, Spoor, Basemap, Fence, Wildlife Sighting, GPS, Report, Deforestation). 18×18px, or 16×16px in menu bars and inline. Some have filled/outline or state variants — match the design exactly. Anything not listed as a custom symbol comes from Material.
 
 ## Do's and Don'ts
 
