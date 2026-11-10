@@ -1264,21 +1264,26 @@
 
     --c-outlined-primary-hover-bg: var(--er-green-6);
 
-    --btn-default-out-fg:        var(--c-int-default);
-    --btn-default-out-border:    var(--c-int-default);
-    --btn-default-out-hover-bg:  var(--er-teal-t20);
-    --btn-default-out-hover-fg:  var(--er-teal-dark);
+    /* Secondary Text, and the Error Bg the destructive button fills with.
+       Both carry their own per-mode values, so the dark block only
+       re-declares them where the token itself differs. */
+    --c-text-secondary:  var(--er-teal-t100);
+    --c-status-bg-error: var(--er-red-6);
 
-    /* Secondary outlined button uses Primary Text directly — declared
-       once here (not re-declared in the dark block), so --c-text's own
-       per-mode value carries through automatically; no separate override. */
-    --btn-secondary-out-fg:      var(--c-text);
-    --btn-secondary-out-border:  var(--c-text);
+    /* Outlined default: Divider Lines stroke, Primary Text label. */
+    --btn-default-out-fg:        var(--c-text);
+    --btn-default-out-border:    var(--c-stroke);
+    --btn-default-out-hover-bg:  var(--c-surface-quiet);
+    --btn-default-out-hover-fg:  var(--c-text);
 
-    /* "Reversed" surface in light mode is the dark-teal, so reversed
-       buttons behave exactly like Strata's light-mode defaults. */
-    --btn-reversed-bg:           var(--c-cream);
-    --btn-reversed-fg:           var(--er-teal-dark);
+    /* Outlined secondary takes Secondary Text for both stroke and label. */
+    --btn-secondary-out-fg:      var(--c-text-secondary);
+    --btn-secondary-out-border:  var(--c-text-secondary);
+
+    /* Reversed sits on a dark row, so it fills with Secondary Background
+       and labels in Primary Text. */
+    --btn-reversed-bg:           var(--c-bg);
+    --btn-reversed-fg:           var(--c-text);
     --btn-reversed-hover-bg:     var(--er-white);
     --btn-reversed-hover-fg:     var(--er-teal-dark);
 
@@ -1460,6 +1465,10 @@
 
   /* ── Dark mode (EarthRanger-only toggle, independent of the system picker) ── */
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] {
+    /* Error Bg is the same token in both ER systems, so it is set here
+       rather than in either one's own block. */
+    --c-status-bg-error: var(--er-red-1);
+
     color-scheme: dark;
 
     --c-bg:              var(--er-teal-darkest);     /* Secondary Background, dark */
@@ -1548,6 +1557,10 @@
   /* The CTA Secondary fill is dark in both modes for EarthRanger and
      SERCA, so its text stays light rather than flipping. */
   html[data-system="earthranger"][data-er-mode="dark"] {
+    /* Tertiary Background is Teal/Darkest in dark, so the quiet surface
+       follows it rather than staying on the light-mode Teal/T10. */
+    --c-surface-quiet: var(--er-teal-darkest);
+    --c-text-secondary: var(--er-teal-t20);
     --c-cta-secondary: var(--er-teal-t90);
     --c-cta-text: var(--er-off-white);
   }
@@ -1585,6 +1598,34 @@
     color: var(--c-text);
   }
 
+  /* Destructive fills with Status Bg/Error and labels in
+     Status/Error-Destructive. Only the ER family defines it. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-destructive {
+    background: var(--c-status-bg-error);
+    color: var(--c-text-error);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-destructive:hover {
+    background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
+  }
+
+  /* Reversed outlined sits on a dark row, so it is a filled Elevated
+     Component box with a Divider Lines stroke rather than a ghost. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-reversed-out {
+    background: var(--c-surface);
+    border-color: var(--c-stroke);
+    color: var(--c-text);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-reversed-out:hover {
+    background: var(--c-surface-quiet);
+    color: var(--c-text);
+  }
+
+  /* The destructive row is hidden for systems that have no such button.
+     `.vtable .cell` outranks a bare `.er-only`, so the hide needs the
+     same two classes to land. */
+  .vtable .cell.er-only { display: none; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable .cell.er-only { display: flex; }
+
   /* ── ER Legacy ──────────────────────────────────────────────────
      The EarthRanger palette before the token adoption. It reuses every
      EarthRanger rule above through the :is() selectors and only re-points
@@ -1618,6 +1659,7 @@
     --c-subtle:          rgba(0, 0, 0, 0.5);
     --c-extra-subtle:    rgba(0, 0, 0, 0.1);
 
+    --c-text-secondary: var(--er-grey-5);
     --c-cta-text:       var(--er-blue-1);
     --c-cta-secondary:  var(--er-blue-2);
     --c-surface-quiet:  var(--er-grey-10);
@@ -1655,6 +1697,7 @@
     --c-subtle:          rgba(255, 255, 255, 0.5);
     --c-extra-subtle:    rgba(255, 255, 255, 0.1);
 
+    --c-text-secondary: var(--er-grey-8);
     --c-cta-text:       var(--er-blue-3);
     --c-cta-secondary:  var(--er-blue-5);
     --c-surface-quiet:  var(--er-grey-3);
@@ -1847,6 +1890,11 @@
       <div class="cell"><button class="btn btn-default btn-sm">Get started</button></div>
       <div class="cell"><button class="btn btn-default btn-md">Get started</button></div>
       <div class="cell col-lg"><button class="btn btn-default btn-lg">Get started</button></div>
+
+      <div class="cell row-label er-only">destructive</div>
+      <div class="cell er-only"><button class="btn btn-destructive btn-sm">Delete</button></div>
+      <div class="cell er-only"><button class="btn btn-destructive btn-md">Delete</button></div>
+      <div class="cell col-lg er-only"><button class="btn btn-destructive btn-lg">Delete</button></div>
 
       <div class="cell row-label">primary</div>
       <div class="cell"><button class="btn btn-primary btn-sm">Run search</button></div>
