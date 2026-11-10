@@ -1239,10 +1239,10 @@
     --c-input-disabled-text: var(--c-text-disabled);
 
     --c-chip-default-bg: var(--c-int-default);
-    /* Text and marks on a CTA Secondary Blue fill, and the quiet grey
+    /* Text and marks on a CTA Secondary fill, and the quiet grey
        the default button and filter chips sit on. */
     --c-cta-text:      var(--er-green-12);
-    --c-cta-secondary: var(--er-teal-t20);
+    --c-cta-secondary: var(--er-teal-t100);
     --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
        teal-dark dark) — reuse it here instead of a hardcoded cream,
@@ -1554,7 +1554,7 @@
     font-family: Roboto, Manrope, Arial, sans-serif;
   }
 
-  /* Secondary is the CTA Secondary Blue fill with CTA Text on it, and the
+  /* Secondary is the CTA Secondary fill with CTA Text on it, and the
      default button is the quiet grey the filter chips use, with primary
      text. Both read the same way in either mode because the variables
      flip rather than the rules. */
@@ -2661,7 +2661,7 @@ ALIASES["earthranger"] = {
     ["field-outline",            "teal-t30"],
     ["divider-lines",            "teal-t20"],
     ["cta-primary",              "green-12"],
-    ["cta-secondary-blue",       "teal-t20"],
+    ["cta-secondary",            "teal-t100"],
     ["status/error-destructive", "red-3"],
     ["status/success",           "green-12"],
     ["status/running",          "blue-1"],
@@ -2707,7 +2707,7 @@ ALIASES["earthranger"] = {
     ["field-outline",            "teal-dark-80"],
     ["divider-lines",            "teal-dark-90"],
     ["cta-primary",              "green-7"],
-    ["cta-secondary-blue",       "teal-t90"],
+    ["cta-secondary",            "teal-t90"],
     ["status/error-destructive", "red-5"],
     ["status/success",           "green-4"],
     ["status/running",          "blue-3"],
@@ -2755,7 +2755,7 @@ const ER_LEGACY_ALIASES = {
     "field-outline": "grey-8",
     "divider-lines": "grey-9",
     "cta-primary": "blue-1",
-    "cta-secondary-blue": "blue-2",
+    "cta-secondary": "blue-2",
     "status/success": "green-3",
     "brand/accent-green": "green-7",
     "brand/background/primary": "off-white",
@@ -2775,7 +2775,7 @@ const ER_LEGACY_ALIASES = {
     "field-outline": "grey-3",
     "divider-lines": "grey-5",
     "cta-primary": "blue-3",
-    "cta-secondary-blue": "blue-5"
+    "cta-secondary": "blue-5"
   }
 };
 /* ER Legacy covers product UI only, so the brand rows are dropped rather

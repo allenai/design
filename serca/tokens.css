@@ -17,7 +17,7 @@
   --serca-ui-field-outline: #b7cbcd;
   --serca-ui-divider-lines: #cfdcdd;
   --serca-ui-cta-primary: #0f865d;
-  --serca-ui-cta-secondary-blue: #cfdcdd;
+  --serca-ui-cta-secondary: #105257;
   --serca-ui-cta-text: #0f865d;
   --serca-ui-status-error-destructive: #d0031b;
   --serca-ui-status-success: #0f865d;
@@ -255,7 +255,7 @@
   --serca-ui-field-outline: #355154;
   --serca-ui-divider-lines: #1c3c3e;
   --serca-ui-cta-primary: #0fcb8c;
-  --serca-ui-cta-secondary-blue: #27545f;
+  --serca-ui-cta-secondary: #27545f;
   --serca-ui-cta-text: #0fcb8c;
   --serca-ui-status-error-destructive: #f06374;
   --serca-ui-status-success: #53aa71;

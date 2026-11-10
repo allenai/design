@@ -50,8 +50,8 @@ colors:
 
   # Actions
   "UI/CTA Primary": { light: "{colors.green-12}", dark: "{colors.green-7}" }
-  "UI/CTA Secondary Blue": { light: "{colors.teal-t20}", dark: "{colors.teal-t90}" }
-  "UI/CTA Text": { light: "{colors.green-12}", dark: "{colors.green-7}" }   # text and marks on a CTA Secondary Blue fill
+  "UI/CTA Secondary": { light: "{colors.teal-t100}", dark: "{colors.teal-t90}" }
+  "UI/CTA Text": { light: "{colors.green-12}", dark: "{colors.green-7}" }   # text and marks on a CTA Secondary fill
 
   # Status
   "UI/Status/Error-Destructive": { light: "{colors.red-3}", dark: "{colors.red-5}" }
@@ -381,7 +381,7 @@ Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw prim
 
 The primary interactive color is `UI/CTA Primary` (`#0f865d` light / `#0fcb8c` dark, Green/12 and Green/7) — used for calls to action, links, and active states. Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Blue (`UI/Status/Running`) covers in-progress state and general informational messaging — notices, tips, and neutral callouts — but it is not an interactive color: use `UI/CTA Primary` for buttons, links, and active states.
 
-Teal (`Teal/T100`, `#105257` light / `#faf2e9` off-white text on `Teal/T100` dark surfaces) is the primary brand accent and appears in navigation, headers, form labels/tabs, and `UI/CTA Secondary Blue`. `Brand/Accent Green` (`#0f865d` light / `#0fcb8c` dark) shares its values with `UI/CTA Primary` — they're the same brand-accent green.
+Teal (`Teal/T100`, `#105257` light / `#faf2e9` off-white text on `Teal/T100` dark surfaces) is the primary brand accent and appears in navigation, headers, form labels/tabs, and `UI/CTA Secondary`. `Brand/Accent Green` (`#0f865d` light / `#0fcb8c` dark) shares its values with `UI/CTA Primary` — they're the same brand-accent green.
 
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#0a3235` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a brand-teal surface, such as a filled default-intent button or a checked control's mark. Teal is a mid-tone in light mode but becomes a pale tint in dark mode, so a fixed light color reads fine in light mode but disappears in dark mode — this token flips with the mode so it always contrasts against the surface it's on.
 

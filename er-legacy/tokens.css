@@ -17,7 +17,7 @@
   --er-ui-field-outline: #b1b3b3;
   --er-ui-divider-lines: #dddddd;
   --er-ui-cta-primary: #0056c7;
-  --er-ui-cta-secondary-blue: #dde8f8;
+  --er-ui-cta-secondary: #dde8f8;
   --er-ui-cta-text: #0056c7;
   --er-ui-status-error-destructive: #d0031b;
   --er-ui-status-success: #00882e;
@@ -215,7 +215,7 @@
   --er-ui-field-outline: #333333;
   --er-ui-divider-lines: #63666a;
   --er-ui-cta-primary: #76b0ff;
-  --er-ui-cta-secondary-blue: #2a394d;
+  --er-ui-cta-secondary: #2a394d;
   --er-ui-cta-text: #76b0ff;
   --er-ui-status-error-destructive: #f06374;
   --er-ui-status-success: #53aa71;
