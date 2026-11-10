@@ -1591,6 +1591,24 @@
     color: var(--c-text-secondary-reversed);
   }
 
+  /* The page sits on the quiet Tertiary surface so every elevated component
+     reads as lifted off it. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) body {
+    background: var(--c-surface-quiet);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .paper-card,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .form-card,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .toolbar,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .swatch,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .radius-cell,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .lg-note,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-warning-note,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-mode-toggle {
+    background: var(--c-surface-strong);
+  }
+
   /* The button grid is a card lifted off the page, so it takes Elevated
      Component, and its header and row labels take the quiet Tertiary
      surface. The generic rules have these the other way round, which left
