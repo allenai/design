@@ -36,9 +36,9 @@ colors:
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
-  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-dark-teal}" }
+  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Text/Secondary Text": { light: "{colors.teal-t100}", dark: "{colors.teal-t20}" }
-  "UI/Text/Secondary Text Reversed": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-t100}" }
+  "UI/Text/Secondary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Text/Form Labels": { light: "{colors.teal-t100}", dark: "{colors.greyscale-white}" }
   "UI/Text/Tabs": { light: "{colors.teal-t100}", dark: "{colors.greyscale-white}" }
   "UI/Text/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }

@@ -9,7 +9,7 @@
   --serca-ui-text-primary-text: #0a3235;
   --serca-ui-text-primary-text-reversed: #ffffff;
   --serca-ui-text-secondary-text: #105257;
-  --serca-ui-text-secondary-text-reversed: #faf2e9;
+  --serca-ui-text-secondary-text-reversed: #ffffff;
   --serca-ui-text-form-labels: #105257;
   --serca-ui-text-tabs: #105257;
   --serca-ui-text-disabled: #767676;
@@ -245,9 +245,9 @@
   --serca-ui-background-elevated-component: #032629;
   --serca-ui-background-selected-background: #105257;
   --serca-ui-text-primary-text: #ffffff;
-  --serca-ui-text-primary-text-reversed: #0a3235;
+  --serca-ui-text-primary-text-reversed: #032629;
   --serca-ui-text-secondary-text: #cfdcdd;
-  --serca-ui-text-secondary-text-reversed: #105257;
+  --serca-ui-text-secondary-text-reversed: #032629;
   --serca-ui-text-form-labels: #ffffff;
   --serca-ui-text-tabs: #ffffff;
   --serca-ui-text-disabled: #888b8d;

@@ -1242,6 +1242,7 @@
     /* Text and marks on a CTA Secondary fill, and the quiet grey
        the default button and filter chips sit on. */
     --c-cta-text:      var(--er-white);
+    --c-text-secondary-reversed: var(--er-white);
     --c-cta-secondary: var(--er-teal-t100);
     --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
@@ -1563,6 +1564,7 @@
     --c-text-secondary: var(--er-teal-t20);
     --c-cta-secondary: var(--er-teal-t90);
     --c-cta-text: var(--er-off-white);
+    --c-text-secondary-reversed: var(--er-teal-extra-dark);
   }
   /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
      unlike the pale Teal/T20 secondary fill used in light mode. */
@@ -1581,11 +1583,11 @@
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-secondary,
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .chip-secondary {
     background: var(--c-cta-secondary);
-    color: var(--c-cta-text);
+    color: var(--c-text-secondary-reversed);
   }
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-secondary:hover {
     background: color-mix(in srgb, var(--c-cta-secondary), black 5%);
-    color: var(--c-cta-text);
+    color: var(--c-text-secondary-reversed);
   }
 
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default,
@@ -1661,6 +1663,7 @@
 
     --c-text-secondary: var(--er-grey-5);
     --c-cta-text:       var(--er-blue-1);
+    --c-text-secondary-reversed: var(--er-blue-1);
     --c-cta-secondary:  var(--er-blue-2);
     --c-surface-quiet:  var(--er-grey-10);
 
@@ -1699,6 +1702,7 @@
 
     --c-text-secondary: var(--er-grey-8);
     --c-cta-text:       var(--er-blue-3);
+    --c-text-secondary-reversed: var(--er-blue-3);
     --c-cta-secondary:  var(--er-blue-5);
     --c-surface-quiet:  var(--er-grey-3);
 

@@ -43,7 +43,7 @@ colors:
   "UI/Text/Primary Text": { light: "{colors.greyscale-0}", dark: "{colors.greyscale-white}" }
   "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-dark-teal}" }
   "UI/Text/Secondary Text": { light: "{colors.greyscale-5}", dark: "{colors.greyscale-8}" }
-  "UI/Text/Secondary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-2}" }   # sits on the opposite surface, so it takes the other mode's background
+  "UI/Text/Secondary Text Reversed": { light: "{colors.blue-1}", dark: "{colors.blue-3}" }
   "UI/Text/Form Labels": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
   "UI/Text/Tabs": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
   "UI/Text/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }

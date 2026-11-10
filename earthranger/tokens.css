@@ -9,7 +9,7 @@
   --er-ui-text-primary-text: #0a3235;
   --er-ui-text-primary-text-reversed: #ffffff;
   --er-ui-text-secondary-text: #105257;
-  --er-ui-text-secondary-text-reversed: #faf2e9;
+  --er-ui-text-secondary-text-reversed: #ffffff;
   --er-ui-text-form-labels: #105257;
   --er-ui-text-tabs: #105257;
   --er-ui-text-disabled: #767676;
@@ -243,9 +243,9 @@
   --er-ui-background-elevated-component: #032629;
   --er-ui-background-selected-background: #105257;
   --er-ui-text-primary-text: #ffffff;
-  --er-ui-text-primary-text-reversed: #0a3235;
+  --er-ui-text-primary-text-reversed: #032629;
   --er-ui-text-secondary-text: #cfdcdd;
-  --er-ui-text-secondary-text-reversed: #105257;
+  --er-ui-text-secondary-text-reversed: #032629;
   --er-ui-text-form-labels: #ffffff;
   --er-ui-text-tabs: #ffffff;
   --er-ui-text-disabled: #888b8d;
