@@ -1154,6 +1154,7 @@
     --er-teal-darkest:    #02191b;
     --er-teal-dark-90:    #1c3c3e;
     --er-teal-dark-80:    #355154;
+    --er-teal-3-05:  #f2f9f9;
     --er-teal-t10:   #e7eeee;
     --er-teal-t20:   #cfdcdd;
     --er-teal-t30:   #b7cbcd;
@@ -1243,6 +1244,7 @@
        the default button and filter chips sit on. */
     --c-cta-text:      var(--er-white);
     --c-text-secondary-reversed: var(--er-white);
+    --c-bg-selected:   var(--er-teal-3-05);
     --c-cta-secondary: var(--er-teal-t100);
     --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
@@ -1565,7 +1567,8 @@
     --c-text-secondary: var(--er-teal-t20);
     --c-cta-secondary: var(--er-teal-t90);
     --c-cta-text: var(--er-off-white);
-    --c-text-secondary-reversed: var(--er-teal-extra-dark);
+    --c-text-secondary-reversed: var(--er-white);
+    --c-bg-selected: var(--er-teal-t100);
   }
   /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
      unlike the pale Teal/T20 secondary fill used in light mode. */
@@ -1596,9 +1599,10 @@
     background: var(--c-surface-quiet);
     color: var(--c-text);
   }
+  /* Hover is the shared int-default-hover fill with reversed text, as
+     it was before the default fill moved to Tertiary Background. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default:hover {
-    background: color-mix(in srgb, var(--c-surface-quiet), black 5%);
-    color: var(--c-text);
+    color: var(--c-text-reversed);
   }
 
   /* Destructive fills with Status Bg/Error and labels in
@@ -1611,16 +1615,29 @@
     background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
   }
 
-  /* Reversed outlined sits on a dark row, so it is a filled Elevated
-     Component box with a Divider Lines stroke rather than a ghost. */
+  /* Reversed outlined carries no fill: stroke and label both take the
+     opposite mode's primary text, which is what Text Primary Reversed
+     holds. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-reversed-out {
-    background: var(--c-surface);
-    border-color: var(--c-stroke);
-    color: var(--c-text);
+    background: transparent;
+    border-color: var(--c-text-reversed);
+    color: var(--c-text-reversed);
   }
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-reversed-out:hover {
-    background: var(--c-surface-quiet);
-    color: var(--c-text);
+    background: transparent;
+    color: var(--c-text-reversed);
+  }
+
+  /* Outlined default carries the Elevated Component fill, and every
+     outlined hover uses Background Selected. EarthRanger and SERCA
+     only -- ER Legacy keeps the ghost default and its own hovers. */
+  html[data-system="earthranger"] .btn-default-out {
+    background: var(--c-surface);
+  }
+  html[data-system="earthranger"] .btn-default-out:hover,
+  html[data-system="earthranger"] .btn-primary-out:hover,
+  html[data-system="earthranger"] .btn-secondary-out:hover {
+    background: var(--c-bg-selected);
   }
 
   /* The destructive row is hidden for systems that have no such button.
@@ -1665,6 +1682,7 @@
     --c-text-secondary: var(--er-grey-5);
     --c-cta-text:       var(--er-blue-1);
     --c-text-secondary-reversed: var(--er-blue-1);
+    --c-bg-selected:    var(--er-blue-4);
     --c-cta-secondary:  var(--er-blue-2);
     --c-surface-quiet:  var(--er-grey-10);
 
@@ -1705,6 +1723,7 @@
     --c-text-secondary: var(--er-grey-8);
     --c-cta-text:       var(--er-blue-3);
     --c-text-secondary-reversed: var(--er-blue-3);
+    --c-bg-selected:    var(--er-blue-5);
     --c-cta-secondary:  var(--er-blue-5);
     --c-surface-quiet:  var(--er-grey-3);
 
