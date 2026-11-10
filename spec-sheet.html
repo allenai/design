@@ -2705,7 +2705,7 @@ ALIASES["earthranger"] = {
     ["background/selected",      "teal-t100"],
     ["text/primary",             "white"],
     ["text/primary-reversed",    "teal-dark"],
-    ["text/secondary",           "off-white"],
+    ["text/secondary",           "teal-t20"],
     ["text/secondary-reversed",  "teal-t100"],
     ["text/form-labels",         "white"],
     ["text/tabs",                "white"],
@@ -3220,7 +3220,9 @@ function applyErMode(mode) {
   document.querySelectorAll(".er-mode-toggle button").forEach((btn) => {
     btn.setAttribute("aria-pressed", btn.dataset.erMode === mode ? "true" : "false");
   });
-  renderAliases("earthranger");
+  /* ER Legacy has an alias table of its own, so re-render the system that
+     is actually active rather than assuming EarthRanger. */
+  renderAliases(document.documentElement.dataset.system);
   renderErSections();
   bindMeta(document.documentElement.dataset.brand);
 }
