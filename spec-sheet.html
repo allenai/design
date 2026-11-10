@@ -1516,8 +1516,9 @@
 
     --c-outlined-primary-hover-bg: var(--er-green-5);
 
-    --btn-default-out-fg:        var(--c-int-default);
-    --btn-default-out-border:    var(--c-int-default);
+    /* Divider Lines and Primary Text, same as light. */
+    --btn-default-out-fg:        var(--c-text);
+    --btn-default-out-border:    var(--c-stroke);
     --btn-default-out-hover-bg:  var(--er-teal-t90);
     --btn-default-out-hover-fg:  var(--c-cream);
 
@@ -1560,11 +1561,6 @@
   /* The CTA Secondary fill is dark in both modes for EarthRanger and
      SERCA, so its text stays light rather than flipping. */
   html[data-system="earthranger"][data-er-mode="dark"] {
-    /* Outlined default takes Divider Lines for its stroke and Primary Text
-       for its label, as it does in light; the shared dark block points
-       both at int-default. */
-    --btn-default-out-border: var(--c-stroke);
-    --btn-default-out-fg:     var(--c-text);
     --c-text-reversed: var(--er-teal-extra-dark);
     /* Tertiary Background is Teal/Darkest in dark, so the quiet surface
        follows it rather than staying on the light-mode Teal/T10. */
