@@ -1105,6 +1105,7 @@
      the brand/secondary accent, and pink is never used.
   ──────────────────────────────────────────────────────────────── */
   .er-only { display: none; }
+  html[data-system="er-legacy"] .er-not-legacy { display: none !important; }
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-only { display: block; }
   /* .form-field and .paper-card need flex, not the generic block value above */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .form-field.er-only,
@@ -1769,18 +1770,18 @@
       </div>
       <div id="er-platform-fonts"></div>
 
-      <div class="subhead">UI headings and button labels</div>
+      <div class="subhead" id="er-ui-type-head">UI headings and button labels</div>
       <div id="er-ui-type-scale"></div>
 
-      <div class="subhead">External communications typography</div>
-      <div class="er-warning-note">
+      <div class="subhead er-not-legacy">External communications typography</div>
+      <div class="er-warning-note er-not-legacy">
         <strong>Not for UI.</strong> Manrope is for externally-facing communications only —
         slide decks, EarthRanger.com, email newsletters, and printed materials. Product
         interfaces always use Roboto for body text; never substitute Manrope in-app.
         Headings stay PP Telegraf everywhere, including external comms — only body text
         changes in this context.
       </div>
-      <div id="er-external-type-scale"></div>
+      <div id="er-external-type-scale" class="er-not-legacy"></div>
     </div>
 
     <div class="subhead">Spacing</div>
@@ -2970,9 +2971,17 @@ function renderAliases(systemKey) {
   `).join("");
 }
 
+/* ER Legacy is Roboto throughout with no line heights, and has neither
+   UI headings nor an external-comms scale. Derive its lists from the
+   shared ones so they cannot drift. */
+const isLegacy = () => document.documentElement.dataset.system === "er-legacy";
+const LEGACY_TYPE = () => TYPOGRAPHY.map(([n, f, size, w]) => [n, f === "Roboto Mono" ? f : "Roboto", size, w, "normal"]);
+const LEGACY_UI_TYPE = () => ER_UI_TYPE.filter(([n]) => n.startsWith("button-"));
+const LEGACY_PLATFORM_FONTS = () => ER_PLATFORM_FONTS.map(([p, body]) => [p, body, body]);
+
 function renderTypography() {
   const wrap = document.getElementById("type-scale");
-  wrap.innerHTML = TYPOGRAPHY.map(([name, family, size, weight, lh]) => `
+  wrap.innerHTML = (isLegacy() ? LEGACY_TYPE() : TYPOGRAPHY).map(([name, family, size, weight, lh]) => `
     <div class="type-row">
       <div class="type-label">${name}</div>
       <div class="type-spec">
@@ -3074,7 +3083,7 @@ function renderErDataViz() {
 }
 function renderErPlatformFonts() {
   const wrap = document.getElementById("er-platform-fonts");
-  wrap.innerHTML = ER_PLATFORM_FONTS.map(([platform, body, heading]) => `
+  wrap.innerHTML = (isLegacy() ? LEGACY_PLATFORM_FONTS() : ER_PLATFORM_FONTS).map(([platform, body, heading]) => `
     <div class="scale-row" style="grid-template-columns:110px 1fr 1fr;">
       <span class="scale-name">${platform}</span>
       <span class="type-meta">body: ${body}</span>
@@ -3083,8 +3092,10 @@ function renderErPlatformFonts() {
   `).join("");
 }
 function renderErUiType() {
+  const head = document.getElementById("er-ui-type-head");
+  if (head) head.textContent = isLegacy() ? "Button labels" : "UI headings and button labels";
   const wrap = document.getElementById("er-ui-type-scale");
-  wrap.innerHTML = ER_UI_TYPE.map(([name, family, size, weight]) => `
+  wrap.innerHTML = (isLegacy() ? LEGACY_UI_TYPE() : ER_UI_TYPE).map(([name, family, size, weight]) => `
     <div class="type-row">
       <div class="type-label">${name}</div>
       <div class="type-spec">
@@ -3157,6 +3168,11 @@ function applySystem(brandKey) {
   renderAliases(systemKey);
   renderRadii(systemKey);
   renderSpacing(systemKey);
+  /* ER Legacy's type scale, platform fonts and UI styles differ from the
+     shared ones, so these re-render on every switch rather than once. */
+  renderTypography();
+  renderErPlatformFonts();
+  renderErUiType();
 }
 
 /* EarthRanger's Light/Dark toggle is independent of the system picker —

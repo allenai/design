@@ -88,14 +88,14 @@ colors:
 
   # Data Visualization — Categorical (mode-specific: dark values are the
   # brighter/darker counterparts; slots 6–10 swap the light/dark steps)
-  "UI/Data/Categorical/Category 1": { light: "{colors.indigo-2}", dark: "{colors.indigo-2}" }   # the legacy frame draws this scale once, not per mode
-  "UI/Data/Categorical/Category 2": { light: "{colors.green-9}", dark: "{colors.green-9}" }   # the legacy frame draws this scale once, not per mode
-  "UI/Data/Categorical/Category 3": { light: "{colors.teal-4}", dark: "{colors.teal-4}" }   # the legacy frame draws this scale once, not per mode
+  "UI/Data/Categorical/Category 1": { light: "{colors.teal-4}", dark: "{colors.teal-5}" }
+  "UI/Data/Categorical/Category 2": { light: "{colors.indigo-2}", dark: "{colors.indigo-3}" }
+  "UI/Data/Categorical/Category 3": { light: "{colors.green-9}", dark: "{colors.green-10}" }
   "UI/Data/Categorical/Category 4": { light: "{colors.magenta-2}", dark: "{colors.magenta-3}" }
   "UI/Data/Categorical/Category 5": { light: "{colors.yellow-2}", dark: "{colors.yellow-4}" }
   "UI/Data/Categorical/Category 6": { light: "{colors.teal-5}", dark: "{colors.teal-4}" }
-  "UI/Data/Categorical/Category 7": { light: "{colors.green-10}", dark: "{colors.green-10}" }   # the legacy frame draws this scale once, not per mode
-  "UI/Data/Categorical/Category 8": { light: "{colors.indigo-3}", dark: "{colors.indigo-3}" }   # the legacy frame draws this scale once, not per mode
+  "UI/Data/Categorical/Category 7": { light: "{colors.indigo-3}", dark: "{colors.indigo-2}" }
+  "UI/Data/Categorical/Category 8": { light: "{colors.green-10}", dark: "{colors.green-9}" }
   "UI/Data/Categorical/Category 9": { light: "{colors.yellow-4}", dark: "{colors.yellow-2}" }
   "UI/Data/Categorical/Category 10": { light: "{colors.magenta-3}", dark: "{colors.magenta-2}" }
 
@@ -247,57 +247,42 @@ typography:
       ios: SF Pro
       android: Roboto
     heading:
-      web-fonts: PP Telegraf
+      web-fonts: Roboto
       windows: Arial
       ios: SF Pro
       android: Roboto
 
-  # ── Strata Text Styles ────────────────────────────────────────────
-  # Shared scale (0 letter-spacing, no text-transform on any style).
-  # Display & Headings: PP Telegraf Bold. Body: Roboto Regular.
+  # ── Text Styles ───────────────────────────────────────────────────
+  # One Roboto scale. Headings and body share a family and differ only by
+  # weight and size.
+  # No style sets a line height: the layout decides. 0 letter-spacing and
+  # no text-transform throughout.
   display:
-    fontFamily: PP Telegraf
+    fontFamily: Roboto
     fontStyle: Bold
     fontSize: 48px
-    lineHeight: 52.8px
 
   heading-xl:
-    fontFamily: PP Telegraf
+    fontFamily: Roboto
     fontStyle: Bold
     fontSize: 40px
-    lineHeight: 48px
 
   heading-lg:
-    fontFamily: PP Telegraf
+    fontFamily: Roboto
     fontStyle: Bold
     fontSize: 32px
-    lineHeight: 38.4px
 
   heading-md:
-    fontFamily: PP Telegraf
+    fontFamily: Roboto
     fontStyle: Bold
     fontSize: 24px
-    lineHeight: 31.2px
 
   heading-sm:
-    fontFamily: PP Telegraf
+    fontFamily: Roboto
     fontStyle: Bold
     fontSize: 20px
-    lineHeight: 28px
 
-  # UI headings: Roboto Medium, for headings inside product UI. No
-  # line-height set (Figma uses auto) — the layout decides.
-  heading-ui-lg:
-    fontFamily: Roboto
-    fontWeight: 500
-    fontSize: 32px
-
-  heading-ui-md:
-    fontFamily: Roboto
-    fontWeight: 500
-    fontSize: 24px
-
-  # Button labels: Roboto SemiBold. No line-height set (Figma uses auto).
+  # Button labels: Roboto SemiBold.
   button-sm:
     fontFamily: Roboto
     fontWeight: 600
@@ -312,60 +297,28 @@ typography:
     fontFamily: Roboto
     fontStyle: Regular
     fontSize: 18px
-    lineHeight: 28.8px
 
   body-md:
     fontFamily: Roboto
     fontStyle: Regular
     fontSize: 16px
-    lineHeight: 25.6px
 
   body-sm:
     fontFamily: Roboto
     fontStyle: Regular
     fontSize: 14px
-    lineHeight: 21px
 
   body-xs:
     fontFamily: Roboto
     fontStyle: Regular
     fontSize: 12px
-    lineHeight: 18px
 
   # ── Monospace ─────────────────────────────────────────────────────
   mono:
     fontFamily: Roboto Mono
     fontStyle: Regular
     fontSize: 14px
-    lineHeight: 22.4px
 
-  # ── External Communications (NOT for product UI) ──────────────────
-  # Manrope, body text only. Scope: slide decks, EarthRanger.com, email
-  # newsletters, printed materials. Headings in these contexts still use
-  # PP Telegraf (see Strata Text Styles above) — only body text changes.
-  external-comms-body-lg:
-    fontFamily: Manrope
-    fontStyle: Regular
-    fontSize: 18px
-    lineHeight: 28.8px
-
-  external-comms-body-md:
-    fontFamily: Manrope
-    fontStyle: Regular
-    fontSize: 16px
-    lineHeight: 25.6px
-
-  external-comms-body-sm:
-    fontFamily: Manrope
-    fontStyle: Regular
-    fontSize: 14px
-    lineHeight: 21px
-
-  external-comms-body-xs:
-    fontFamily: Manrope
-    fontStyle: Regular
-    fontSize: 12px
-    lineHeight: 18px
 ---
 
 ## Overview
@@ -376,13 +329,15 @@ EarthRanger is used by a broad range of conservation professionals: protected ar
 
 The design language prioritizes **usability and data security above all else**. EarthRanger is trustworthy, innovative, and approachable. Every interface decision should reinforce that the platform is reliable and built for serious work — without being intimidating or opaque.
 
-**ER Legacy is the EarthRanger palette as it stood before the design-system adoption.** It is a color variant of EarthRanger, not a separate product: the voice, typography, iconography, logos, and layout are EarthRanger's, and only the color tokens differ. It exists so surfaces that need continuity can keep the colors their users already know while the rest of the design system moves forward.
+**ER Legacy is a bridge, not a fork.** EarthRanger Web adopted the design tokens and was repainted in the new palette in a single step — blue calls to action became green, grey neutrals became teal, blue selection became teal. The architecture was the win; landing the whole palette change at the same moment was more than the product was ready for.
 
-ER Legacy and EarthRanger are two skins over the same components. **Every token has the same name in both**, so a screen specced against one works against the other without a single redline changing — `UI/CTA Primary` is still `UI/CTA Primary`, it simply resolves to blue here and green there. That is what makes moving a product between them a palette swap rather than a redesign.
+ER Legacy separates those two things. A product takes the token architecture now and the new colors when it suits, keeping the palette its users already know in the meantime. Every value still flows through the same named tokens EarthRanger uses, so nothing is hard-coded and nothing has to be unpicked later.
 
-The flip side is that a product picks one and stays on it, the way you would not run two themes on the same screen. There is no blending the two, and no screen that is half of each.
+**The second step is the point.** Because the two palettes share every token name, moving a product onto the EarthRanger palette is a matter of which token file it loads — no redline changes, no component is touched, no screen is redesigned. `UI/CTA Primary` is still `UI/CTA Primary`; it simply resolves to blue here and green there. A product adopts ER Legacy to make that move cheap, not to avoid it.
 
-Use it where continuity matters more than alignment — an established interface whose users navigate by color, or a release where a palette change would land alongside other disruption. New surfaces should use EarthRanger. This spec records a palette that already existed so it can be versioned, shared, and changed in one place rather than hand-maintained per application; it is not a design direction, and anything that improves here should usually improve in EarthRanger too.
+The flip side is that a product picks one and stays on it until it switches, the way you would not run two themes on the same screen. There is no blending the two, and no screen that is half of each.
+
+Use it where a palette change would land alongside other disruption, or where users navigate by color and need continuity while they learn the rest. New surfaces should use EarthRanger. Anything that improves here should usually improve in EarthRanger too — this is a staging post, not a design direction.
 
 ## Colors
 
@@ -402,7 +357,7 @@ Teal remains available as a primitive and is still used by `UI/Patrol Status/Sch
 
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light) for text or icon marks that sit directly on a filled CTA or other saturated surface. Pink is not part of the EarthRanger palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
 
-For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute brand colors. Tracks and sequential are intentionally identical in Light and Dark mode; categorical uses a separate value per mode, so always resolve it through the token rather than copying a hex. ER Legacy reorders the categorical scale relative to EarthRanger but uses the same values.
+For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute brand colors. **The data scales are EarthRanger's, unchanged**, including the separate light and dark values on categorical. Tracks and sequential are intentionally identical in both modes. Always resolve a data color through its token rather than copying a hex, so a chart built in ER Legacy keeps working when a product moves to EarthRanger.
 
 ### Dark mode
 
@@ -410,36 +365,32 @@ ER Legacy's dark mode is a **greyscale ladder, not EarthRanger's teal one**. Bac
 
 The CTA lightens from `Blue/1` to `Blue/3` (`#76b0ff`); the secondary blue moves from `Blue/2` to `Blue/5` (`#2a394d`). Status and priority colors shift to lighter, softer steps so they read on a dark surface without glowing: error to `Red/5`, warning and amber to `Amber/5`, success to `Green/4`, event-priority green to `Green/2`, patrol active to `Indigo/5`, and patrol overdue to `Magenta/4`.
 
-Unlike EarthRanger, the categorical data scale is **mode-stable** — the legacy frame draws it once rather than once per mode, so the same values serve both.
-
 Three tokens have no value in the legacy frame in either mode, and the values given are proposed rather than drawn: tertiary background, selected background, and reversed secondary text. Each is marked in the frontmatter.
 
 ## Typography
 
-ER Legacy shares EarthRanger's typography exactly — the unified Strata text-style scale (Display, Heading XL/LG/MD/SM, Body LG/MD/SM/XS, and Mono) rather than separate per-platform scales. What changes per platform is only the **font-family**, via the `platform.body` and `platform.heading` tokens:
+ER Legacy is **Roboto throughout** — headings and body share one family and differ only by weight and size. There is no separate heading face.
 
 | Platform | Body | Heading |
 | --- | --- | --- |
-| Web Fonts | Roboto | PP Telegraf |
+| Web Fonts | Roboto | Roboto |
 | Windows | Arial | Arial |
 | iOS | SF Pro | SF Pro |
 | Android | Roboto | Roboto |
 
-**PP Telegraf font files and license:** the font files, along with the Ai2 font license README for PP Telegraf, are in this [Google Drive folder](https://drive.google.com/drive/folders/1GQnBozz9Gbsevr7vuj_BQ4WdiSY1hyzl?usp=drive_link). Read the license README before using or distributing the font.
+Always reference a text-style token (e.g. `body-md`, `heading-lg`) rather than hardcoding font properties — the platform's font-family resolves automatically. `body-md` (16px) is the default reading size. All styles use 0 letter-spacing and no text-transform.
 
-Always reference a text-style token (e.g. `body-md`, `heading-lg`) rather than hardcoding font properties directly — the platform's font-family resolves automatically. `body-md` (16px / 25.6px line height) is the default reading size. All styles use 0 letter-spacing and no text-transform.
+**No style sets a line height.** The layout decides, so the same token can sit in a dense table row and a roomy card without fighting either.
 
-Two groups sit alongside the PP Telegraf Display/Heading scale: `heading-ui-lg` (32px) and `heading-ui-md` (24px) are Roboto Medium headings, and `button-sm` (18px) and `button-xs` (16px) are Roboto SemiBold styles for button labels. Unlike the other styles they don't set a line height.
+The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, and two button labels (`button-sm` 18px, `button-xs` 16px, Roboto SemiBold). Display and Headings are Bold; Body and Mono are Regular.
 
 ### Fallback stack (performance)
 
 EarthRanger is used in low-bandwidth field conditions where a delayed web font can mean delayed information in high-stakes moments (active patrols, incident response). Always pair the web font with a fast, native fallback — never a generic one. See Do's and Don'ts below for the full performance checklist.
 
-### External communications (Manrope) — not for UI
+### Externally-facing communications
 
-Manrope is a typographic option for **externally-facing communications only**: slide decks, EarthRanger.com, email newsletters, and printed materials. It is **never** used in product UI — product interfaces always use Roboto for body text via the `platform.body` tokens above.
-
-Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`external-comms-body-lg/md/sm/xs`, same sizes/line-heights as the UI Body scale). Headings in external communications still use PP Telegraf, exactly as in product UI — do not substitute Manrope for headings, with one exception: slide decks, which use Manrope for everything.
+ER Legacy covers **product UI only**. For websites, slide decks, newsletters and printed materials, see SERCA, which owns the Alliance's externally-facing identity and type.
 
 ## Icons
 
@@ -461,16 +412,6 @@ Scope is deliberately narrow: Manrope replaces Roboto for **body text only** (`e
 - **Usage:** Use these for domain-specific concepts not covered by Material (e.g. Patrol, Spoor, Basemap, Fence, Wildlife Sighting, GPS, Report, Observation Patrol, Deforestation, etc.)
 - **Variants:** Some icons have filled/outline or state variants (e.g. Cloud Online/Offline, Eye Open/Closed, Active/Inactive, Download states) — use the variant that matches the design exactly
 - **Note:** The ER icon library references Material Design as its base — for any icon not listed as a custom symbol, search the Material Design library
-
-### Library 3: ER Google Slides Template
-
-- **Source:** [EarthRanger Slide Template](https://docs.google.com/presentation/d/1rm7CEqJaps473VlnG1n8CIznZONLk7yXBwCNGfKg0CE/edit?usp=sharing) — MAKE A COPY
-- **Backup:** If you cannot access the URL above, reference the PDF export at `earthranger/assets/EarthRanger-Slide-Template.pdf` to recreate the template.
-- **Usage:** Starting point for external-facing slide decks (see Typography's External Communications section — Manrope, not Roboto, for body text in this context)
-- **Note:** Always duplicate the template rather than editing the source file directly. When asked to make a deck, copy the template, build from its layouts, and apply the rules below.
-- **Fonts:** Manrope for everything in slide decks, headings included — decks are the exception to PP Telegraf headings
-- **Layouts:** Add slides from the Layout menu so titles keep the same placement, font and size on every slide
-- **Content:** About 3 bullets max per slide. Put detail in speaker notes, not on the slide
 
 ## Do's and Don'ts
 
