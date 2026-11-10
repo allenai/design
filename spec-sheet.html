@@ -1558,6 +1558,7 @@
   /* The CTA Secondary fill is dark in both modes for EarthRanger and
      SERCA, so its text stays light rather than flipping. */
   html[data-system="earthranger"][data-er-mode="dark"] {
+    --c-text-reversed: var(--er-teal-extra-dark);
     /* Tertiary Background is Teal/Darkest in dark, so the quiet surface
        follows it rather than staying on the light-mode Teal/T10. */
     --c-surface-quiet: var(--er-teal-darkest);
@@ -1692,8 +1693,9 @@
     --c-link:               var(--er-blue-3);
     --c-link-reversed:      var(--er-blue-1);
 
-    --c-surface:        var(--er-grey-2);
+    --c-surface:        var(--er-grey-3);
     --c-surface-strong: var(--er-grey-3);
+    --c-text-reversed:  var(--er-teal-dark);
     --c-input-bg:       var(--er-grey-2);
     --c-input-disabled-bg: var(--er-grey-1);
 
