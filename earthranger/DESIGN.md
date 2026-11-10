@@ -51,7 +51,7 @@ colors:
   # Actions
   "UI/CTA Primary": { light: "{colors.green-12}", dark: "{colors.green-7}" }
   "UI/CTA Secondary": { light: "{colors.teal-t100}", dark: "{colors.teal-t90}" }
-  "UI/CTA Text": { light: "{colors.green-12}", dark: "{colors.green-7}" }   # text and marks on a CTA Secondary fill
+  "UI/CTA Text": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-off-white}" }   # text and marks on a CTA Secondary fill
 
   # Status
   "UI/Status/Error-Destructive": { light: "{colors.red-3}", dark: "{colors.red-5}" }

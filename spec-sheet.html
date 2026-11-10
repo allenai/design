@@ -1241,7 +1241,7 @@
     --c-chip-default-bg: var(--c-int-default);
     /* Text and marks on a CTA Secondary fill, and the quiet grey
        the default button and filter chips sit on. */
-    --c-cta-text:      var(--er-green-12);
+    --c-cta-text:      var(--er-white);
     --c-cta-secondary: var(--er-teal-t100);
     --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
@@ -1543,6 +1543,13 @@
   }
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-primary-out:hover {
     color: var(--c-cream);
+  }
+
+  /* The CTA Secondary fill is dark in both modes for EarthRanger and
+     SERCA, so its text stays light rather than flipping. */
+  html[data-system="earthranger"][data-er-mode="dark"] {
+    --c-cta-secondary: var(--er-teal-t90);
+    --c-cta-text: var(--er-off-white);
   }
   /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
      unlike the pale Teal/T20 secondary fill used in light mode. */
