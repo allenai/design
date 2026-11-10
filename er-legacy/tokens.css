@@ -3,7 +3,7 @@
 [data-theme="light"] {
   --er-ui-background-primary-background: #ffffff;
   --er-ui-background-secondary-background: #f9f9f9;
-  --er-ui-background-tertiary-background: #f9f9f9;
+  --er-ui-background-tertiary-background: #f3f3f3;
   --er-ui-background-elevated-component: #ffffff;
   --er-ui-background-selected-background: #f4f7fd;
   --er-ui-text-primary-text: #000000;
@@ -201,7 +201,7 @@
 [data-theme="dark"] {
   --er-ui-background-primary-background: #222222;
   --er-ui-background-secondary-background: #111111;
-  --er-ui-background-tertiary-background: #111111;
+  --er-ui-background-tertiary-background: #333333;
   --er-ui-background-elevated-component: #333333;
   --er-ui-background-selected-background: #2a394d;
   --er-ui-text-primary-text: #ffffff;
