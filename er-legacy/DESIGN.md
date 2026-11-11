@@ -40,7 +40,7 @@ colors:
   "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
   "UI/Background/Tertiary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }   # quiet surfaces: filter chips, map controls, read-only fields
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
-  "UI/Background/Elevated Component 0": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-3}" }
+  "UI/Background/Elevated Component 0": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-2}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
 
   # Text
@@ -86,7 +86,7 @@ colors:
 
   # Patrol Status
   "UI/Patrol Status/Active": { light: "{colors.indigo-2}", dark: "{colors.indigo-5}" }
-  "UI/Patrol Status/Paused": { light: "{colors.yellow-2}", dark: "{colors.yellow-2}" }
+  "UI/Patrol Status/Paused": { light: "{colors.yellow-2}", dark: "{colors.yellow-3}" }
   "UI/Patrol Status/Overdue": { light: "{colors.magenta-2}", dark: "{colors.magenta-4}" }
   "UI/Patrol Status/Scheduled": { light: "{colors.teal-1}", dark: "{colors.teal-2}" }
   "UI/Patrol Status/Track Line (Mobile)": { light: "{colors.amber-3}", dark: "{colors.amber-3}" }
@@ -361,7 +361,7 @@ The data scales — categorical, tracks and sequential — are **EarthRanger's, 
 
 ### Dark mode
 
-A **greyscale ladder, not EarthRanger's teal one.** Secondary and tertiary backgrounds sit on black, primary and elevated on `Greyscale/1`, and `Greyscale/3` is the Elevated Component 0 band. Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/3` and field outlines to `Greyscale/4`.
+A **greyscale ladder, not EarthRanger's teal one.** Secondary and tertiary backgrounds sit on black, primary and elevated on `Greyscale/1`, and `Greyscale/2` is the Elevated Component 0 band. Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/3` and field outlines to `Greyscale/4`.
 
 The CTA lightens to `Blue/3` and the secondary blue deepens to `Blue/5`. Status and priority colors move to softer steps so they read without glowing: error `Red/5`, warning `Amber/5`, success `Green/4`, priority green `Green/2`, patrol active `Indigo/5`, overdue `Magenta/4`.
 

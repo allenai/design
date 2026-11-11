@@ -212,7 +212,7 @@
   --er-ui-background-secondary-background: #000000;
   --er-ui-background-tertiary-background: #000000;
   --er-ui-background-elevated-component: #111111;
-  --er-ui-background-elevated-component-0: #333333;
+  --er-ui-background-elevated-component-0: #222222;
   --er-ui-background-selected-background: #2a394d;
   --er-ui-text-primary-text: #ffffff;
   --er-ui-text-primary-text-reversed: #111111;
@@ -242,6 +242,7 @@
   --er-ui-event-priority-red: #f06374;
   --er-ui-event-priority-amber: #fd9964;
   --er-ui-patrol-status-active: #867ede;
+  --er-ui-patrol-status-paused: #ffb700;
   --er-ui-patrol-status-overdue: #e76eb3;
   --er-ui-patrol-status-scheduled: #62bfd0;
   --er-ui-patrol-status-done-mobile: #888b8d;

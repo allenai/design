@@ -275,6 +275,7 @@
   --serca-ui-event-priority-red: #f06374;
   --serca-ui-event-priority-amber: #fd9964;
   --serca-ui-patrol-status-active: #867ede;
+  --serca-ui-patrol-status-paused: #ffb700;
   --serca-ui-patrol-status-overdue: #e76eb3;
   --serca-ui-patrol-status-scheduled: #62bfd0;
   --serca-ui-patrol-status-done-mobile: #888b8d;
