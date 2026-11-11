@@ -1141,6 +1141,7 @@
     --er-grey-8:    #b1b3b3;
     --er-grey-9:    #dddddd;
     --er-grey-10:   #f3f3f3;
+    --er-grey-11:   #f9f9f9;
     --er-off-white: #faf2e9;
     --er-white:     #ffffff;
 
@@ -1262,6 +1263,7 @@
 
     --c-surface:        var(--er-white);                /* Primary Background */
     --c-surface-strong: var(--er-white);                /* Elevated Component */
+    --c-surface-elevated-0: var(--er-grey-11);          /* Elevated Component 0 */
     --c-stroke:         var(--er-teal-t20);             /* Divider Lines */
     --c-field-outline:  var(--er-teal-t30);             /* Field Outline */
     --c-icon:           var(--er-teal-t80);             /* Icons */
@@ -1515,6 +1517,7 @@
 
     --c-surface:        var(--er-teal-extra-dark);       /* Primary Background, dark */
     --c-surface-strong: var(--er-teal-extra-dark);       /* Elevated Component, dark */
+    --c-surface-elevated-0: var(--er-teal-dark);         /* Elevated Component 0, dark */
     --c-stroke:         var(--er-teal-dark-90);         /* Divider Lines, dark */
     --c-field-outline:  var(--er-teal-dark-80);         /* Field Outline, dark */
     --c-btn-disabled-bg: var(--er-grey-7);              /* Disabled, dark */
@@ -1657,16 +1660,16 @@
   }
 
   /* The button grid is a card lifted off the page, so it takes Elevated
-     Component, and its header and row labels take the quiet Tertiary
-     surface. The generic rules have these the other way round, which left
-     the header band invisible in every ER palette. */
+     Component, and its header and row labels the banded Elevated
+     Component 0. The generic rules have these the other way round, which
+     left the header band invisible in every ER palette. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable {
     background: var(--c-surface-strong);
   }
 
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable .head,
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable .row-label:not(.reversed-cell) {
-    background: var(--c-surface-quiet);
+    background: var(--c-surface-elevated-0);
   }
 
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default,
@@ -1696,6 +1699,7 @@
   html[data-system="er-legacy"] .btn-disabled,
   html[data-brand="serca"] .btn-disabled {
     background: var(--c-surface-quiet);
+    border: 1px solid var(--c-field-outline);
     color: var(--c-text-disabled);
   }
 
@@ -1741,7 +1745,6 @@
     --er-grey-1:  #111111;
     --er-grey-2:  #222222;
     --er-grey-4:  #444444;
-    --er-grey-11: #f9f9f9;
     --er-blue-4:  #f4f7fd;
 
     --c-bg:               var(--er-grey-11);
@@ -1771,6 +1774,7 @@
     --c-bg-selected:    var(--er-blue-4);
     --c-cta-secondary:  var(--er-blue-2);
     --c-surface-quiet:  var(--er-grey-10);
+    --c-surface-elevated-0: var(--er-grey-10);           /* Elevated Component 0 */
 
     --c-stroke:         var(--er-grey-9);
     --c-field-outline:  var(--er-grey-8);
@@ -1799,6 +1803,7 @@
 
     --c-surface:        var(--er-grey-1);                 /* Primary Background */
     --c-surface-strong: var(--er-grey-1);                 /* Elevated Component */
+    --c-surface-elevated-0: var(--er-grey-3);             /* Elevated Component 0 */
     --c-text-reversed:  var(--er-grey-1);                 /* Primary Text Reversed */
     --c-input-bg:       var(--er-grey-1);                 /* Elevated Component */
 
@@ -2816,11 +2821,12 @@ ALIASES["earthranger"] = {
     ["background/secondary",     "off-white"],
     ["background/tertiary",      "teal-t10"],
     ["background/elevated",      "white"],
+    ["background/elevated-0",    "grey-11"],
     ["background/selected",      "teal-3-05"],
     ["text/primary",             "teal-dark"],
     ["text/primary-reversed",    "white"],
     ["text/secondary",           "teal-t100"],
-    ["text/secondary-reversed",  "off-white"],
+    ["text/secondary-reversed",  "white"],
     ["text/form-labels",         "teal-t100"],
     ["text/tabs",                "teal-t100"],
     ["text/disabled",            "grey-6"],
@@ -2862,11 +2868,12 @@ ALIASES["earthranger"] = {
     ["background/secondary",     "teal-darkest"],
     ["background/tertiary",      "teal-darkest"],
     ["background/elevated",      "teal-extra-dark"],
+    ["background/elevated-0",    "teal-dark"],
     ["background/selected",      "teal-t100"],
     ["text/primary",             "white"],
-    ["text/primary-reversed",    "teal-dark"],
+    ["text/primary-reversed",    "teal-extra-dark"],
     ["text/secondary",           "teal-t20"],
-    ["text/secondary-reversed",  "teal-t100"],
+    ["text/secondary-reversed",  "white"],
     ["text/form-labels",         "white"],
     ["text/tabs",                "white"],
     ["text/disabled",            "grey-7"],
@@ -2911,11 +2918,12 @@ ALIASES["earthranger"] = {
 const ER_LEGACY_ALIASES = {
   light: {
     "background/secondary": "grey-11",
-    "background/tertiary": "grey-11",
+    "background/tertiary": "grey-10",
+    "background/elevated-0": "grey-10",
     "background/selected": "blue-4",
     "text/primary": "grey-0",
     "text/secondary": "grey-5",
-    "text/secondary-reversed": "white",
+    "text/secondary-reversed": "blue-1",
     "text/form-labels": "grey-6",
     "text/tabs": "grey-6",
     "icons": "grey-5",
@@ -2923,24 +2931,23 @@ const ER_LEGACY_ALIASES = {
     "divider-lines": "grey-9",
     "cta-primary": "blue-1",
     "cta-secondary": "blue-2",
-    "status/success": "green-3",
-    "brand/accent-green": "green-7",
-    "brand/background/primary": "off-white",
-    "brand/background/secondary": "white"
+    "status/success": "green-3"
   },
   dark: {
-    "background/primary": "grey-2",
-    "background/secondary": "grey-1",
-    "background/tertiary": "grey-1",
-    "background/elevated": "grey-3",
+    "background/primary": "grey-1",
+    "background/secondary": "grey-0",
+    "background/tertiary": "grey-0",
+    "background/elevated": "grey-1",
+    "background/elevated-0": "grey-3",
     "background/selected": "blue-5",
+    "text/primary-reversed": "grey-1",
     "text/secondary": "grey-8",
-    "text/secondary-reversed": "grey-2",
+    "text/secondary-reversed": "blue-3",
     "text/form-labels": "grey-7",
     "text/tabs": "grey-7",
     "icons": "grey-7",
-    "field-outline": "grey-3",
-    "divider-lines": "grey-5",
+    "field-outline": "grey-4",
+    "divider-lines": "grey-3",
     "cta-primary": "blue-3",
     "cta-secondary": "blue-5"
   }

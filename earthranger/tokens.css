@@ -5,6 +5,7 @@
   --er-ui-background-secondary-background: #faf2e9;
   --er-ui-background-tertiary-background: #e7eeee;
   --er-ui-background-elevated-component: #ffffff;
+  --er-ui-background-elevated-component-0: #f9f9f9;
   --er-ui-background-selected-background: #f2f9f9;
   --er-ui-text-primary-text: #0a3235;
   --er-ui-text-primary-text-reversed: #ffffff;
@@ -241,6 +242,7 @@
   --er-ui-background-secondary-background: #02191b;
   --er-ui-background-tertiary-background: #02191b;
   --er-ui-background-elevated-component: #032629;
+  --er-ui-background-elevated-component-0: #0a3235;
   --er-ui-background-selected-background: #105257;
   --er-ui-text-primary-text: #ffffff;
   --er-ui-text-primary-text-reversed: #032629;
