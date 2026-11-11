@@ -10,10 +10,15 @@ assets:
   logo-white-horizontal: assets/EarthRanger-logo-White-H.svg
   logo-icon: assets/EarthRanger-Logo-icon.svg
   logo-icon-white: assets/EarthRanger-Logo-icon-white.svg
-  logo-ai2: assets/EarthRanger-Logo_Ai2.svg
-  logo-ai2-horizontal: assets/EarthRanger-Logo_Ai2-H.svg
-  logo-ai2-white: assets/EarthRanger-Logo_Ai2-white.svg
-  logo-ai2-white-horizontal: assets/EarthRanger-Logo_Ai2-white-H.svg
+  # The 2026 by-Ai2 lockups. The -short variants scale the by-Ai2 mark up
+  # relative to the EarthRanger wordmark, so the attribution stays legible
+  # when the logo is small: use them below 56px of rendered logo height.
+  logo-ai2: assets/EarthRanger-Logo-2026_Ai2.svg
+  logo-ai2-horizontal: assets/EarthRanger-Logo-2026_Ai2-H.svg
+  logo-ai2-horizontal-short: assets/EarthRanger-Logo-2026_Ai2-H-short.svg
+  logo-ai2-white: assets/EarthRanger-Logo-2026_Ai2-white.svg
+  logo-ai2-white-horizontal: assets/EarthRanger-Logo-2026_Ai2-white-H.svg
+  logo-ai2-white-horizontal-short: assets/EarthRanger-Logo-2026_Ai2-white-H-short.svg
 
 colors:
   # ── Semantic UI Tokens ────────────────────────────────────────────
@@ -25,20 +30,23 @@ colors:
   # tokens shift to lighter/more-saturated primitive steps for contrast.
 
   # Background
-  # Dark-mode surfaces form one continuous teal ladder — Secondary/Tertiary
-  # (darkest) → Primary/Elevated → Selected (lightest) — rather than mixing
-  # in grey.
-  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
-  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-darkest}" }
+  # Listed from the quietest surface to the most forward: the page sits on
+  # Tertiary or Secondary, Elevated Component 0 is the banded sub-surface
+  # inside a panel (a table header, a row label), and Elevated and Primary
+  # are the panel itself. Dark mode runs one continuous teal ladder rather
+  # than mixing in grey.
   "UI/Background/Tertiary Background": { light: "{colors.teal-t10}", dark: "{colors.teal-darkest}" }
+  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white-50}", dark: "{colors.teal-darkest}" }
+  "UI/Background/Elevated Component 0": { light: "{colors.greyscale-11}", dark: "{colors.teal-ai2-dark-teal}" }
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
+  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Background/Selected Background": { light: "{colors.teal-3-05}", dark: "{colors.teal-t100}" }
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
-  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-dark-teal}" }
-  "UI/Text/Secondary Text": { light: "{colors.teal-t100}", dark: "{colors.greyscale-off-white}" }
-  "UI/Text/Secondary Text Reversed": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-t100}" }
+  "UI/Text/Primary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
+  "UI/Text/Secondary Text": { light: "{colors.teal-t100}", dark: "{colors.teal-t20}" }
+  "UI/Text/Secondary Text Reversed": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-white}" }
   "UI/Text/Form Labels": { light: "{colors.teal-t100}", dark: "{colors.greyscale-white}" }
   "UI/Text/Tabs": { light: "{colors.teal-t100}", dark: "{colors.greyscale-white}" }
   "UI/Text/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
@@ -50,7 +58,8 @@ colors:
 
   # Actions
   "UI/CTA Primary": { light: "{colors.green-12}", dark: "{colors.green-7}" }
-  "UI/CTA Secondary Blue": { light: "{colors.teal-t20}", dark: "{colors.teal-t90}" }
+  "UI/CTA Secondary": { light: "{colors.teal-t100}", dark: "{colors.teal-t90}" }
+  "UI/CTA Text": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-off-white}" }   # text and marks on a CTA Secondary fill
 
   # Status
   "UI/Status/Error-Destructive": { light: "{colors.red-3}", dark: "{colors.red-5}" }
@@ -76,6 +85,7 @@ colors:
 
   # Patrol Status
   "UI/Patrol Status/Active": { light: "{colors.indigo-2}", dark: "{colors.indigo-5}" }
+  "UI/Patrol Status/Paused": { light: "{colors.yellow-2}", dark: "{colors.yellow-3}" }
   "UI/Patrol Status/Overdue": { light: "{colors.magenta-2}", dark: "{colors.magenta-4}" }
   "UI/Patrol Status/Scheduled": { light: "{colors.teal-1}", dark: "{colors.teal-2}" }
   "UI/Patrol Status/Track Line (Mobile)": { light: "{colors.amber-3}", dark: "{colors.amber-3}" }
@@ -142,6 +152,7 @@ colors:
   greyscale-10: "#f3f3f3"
   greyscale-11: "#f9f9f9"
   greyscale-off-white: "#faf2e9"
+  greyscale-off-white-50: "#fdf9f4"
   greyscale-white: "#ffffff"
 
   # Blue
@@ -380,7 +391,7 @@ Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw prim
 
 The primary interactive color is `UI/CTA Primary` (`#0f865d` light / `#0fcb8c` dark, Green/12 and Green/7) — used for calls to action, links, and active states. Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Blue (`UI/Status/Running`) covers in-progress state and general informational messaging — notices, tips, and neutral callouts — but it is not an interactive color: use `UI/CTA Primary` for buttons, links, and active states.
 
-Teal (`Teal/T100`, `#105257` light / `#faf2e9` off-white text on `Teal/T100` dark surfaces) is the primary brand accent and appears in navigation, headers, form labels/tabs, and `UI/CTA Secondary Blue`. `Brand/Accent Green` (`#0f865d` light / `#0fcb8c` dark) shares its values with `UI/CTA Primary` — they're the same brand-accent green.
+Teal (`Teal/T100`, `#105257` light / `#faf2e9` off-white text on `Teal/T100` dark surfaces) is the primary brand accent and appears in navigation, headers, form labels/tabs, and `UI/CTA Secondary`. `Brand/Accent Green` (`#0f865d` light / `#0fcb8c` dark) shares its values with `UI/CTA Primary` — they're the same brand-accent green.
 
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#0a3235` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a brand-teal surface, such as a filled default-intent button or a checked control's mark. Teal is a mid-tone in light mode but becomes a pale tint in dark mode, so a fixed light color reads fine in light mode but disappears in dark mode — this token flips with the mode so it always contrasts against the surface it's on.
 

@@ -1062,19 +1062,19 @@
   /* EarthRanger's own Alerts demo — Ready/Success/Warning/Running/
      Destructive/Disabled, tied to its own Status tokens instead of
      Strata's generic info/success/warning/error colors. */
-  html[data-system="earthranger"] .alert.success { border-left-color: var(--c-status-success); }
-  html[data-system="earthranger"] .alert.success .icon { background: var(--c-status-success); }
-  html[data-system="earthranger"] .alert.warning { border-left-color: var(--c-status-warning); }
-  html[data-system="earthranger"] .alert.warning .icon { background: var(--c-status-warning); }
-  html[data-system="earthranger"] .alert.error   { border-left-color: var(--c-text-error); }
-  html[data-system="earthranger"] .alert.error   .icon { background: var(--c-text-error); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.success { border-left-color: var(--c-status-success); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.success .icon { background: var(--c-status-success); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.warning { border-left-color: var(--c-status-warning); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.warning .icon { background: var(--c-status-warning); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.error   { border-left-color: var(--c-text-error); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.error   .icon { background: var(--c-text-error); }
 
-  html[data-system="earthranger"] .alert.ready    { border-left: 4px solid var(--c-status-ready); }
-  html[data-system="earthranger"] .alert.ready    .icon { background: var(--c-status-ready); color: var(--c-extra-dark-teal); }
-  html[data-system="earthranger"] .alert.running  { border-left: 4px solid var(--c-status-running); }
-  html[data-system="earthranger"] .alert.running  .icon { background: var(--c-status-running); }
-  html[data-system="earthranger"] .alert.disabled { border-left: 4px solid var(--c-status-disabled); }
-  html[data-system="earthranger"] .alert.disabled .icon { background: var(--c-status-disabled); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.ready    { border-left: 4px solid var(--c-status-ready); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.ready    .icon { background: var(--c-status-ready); color: var(--c-extra-dark-teal); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.running  { border-left: 4px solid var(--c-status-running); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.running  .icon { background: var(--c-status-running); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.disabled { border-left: 4px solid var(--c-status-disabled); }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert.disabled .icon { background: var(--c-status-disabled); }
   .alert .title { font-weight: 600; }
   .alert .msg   { color: color-mix(in srgb, var(--c-text) 78%, transparent); }
   .alert .body  { display: flex; flex-direction: column; gap: 2px; }
@@ -1105,31 +1105,32 @@
      the brand/secondary accent, and pink is never used.
   ──────────────────────────────────────────────────────────────── */
   .er-only { display: none; }
-  html[data-system="earthranger"] .er-only { display: block; }
+  html[data-system="er-legacy"] .er-not-legacy { display: none !important; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-only { display: block; }
   /* .form-field and .paper-card need flex, not the generic block value above */
-  html[data-system="earthranger"] .form-field.er-only,
-  html[data-system="earthranger"] .paper-card.er-only { display: flex; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .form-field.er-only,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .paper-card.er-only { display: flex; }
   /* .alerts needs grid */
-  html[data-system="earthranger"] .alerts.er-only { display: grid; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alerts.er-only { display: grid; }
 
   /* Inverse of .er-only: visible normally, hidden only for EarthRanger.
      No base rule needed — elements render via their own classes until hidden. */
-  html[data-system="earthranger"] .er-hide { display: none; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-hide { display: none; }
 
   /* The shared Foundations "Primitive palette" is Strata's own swatches
      (cream, pink, teal, etc.) — not relevant to EarthRanger, which has
      its own primitives grid in the EarthRanger tokens section below. */
-  html[data-system="earthranger"] .foundations-primitives { display: none; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .foundations-primitives { display: none; }
 
   /* EarthRanger's reduced 3-step radii scale: keep cells the same fixed
      size as the other systems' (which stretch to fill via auto-fit/1fr)
      instead of growing to fill the row, and left-align them. */
-  html[data-system="earthranger"] .radii-grid {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .radii-grid {
     grid-template-columns: repeat(auto-fill, 120px);
     justify-content: start;
   }
 
-  html[data-system="earthranger"] {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) {
     color-scheme: light;
 
     /* ── EarthRanger primitives (own ramp; independent of Strata's) ── */
@@ -1140,7 +1141,9 @@
     --er-grey-8:    #b1b3b3;
     --er-grey-9:    #dddddd;
     --er-grey-10:   #f3f3f3;
+    --er-grey-11:   #f9f9f9;
     --er-off-white: #faf2e9;
+    --er-off-white-50: #fdf9f4;
     --er-white:     #ffffff;
 
     --er-teal-1:     #107283;
@@ -1153,9 +1156,11 @@
     --er-teal-darkest:    #02191b;
     --er-teal-dark-90:    #1c3c3e;
     --er-teal-dark-80:    #355154;
+    --er-teal-3-05:  #f2f9f9;
     --er-teal-t10:   #e7eeee;
     --er-teal-t20:   #cfdcdd;
     --er-teal-t30:   #b7cbcd;
+    --er-teal-t60:   #70979a;
     --er-teal-t80:   #407579;
     --er-teal-t90:   #27545f;
     --er-teal-t100:  #105257;
@@ -1209,7 +1214,7 @@
     --er-purple-2: #a100cb;
 
     /* ── Semantic tokens — Light mode ── */
-    --c-bg:              var(--er-off-white);        /* Secondary Background */
+    --c-bg:              var(--er-off-white-50);     /* Secondary Background */
     --c-bg-reversed:      var(--er-teal-dark);
     --c-text:             var(--er-teal-dark);        /* Primary Text */
     --c-text-reversed:    var(--er-white);
@@ -1238,6 +1243,13 @@
     --c-input-disabled-text: var(--c-text-disabled);
 
     --c-chip-default-bg: var(--c-int-default);
+    /* Text and marks on a CTA Secondary fill, and the quiet grey
+       the default button and filter chips sit on. */
+    --c-cta-text:      var(--er-white);
+    --c-text-secondary-reversed: var(--er-white);
+    --c-bg-selected:   var(--er-teal-3-05);
+    --c-cta-secondary: var(--er-teal-t100);
+    --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
        teal-dark dark) — reuse it here instead of a hardcoded cream,
        since EarthRanger's int-default background goes light in dark
@@ -1252,29 +1264,46 @@
 
     --c-surface:        var(--er-white);                /* Primary Background */
     --c-surface-strong: var(--er-white);                /* Elevated Component */
+    --c-surface-elevated-0: var(--er-grey-11);          /* Elevated Component 0 */
     --c-stroke:         var(--er-teal-t20);             /* Divider Lines */
     --c-field-outline:  var(--er-teal-t30);             /* Field Outline */
+    --c-icon:           var(--er-teal-t80);             /* Icons */
+
+    /* The root defaults hardcode a Strata teal for the menu highlight
+       and a dark-teal alpha for quiet text, which never flips in dark
+       mode. Both follow the palette here. */
+    --c-menu-highlight: var(--c-bg-selected);           /* Selected Background */
+    --c-menu-check:     var(--c-int-primary);           /* CTA Primary */
+    --c-faint:          var(--c-text-secondary);        /* Secondary Text */
+    --c-muted:          var(--c-text-secondary);        /* Secondary Text */
     --c-btn-disabled-bg: var(--er-grey-6);              /* Disabled */
 
     --c-outlined-primary-hover-bg: var(--er-green-6);
 
-    --btn-default-out-fg:        var(--c-int-default);
-    --btn-default-out-border:    var(--c-int-default);
-    --btn-default-out-hover-bg:  var(--er-teal-t20);
-    --btn-default-out-hover-fg:  var(--er-teal-dark);
+    /* Secondary Text, and the Error Bg the destructive button fills with.
+       Both carry their own per-mode values, so the dark block only
+       re-declares them where the token itself differs. */
+    --c-text-secondary:  var(--er-teal-t100);
+    --c-status-bg-error: var(--er-red-6);
 
-    /* Secondary outlined button uses Primary Text directly — declared
-       once here (not re-declared in the dark block), so --c-text's own
-       per-mode value carries through automatically; no separate override. */
-    --btn-secondary-out-fg:      var(--c-text);
-    --btn-secondary-out-border:  var(--c-text);
+    /* Outlined default: Divider Lines stroke, Primary Text label. */
+    --btn-default-out-fg:        var(--c-text);
+    --btn-default-out-border:    var(--c-stroke);
+    --btn-default-out-hover-bg:  var(--c-surface-quiet);
+    --btn-default-out-hover-fg:  var(--c-text);
 
-    /* "Reversed" surface in light mode is the dark-teal, so reversed
-       buttons behave exactly like Strata's light-mode defaults. */
-    --btn-reversed-bg:           var(--c-cream);
-    --btn-reversed-fg:           var(--er-teal-dark);
-    --btn-reversed-hover-bg:     var(--er-white);
-    --btn-reversed-hover-fg:     var(--er-teal-dark);
+    /* Outlined secondary takes Secondary Text for both stroke and label. */
+    --btn-secondary-out-fg:      var(--c-text-secondary);
+    --btn-secondary-out-border:  var(--c-text-secondary);
+
+    /* Reversed sits on a dark row, so it fills with Secondary Background
+       and labels in Primary Text. */
+    /* Reversed fills with Secondary Background and labels with Primary
+       Text; both aliases flip per mode, so dark needs no override. */
+    --btn-reversed-bg:           var(--c-bg);
+    --btn-reversed-fg:           var(--c-text);
+    --btn-reversed-hover-bg:     var(--c-surface);
+    --btn-reversed-hover-fg:     var(--c-text);
 
     --btn-reversed-out-fg:       var(--c-cream);
     --btn-reversed-out-border:   var(--c-cream);
@@ -1425,18 +1454,16 @@
      fails WCAG AA for normal text. Use Text Primary/Reversed (white in
      light mode) on any solid Green/12 fill instead. The outlined variant
      already reads fine via --c-int-primary directly (no fill to contrast). */
-  html[data-system="earthranger"] .btn-primary,
-  html[data-system="earthranger"] .chip-primary,
-  html[data-system="earthranger"] .av-primary,
-  html[data-system="earthranger"] .segmented button[aria-pressed="true"] {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-primary,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .chip-primary,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .av-primary,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .segmented button[aria-pressed="true"] {
     color: var(--c-text-reversed);
   }
 
   /* Ai2 Dark Teal (light-mode secondary fill) is near-black — the shared
      hardcoded extra-dark-teal text would be almost invisible on it. */
-  html[data-system="earthranger"][data-er-mode="light"] .btn-secondary,
-  html[data-system="earthranger"][data-er-mode="light"] .chip-secondary,
-  html[data-system="earthranger"][data-er-mode="light"] .av-secondary {
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="light"] .av-secondary {
     color: var(--c-text-reversed);
   }
 
@@ -1444,20 +1471,23 @@
      rather than inheriting --c-int-default-fg — same value today, but
      explicit so hover text doesn't silently drift if --c-int-default-fg
      ever changes for a reason unrelated to hover. */
-  html[data-system="earthranger"] .btn-default:hover {
-    color: var(--c-text-reversed);
-  }
+
 
   /* Primary outlined button hover, light mode: Teal/T10 fill, Ai2 Dark
      Teal text/border (dark mode keeps its own green-tinted hover below). */
-  html[data-system="earthranger"][data-er-mode="light"] .btn-primary-out:hover {
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="light"] .btn-primary-out:hover {
     background: var(--er-teal-t10);
     color: var(--er-teal-dark);
     border-color: var(--er-teal-dark);
   }
 
   /* ── Dark mode (EarthRanger-only toggle, independent of the system picker) ── */
-  html[data-system="earthranger"][data-er-mode="dark"] {
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] {
+    --c-icon:           var(--er-teal-t60);           /* Icons, dark */
+    /* Error Bg is the same token in both ER systems, so it is set here
+       rather than in either one's own block. */
+    --c-status-bg-error: var(--er-red-1);
+
     color-scheme: dark;
 
     --c-bg:              var(--er-teal-darkest);     /* Secondary Background, dark */
@@ -1496,23 +1526,19 @@
 
     --c-surface:        var(--er-teal-extra-dark);       /* Primary Background, dark */
     --c-surface-strong: var(--er-teal-extra-dark);       /* Elevated Component, dark */
+    --c-surface-elevated-0: var(--er-teal-dark);         /* Elevated Component 0, dark */
     --c-stroke:         var(--er-teal-dark-90);         /* Divider Lines, dark */
     --c-field-outline:  var(--er-teal-dark-80);         /* Field Outline, dark */
     --c-btn-disabled-bg: var(--er-grey-7);              /* Disabled, dark */
 
     --c-outlined-primary-hover-bg: var(--er-green-5);
 
-    --btn-default-out-fg:        var(--c-int-default);
-    --btn-default-out-border:    var(--c-int-default);
+    /* Divider Lines and Primary Text, same as light. */
+    --btn-default-out-fg:        var(--c-text);
+    --btn-default-out-border:    var(--c-stroke);
     --btn-default-out-hover-bg:  var(--er-teal-t90);
     --btn-default-out-hover-fg:  var(--c-cream);
 
-    /* "Reversed" surface in dark mode is white, so reversed buttons need
-       a dark fill — mirrors Asta's own dark-mode reversed-button logic. */
-    --btn-reversed-bg:           var(--er-teal-dark);
-    --btn-reversed-fg:           var(--c-cream);
-    --btn-reversed-hover-bg:     var(--er-teal-t100);
-    --btn-reversed-hover-fg:     var(--c-cream);
 
     --btn-reversed-out-fg:       var(--er-teal-dark);
     --btn-reversed-out-border:   var(--er-teal-dark);
@@ -1523,9 +1549,9 @@
   /* Green/7 is bright enough that the default dark extra-dark-teal text
      (from the shared .btn-primary/.chip-primary rules) already reads fine —
      revert the light-mode cream override. */
-  html[data-system="earthranger"][data-er-mode="dark"] .btn-primary,
-  html[data-system="earthranger"][data-er-mode="dark"] .chip-primary {
-    color: var(--c-extra-dark-teal);
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-primary,
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .chip-primary {
+    color: var(--c-text-reversed);
   }
 
 
@@ -1535,26 +1561,287 @@
      their Teal/T20 fill. The :hover override below is required — without
      it, this rule's higher specificity would win over .btn-default:hover
      and mask the hover state entirely. */
-  html[data-system="earthranger"][data-er-mode="dark"] .btn-default {
-    background: var(--er-white);
-  }
-  html[data-system="earthranger"][data-er-mode="dark"] .btn-default:hover {
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-default:hover {
     background: var(--c-int-default-hover);
   }
-  html[data-system="earthranger"][data-er-mode="dark"] .btn-primary-out:hover {
-    color: var(--c-cream);
-  }
-  /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
-     unlike the pale Teal/T20 secondary fill used in light mode. */
-  html[data-system="earthranger"][data-er-mode="dark"] .btn-secondary,
-  html[data-system="earthranger"][data-er-mode="dark"] .chip-secondary {
+  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-primary-out:hover {
     color: var(--c-cream);
   }
 
+  /* The CTA Secondary fill is dark in both modes for EarthRanger and
+     SERCA, so its text stays light rather than flipping. */
+  html[data-system="earthranger"][data-er-mode="dark"] {
+    --c-text-reversed: var(--er-teal-extra-dark);
+    /* Tertiary Background is Teal/Darkest in dark, so the quiet surface
+       follows it rather than staying on the light-mode Teal/T10. */
+    --c-surface-quiet: var(--er-teal-darkest);
+    --c-text-secondary: var(--er-teal-t20);
+    --c-cta-secondary: var(--er-teal-t90);
+    --c-cta-text: var(--er-off-white);
+    --c-text-secondary-reversed: var(--er-white);
+    --c-bg-selected: var(--er-teal-t100);
+  }
+  /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
+     unlike the pale Teal/T20 secondary fill used in light mode. */
+
+
   /* EarthRanger's Web-Fonts platform uses Roboto for body copy
      (headings stay PP Telegraf, same as Strata). */
-  html[data-system="earthranger"] body {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) body {
     font-family: Roboto, Manrope, Arial, sans-serif;
+  }
+
+  /* Secondary is the CTA Secondary fill with CTA Text on it, and the
+     default button is the quiet grey the filter chips use, with primary
+     text. Both read the same way in either mode because the variables
+     flip rather than the rules. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-secondary,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .chip-secondary {
+    background: var(--c-cta-secondary);
+    color: var(--c-text-secondary-reversed);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-secondary:hover {
+    background: color-mix(in srgb, var(--c-cta-secondary), black 5%);
+    color: var(--c-text-secondary-reversed);
+  }
+
+  /* Off states draw from the palette rather than the shared hardcoded
+     teal: Field Outline for the stroke, since an unchecked control is a
+     field edge, and the input surface for the fill, which was a
+     hardcoded white that stayed white in dark mode. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .cb:not(.checked),
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .rd:not(.checked),
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on) {
+    background: var(--c-input-bg);
+    border-color: var(--c-field-outline);
+  }
+
+  /* The switch knob is an icon mark, so it takes the Icons color. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on)::after {
+    background: var(--c-icon);
+  }
+
+  /* The ER family marks an active control with CTA Primary, where the other
+     systems use the neutral interactive color. Error fields keep red. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field:not(.field-error):focus,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field-focus:not(.field-error) {
+    border-color: var(--c-int-primary);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field:not(.field-error):focus {
+    outline-color: color-mix(in srgb, var(--c-int-primary) 35%, transparent);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field-focus:not(.field-error) {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-int-primary) 35%, transparent);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .cb.checked,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .rd.checked,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw.on {
+    background: var(--c-int-primary);
+    border-color: var(--c-int-primary);
+  }
+
+  /* The slider's filled run and thumb are the active part, so they take CTA
+     Primary; the empty run is a field edge, so it takes Field Outline. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sl {
+    background: var(--c-field-outline);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sl::before,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sl::after {
+    background: var(--c-int-primary);
+  }
+
+  /* The page sits on the quiet Tertiary surface so every elevated component
+     reads as lifted off it. SERCA borrows EarthRanger's tokens but keeps
+     Secondary Background, so it is excluded by brand rather than system. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]):not([data-brand="serca"]) body {
+    background: var(--c-surface-quiet);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]):not([data-brand="serca"]) .topbar {
+    background: color-mix(in srgb, var(--c-surface-quiet) 86%, transparent);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .paper-card,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .form-card,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .toolbar,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .alert,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .swatch,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .radius-cell,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .lg-note,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-warning-note {
+    background: var(--c-surface-strong);
+  }
+
+  /* The button grid is a card lifted off the page, so it takes Elevated
+     Component, and its header and row labels the banded Elevated
+     Component 0. The generic rules have these the other way round, which
+     left the header band invisible in every ER palette. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable {
+    background: var(--c-surface-strong);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable .head,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable .row-label:not(.reversed-cell) {
+    background: var(--c-surface-elevated-0);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .chip-default {
+    background: var(--c-surface-quiet);
+    color: var(--c-text);
+  }
+  /* Hover is the shared int-default-hover fill with reversed text, as
+     it was before the default fill moved to Tertiary Background. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default:hover {
+    color: var(--c-text-reversed);
+  }
+
+  /* Destructive fills with Status Bg/Error and labels in
+     Status/Error-Destructive. Only the ER family defines it. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-destructive {
+    background: var(--c-status-bg-error);
+    color: var(--c-text-error);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-destructive:hover {
+    background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
+  }
+
+  /* The ER family draws a disabled button with no edge: Elevated
+     Component 0, which keeps it off the Tertiary page, and Disabled text. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-disabled {
+    background: var(--c-surface-elevated-0);
+    color: var(--c-text-disabled);
+  }
+
+  /* Reversed outlined carries no fill: stroke and label both take the
+     opposite mode's primary text, which is what Text Primary Reversed
+     holds. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-reversed-out {
+    background: transparent;
+    border-color: var(--c-text-reversed);
+    color: var(--c-text-reversed);
+  }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-reversed-out:hover {
+    background: transparent;
+    color: var(--c-text-reversed);
+  }
+
+  /* Outlined default carries the Elevated Component fill, and every
+     outlined hover uses Background Selected. EarthRanger and SERCA
+     only -- ER Legacy keeps the ghost default and its own hovers. */
+  html[data-system="earthranger"] .btn-default-out {
+    background: var(--c-surface);
+  }
+  html[data-system="earthranger"] .btn-default-out:hover,
+  html[data-system="earthranger"] .btn-primary-out:hover,
+  html[data-system="earthranger"] .btn-secondary-out:hover {
+    background: var(--c-bg-selected);
+  }
+
+  /* The destructive row is hidden for systems that have no such button.
+     `.vtable .cell` outranks a bare `.er-only`, so the hide needs the
+     same two classes to land. */
+  .vtable .cell.er-only { display: none; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .vtable .cell.er-only { display: flex; }
+
+  /* ── ER Legacy ──────────────────────────────────────────────────
+     The EarthRanger palette before the token adoption. It reuses every
+     EarthRanger rule above through the :is() selectors and only re-points
+     the semantic tokens: blue CTAs instead of green, grey neutrals instead
+     of teal, and a greyscale ladder in dark rather than a teal one. */
+  html[data-system="er-legacy"] {
+    --c-icon:     var(--er-grey-5);                      /* Icons */
+    --er-grey-0:  #000000;
+    --er-grey-1:  #111111;
+    --er-grey-2:  #222222;
+    --er-grey-4:  #444444;
+    --er-blue-4:  #f4f7fd;
+
+    --c-bg:               var(--er-grey-11);
+    --c-bg-reversed:      var(--er-grey-3);
+    --c-text:             var(--er-grey-0);
+    --c-text-disabled:    var(--er-grey-6);
+
+    --c-status-success:   var(--er-green-3);
+
+    --c-int-default:        var(--er-grey-3);
+    --c-int-default-hover:  var(--er-grey-5);
+    --c-int-primary:        var(--er-blue-1);
+    --c-int-primary-hover:  color-mix(in srgb, var(--er-blue-1) 80%, transparent);
+    --c-int-secondary:      var(--er-grey-3);
+    --c-int-secondary-hover: var(--er-grey-5);
+    --c-link:               var(--er-blue-1);
+    --c-link-reversed:      var(--er-blue-3);
+
+    --c-input-disabled-bg: var(--er-grey-11);
+
+    --c-subtle:          rgba(0, 0, 0, 0.5);
+    --c-extra-subtle:    rgba(0, 0, 0, 0.1);
+
+    --c-text-secondary: var(--er-grey-5);
+    --c-cta-text:       var(--er-blue-1);
+    --c-text-secondary-reversed: var(--er-blue-1);
+    --c-bg-selected:    var(--er-blue-4);
+    --c-cta-secondary:  var(--er-blue-2);
+    --c-surface-quiet:  var(--er-grey-11);               /* Tertiary Background */
+    --c-surface-elevated-0: var(--er-grey-10);           /* Elevated Component 0 */
+
+    --c-stroke:         var(--er-grey-9);
+    --c-field-outline:  var(--er-grey-8);
+    --c-outlined-primary-hover-bg: var(--er-blue-4);
+  }
+
+  html[data-system="er-legacy"][data-er-mode="dark"] {
+    --c-icon:             var(--er-grey-7);              /* Icons, dark */
+    --c-bg:               var(--er-grey-0);              /* Secondary Background */
+    --c-bg-reversed:      var(--er-grey-11);
+    --c-text:             var(--er-white);
+    --c-text-disabled:    var(--er-grey-7);
+    --c-text-error:       var(--er-red-5);
+
+    --c-status-success:   var(--er-green-4);
+    --c-status-warning:   var(--er-amber-5);
+    --c-status-running:   var(--er-blue-3);
+    --c-status-disabled:  var(--er-grey-7);
+
+    --c-int-default:        var(--er-grey-7);
+    --c-int-default-hover:  var(--er-grey-8);
+    --c-int-primary:        var(--er-blue-3);
+    --c-int-primary-hover:  color-mix(in srgb, var(--er-blue-3) 80%, transparent);
+    --c-link:               var(--er-blue-3);
+    --c-link-reversed:      var(--er-blue-1);
+
+    --c-surface:        var(--er-grey-1);                 /* Primary Background */
+    --c-surface-strong: var(--er-grey-1);                 /* Elevated Component */
+    --c-surface-elevated-0: var(--er-grey-2);             /* Elevated Component 0 */
+    --c-text-reversed:  var(--er-grey-1);                 /* Primary Text Reversed */
+    --c-input-bg:       var(--er-grey-1);                 /* Elevated Component */
+
+    --c-subtle:          rgba(255, 255, 255, 0.5);
+    --c-extra-subtle:    rgba(255, 255, 255, 0.1);
+
+    --c-text-secondary: var(--er-grey-8);
+    --c-cta-text:       var(--er-blue-3);
+    --c-text-secondary-reversed: var(--er-blue-3);
+    --c-bg-selected:    var(--er-blue-5);
+    --c-cta-secondary:  var(--er-blue-5);
+    --c-surface-quiet:  var(--er-grey-0);                 /* Tertiary Background */
+
+    --c-stroke:         var(--er-grey-3);                 /* Divider Lines */
+    --c-field-outline:  var(--er-grey-4);                 /* Field Outline */
+    --c-outlined-primary-hover-bg: var(--er-blue-5);
+  }
+
+  /* Secondary Background moved to Off-White/50 for EarthRanger alone, so
+     SERCA is held on the original Off-White. Dark is untouched, and the
+     mode attribute keeps this from outranking the shared dark block. */
+  html[data-brand="serca"][data-er-mode="light"] {
+    --c-bg: var(--er-off-white);
   }
 
   /* Light/dark toggle — only relevant (and shown) for EarthRanger */
@@ -1564,7 +1851,7 @@
     gap: 8px;
     margin-left: 12px;
   }
-  html[data-system="earthranger"] .er-mode-toggle { display: inline-flex; }
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-mode-toggle { display: inline-flex; }
   .er-mode-toggle button {
     appearance: none;
     border: 1px solid var(--c-stroke);
@@ -1613,6 +1900,7 @@
       <button data-system="asta"          aria-pressed="false">Asta</button>
       <button data-system="olmo-earth"    aria-pressed="false">OlmoEarth</button>
       <button data-system="earthranger"   aria-pressed="false">EarthRanger</button>
+      <button data-system="er-legacy"     aria-pressed="false">ER Legacy</button>
       <button data-system="serca"         aria-pressed="false">SERCA</button>
       <button data-system="skylight"      aria-pressed="false">Skylight</button>
     </div>
@@ -1700,15 +1988,15 @@
       <div class="subhead">UI headings and button labels</div>
       <div id="er-ui-type-scale"></div>
 
-      <div class="subhead">External communications typography</div>
-      <div class="er-warning-note">
+      <div class="subhead er-not-legacy">External communications typography</div>
+      <div class="er-warning-note er-not-legacy">
         <strong>Not for UI.</strong> Manrope is for externally-facing communications only —
         slide decks, EarthRanger.com, email newsletters, and printed materials. Product
         interfaces always use Roboto for body text; never substitute Manrope in-app.
         Headings stay PP Telegraf everywhere, including external comms — only body text
         changes in this context.
       </div>
-      <div id="er-external-type-scale"></div>
+      <div id="er-external-type-scale" class="er-not-legacy"></div>
     </div>
 
     <div class="subhead">Spacing</div>
@@ -1724,7 +2012,8 @@
       <div class="label">02 — Buttons</div>
       <div>
         <h2>Buttons</h2>
-        <p>Four intents (default, primary, secondary, reversed) × filled & outlined variants × three sizes. Hover any button to see its hover state.</p>
+        <p class="er-hide">Four intents (default, primary, secondary, reversed) × filled & outlined variants × three sizes. Hover any button to see its hover state.</p>
+        <p class="er-only">Five intents (default, primary, secondary, reversed, destructive) × filled & outlined variants × three sizes, plus disabled. Hover any button to see its hover state.</p>
       </div>
     </div>
 
@@ -1739,6 +2028,11 @@
       <div class="cell"><button class="btn btn-default btn-sm">Get started</button></div>
       <div class="cell"><button class="btn btn-default btn-md">Get started</button></div>
       <div class="cell col-lg"><button class="btn btn-default btn-lg">Get started</button></div>
+
+      <div class="cell row-label er-only">destructive</div>
+      <div class="cell er-only"><button class="btn btn-destructive btn-sm">Delete</button></div>
+      <div class="cell er-only"><button class="btn btn-destructive btn-md">Delete</button></div>
+      <div class="cell col-lg er-only"><button class="btn btn-destructive btn-lg">Delete</button></div>
 
       <div class="cell row-label">primary</div>
       <div class="cell"><button class="btn btn-primary btn-sm">Run search</button></div>
@@ -1848,7 +2142,8 @@
       <div class="label">04 — Form controls</div>
       <div>
         <h2>Form controls</h2>
-        <p>Checkbox, radio, switch, and slider. All four share a single color vocabulary: white surface with a teal-80 stroke when off; <code>interactive-default</code> when on.</p>
+        <p class="er-hide">Checkbox, radio, switch, and slider. All four share a single color vocabulary: white surface with a teal-80 stroke when off; <code>interactive-default</code> when on.</p>
+        <p class="er-only">Checkbox, radio, switch, and slider. All four share a single color vocabulary: the field surface with a Field Outline stroke when off, and the switch knob in Icons; CTA Primary when on.</p>
       </div>
     </div>
 
@@ -1871,7 +2166,7 @@
       <div class="ctrl-row">
         <div class="label">slider</div>
         <div class="ctrl-cell"><span class="sl"></span></div>
-        <div class="ctrl-cell"><span class="caption">Track 8px · filled portion uses <code>interactive-default</code></span></div>
+        <div class="ctrl-cell"><span class="caption er-hide">Track 8px · filled portion uses <code>interactive-default</code></span><span class="caption er-only">Track 8px · Field Outline, with the filled run and thumb in CTA Primary</span></div>
       </div>
     </div>
   </section>
@@ -2455,7 +2750,7 @@ const ER_PRIMITIVES = {
   "grey-3": "#333333", "grey-4": "#444444", "grey-5": "#63666a",
   "grey-6": "#767676", "grey-7": "#888b8d", "grey-8": "#b1b3b3",
   "grey-9": "#dddddd", "grey-10": "#f3f3f3", "grey-11": "#f9f9f9",
-  "off-white": "#faf2e9", "white": "#ffffff",
+  "off-white": "#faf2e9", "off-white-50": "#fdf9f4", "white": "#ffffff",
 
   "teal-1": "#107283", "teal-2": "#62bfd0", "teal-3": "#008586",
   "teal-4": "#00958f", "teal-5": "#00d0c8", "teal-dark": "#0a3235",
@@ -2544,15 +2839,16 @@ ALIASES["olmo-earth"] = ALIASES.strata; // stub
    renderAliases() picks the right list based on data-er-mode. */
 ALIASES["earthranger"] = {
   light: [
-    ["background/primary",       "white"],
-    ["background/secondary",     "off-white"],
     ["background/tertiary",      "teal-t10"],
+    ["background/secondary",     "off-white-50"],
+    ["background/elevated-0",    "grey-11"],
     ["background/elevated",      "white"],
+    ["background/primary",       "white"],
     ["background/selected",      "teal-3-05"],
     ["text/primary",             "teal-dark"],
     ["text/primary-reversed",    "white"],
     ["text/secondary",           "teal-t100"],
-    ["text/secondary-reversed",  "off-white"],
+    ["text/secondary-reversed",  "white"],
     ["text/form-labels",         "teal-t100"],
     ["text/tabs",                "teal-t100"],
     ["text/disabled",            "grey-6"],
@@ -2560,7 +2856,7 @@ ALIASES["earthranger"] = {
     ["field-outline",            "teal-t30"],
     ["divider-lines",            "teal-t20"],
     ["cta-primary",              "green-12"],
-    ["cta-secondary-blue",       "teal-t20"],
+    ["cta-secondary",            "teal-t100"],
     ["status/error-destructive", "red-3"],
     ["status/success",           "green-12"],
     ["status/running",          "blue-1"],
@@ -2574,6 +2870,7 @@ ALIASES["earthranger"] = {
     ["status-bg/active",         "indigo-6"],
     ["status-bg/warning",        "amber-6"],
     ["patrol/active",            "indigo-2"],
+    ["patrol/paused",            "yellow-2"],
     ["patrol/overdue",           "magenta-2"],
     ["patrol/scheduled",         "teal-1"],
     ["patrol/track-line",        "amber-3"],
@@ -2590,15 +2887,16 @@ ALIASES["earthranger"] = {
     ["brand/text/secondary",       "teal-t100"],
   ],
   dark: [
-    ["background/primary",       "teal-extra-dark"],
-    ["background/secondary",     "teal-darkest"],
     ["background/tertiary",      "teal-darkest"],
+    ["background/secondary",     "teal-darkest"],
+    ["background/elevated-0",    "teal-dark"],
     ["background/elevated",      "teal-extra-dark"],
+    ["background/primary",       "teal-extra-dark"],
     ["background/selected",      "teal-t100"],
     ["text/primary",             "white"],
-    ["text/primary-reversed",    "teal-dark"],
-    ["text/secondary",           "off-white"],
-    ["text/secondary-reversed",  "teal-t100"],
+    ["text/primary-reversed",    "teal-extra-dark"],
+    ["text/secondary",           "teal-t20"],
+    ["text/secondary-reversed",  "white"],
     ["text/form-labels",         "white"],
     ["text/tabs",                "white"],
     ["text/disabled",            "grey-7"],
@@ -2606,7 +2904,7 @@ ALIASES["earthranger"] = {
     ["field-outline",            "teal-dark-80"],
     ["divider-lines",            "teal-dark-90"],
     ["cta-primary",              "green-7"],
-    ["cta-secondary-blue",       "teal-t90"],
+    ["cta-secondary",            "teal-t90"],
     ["status/error-destructive", "red-5"],
     ["status/success",           "green-4"],
     ["status/running",          "blue-3"],
@@ -2620,6 +2918,7 @@ ALIASES["earthranger"] = {
     ["status-bg/active",         "indigo-4"],
     ["status-bg/warning",        "amber-1"],
     ["patrol/active",            "indigo-5"],
+    ["patrol/paused",            "yellow-3"],
     ["patrol/overdue",           "magenta-4"],
     ["patrol/scheduled",         "teal-2"],
     ["patrol/track-line",        "amber-3"],
@@ -2635,6 +2934,63 @@ ALIASES["earthranger"] = {
     ["brand/text/primary",         "white"],
     ["brand/text/secondary",       "off-white"],
   ],
+};
+
+
+/* ER Legacy is EarthRanger with these tokens re-pointed, so derive its
+   alias table from EarthRanger's rather than restating all 44 rows. */
+const ER_LEGACY_ALIASES = {
+  light: {
+    "background/secondary": "grey-11",
+    "background/tertiary": "grey-11",
+    "background/elevated-0": "grey-10",
+    "background/selected": "blue-4",
+    "text/primary": "grey-0",
+    "text/secondary": "grey-5",
+    "text/secondary-reversed": "blue-1",
+    "text/form-labels": "grey-6",
+    "text/tabs": "grey-6",
+    "icons": "grey-5",
+    "field-outline": "grey-8",
+    "divider-lines": "grey-9",
+    "cta-primary": "blue-1",
+    "cta-secondary": "blue-2",
+    "status/success": "green-3"
+  },
+  dark: {
+    "background/primary": "grey-1",
+    "background/secondary": "grey-0",
+    "background/tertiary": "grey-0",
+    "background/elevated": "grey-1",
+    "background/elevated-0": "grey-2",
+    "background/selected": "blue-5",
+    "text/primary-reversed": "grey-1",
+    "text/secondary": "grey-8",
+    "text/secondary-reversed": "blue-3",
+    "text/form-labels": "grey-7",
+    "text/tabs": "grey-7",
+    "icons": "grey-7",
+    "field-outline": "grey-4",
+    "divider-lines": "grey-3",
+    "cta-primary": "blue-3",
+    "cta-secondary": "blue-5"
+  }
+};
+/* ER Legacy covers product UI only, so the brand rows are dropped rather
+   than inherited — those surfaces belong to EarthRanger and SERCA. */
+const notBrand = ([k]) => !k.startsWith("brand/");
+ALIASES["er-legacy"] = {
+  light: ALIASES["earthranger"].light.filter(notBrand).map(([k, v]) => [k, ER_LEGACY_ALIASES.light[k] || v]),
+  dark:  ALIASES["earthranger"].dark.filter(notBrand).map(([k, v]) => [k, ER_LEGACY_ALIASES.dark[k] || v]),
+};
+
+/* SERCA renders on EarthRanger's tokens and parts company on exactly one:
+   Secondary Background stayed on Off-White when EarthRanger moved to
+   Off-White/50. It keeps the brand rows, which are its own. */
+const SERCA_ALIASES = { light: { "background/secondary": "off-white" }, dark: {} };
+ALIASES["serca"] = {
+  light: ALIASES["earthranger"].light.map(([k, v]) => [k, SERCA_ALIASES.light[k] || v]),
+  dark:  ALIASES["earthranger"].dark.map(([k, v]) => [k, SERCA_ALIASES.dark[k] || v]),
 };
 
 /* Skylight is single-mode (no dark theme), so it takes the plain
@@ -2764,6 +3120,21 @@ const META = {
     wordmark: "earthranger/assets/EarthRanger-logo-H.svg",
     wordmarkDark: "earthranger/assets/EarthRanger-logo-White-H.svg",
   },
+  /* ER Legacy renders through its own token block rather than borrowing
+     EarthRanger's, since the whole point is that the colors differ. */
+  "er-legacy": {
+    name: "ER Legacy",
+    /* Manually bumped from er-legacy/DESIGN.md's `version:` frontmatter field. */
+    version: "0.0.1",
+    description: "EarthRanger product interfaces in the design system carried forward from the 2021 app",
+    heroBlurb: "ER Legacy is the EarthRanger design system built from what existed in the app from 2021, held steady for utility as the brand around EarthRanger evolved. Calls to action are blue, with a lighter blue behind secondary actions, greyscale neutrals, and a blue-tinted selection. Dark mode is fully defined rather than dimmed. Try the Light/Dark mode selector above.",
+    formTitle: "Sample form",
+    formBlurb: "A real form composed from inputs, select, radio, and switch.",
+    cardTitle: "Blog post card",
+    cardBlurb: "Body copy, chip tags, an author byline, and a primary action \u2014 composed from the foundations and components above.",
+    wordmark: "er-legacy/assets/EarthRanger-logo-H.svg",
+    wordmarkDark: "er-legacy/assets/EarthRanger-logo-White-H.svg",
+  },
   /* SERCA's colors and typography are EarthRanger's token for token, so it
      renders through EarthRanger's styling (`tokens`) and only swaps the
      copy and the mark. */
@@ -2822,25 +3193,32 @@ function renderPrimitives() {
   `).join("");
 }
 
-function renderAliases(systemKey) {
+function renderAliases(brandKey) {
   const list = document.getElementById("aliases-list");
-  const raw = ALIASES[systemKey];
-  const rows = systemKey === "earthranger" ? raw[document.documentElement.dataset.erMode || "light"] : raw;
+  const raw = ALIASES[brandKey];
+  const rows = ["earthranger", "er-legacy", "serca"].includes(brandKey) ? raw[document.documentElement.dataset.erMode || "light"] : raw;
   list.innerHTML = rows.map(([alias, prim]) => `
     <div class="alias-row">
       <span class="alias-name">${alias}</span>
       <span class="alias-arrow">→</span>
       <span class="alias-value">
-        <span class="alias-dot" style="background:${hexFor(prim, systemKey)}"></span>
+        <span class="alias-dot" style="background:${hexFor(prim, brandKey)}"></span>
         <span class="alias-target">${prim}</span>
       </span>
     </div>
   `).join("");
 }
 
+/* ER Legacy is Roboto throughout with no line heights, and has no
+   external-comms scale. Its UI headings and button labels are
+   EarthRanger's own, so that list is shared rather than derived. */
+const isLegacy = () => document.documentElement.dataset.system === "er-legacy";
+const LEGACY_TYPE = () => TYPOGRAPHY.map(([n, f, size, w]) => [n, f === "Roboto Mono" ? f : "Roboto", size, w, "normal"]);
+const LEGACY_PLATFORM_FONTS = () => ER_PLATFORM_FONTS.map(([p, body]) => [p, body, body]);
+
 function renderTypography() {
   const wrap = document.getElementById("type-scale");
-  wrap.innerHTML = TYPOGRAPHY.map(([name, family, size, weight, lh]) => `
+  wrap.innerHTML = (isLegacy() ? LEGACY_TYPE() : TYPOGRAPHY).map(([name, family, size, weight, lh]) => `
     <div class="type-row">
       <div class="type-label">${name}</div>
       <div class="type-spec">
@@ -2942,7 +3320,7 @@ function renderErDataViz() {
 }
 function renderErPlatformFonts() {
   const wrap = document.getElementById("er-platform-fonts");
-  wrap.innerHTML = ER_PLATFORM_FONTS.map(([platform, body, heading]) => `
+  wrap.innerHTML = (isLegacy() ? LEGACY_PLATFORM_FONTS() : ER_PLATFORM_FONTS).map(([platform, body, heading]) => `
     <div class="scale-row" style="grid-template-columns:110px 1fr 1fr;">
       <span class="scale-name">${platform}</span>
       <span class="type-meta">body: ${body}</span>
@@ -3004,7 +3382,7 @@ function bindMeta(systemKey) {
   document.querySelectorAll('[data-bind="form-blurb"]').forEach((el) => (el.innerHTML = meta.formBlurb));
   document.querySelectorAll('[data-bind="card-title"]').forEach((el) => (el.textContent = meta.cardTitle));
   document.querySelectorAll('[data-bind="card-blurb"]').forEach((el) => (el.textContent = meta.cardBlurb));
-  const isErDark = (meta.tokens || systemKey) === "earthranger" && document.documentElement.dataset.erMode === "dark";
+  const isErDark = ["earthranger", "er-legacy"].includes(meta.tokens || systemKey) && document.documentElement.dataset.erMode === "dark";
   const wordmarkSrc = (isErDark && meta.wordmarkDark) ? meta.wordmarkDark : meta.wordmark;
   document.querySelectorAll('[data-bind="wordmark"]').forEach((el) => {
     if (wordmarkSrc) { el.src = wordmarkSrc; el.style.display = "block"; }
@@ -3022,9 +3400,13 @@ function applySystem(brandKey) {
     btn.setAttribute("aria-pressed", btn.dataset.system === brandKey ? "true" : "false");
   });
   bindMeta(brandKey);
-  renderAliases(systemKey);
+  renderAliases(brandKey);
   renderRadii(systemKey);
   renderSpacing(systemKey);
+  /* ER Legacy's type scale and platform fonts differ from the shared ones,
+     so these re-render on every switch rather than once. */
+  renderTypography();
+  renderErPlatformFonts();
 }
 
 /* EarthRanger's Light/Dark toggle is independent of the system picker —
@@ -3034,7 +3416,9 @@ function applyErMode(mode) {
   document.querySelectorAll(".er-mode-toggle button").forEach((btn) => {
     btn.setAttribute("aria-pressed", btn.dataset.erMode === mode ? "true" : "false");
   });
-  renderAliases("earthranger");
+  /* ER Legacy and SERCA have alias tables of their own, so re-render the
+     brand that is actually active rather than assuming EarthRanger. */
+  renderAliases(document.documentElement.dataset.brand);
   renderErSections();
   bindMeta(document.documentElement.dataset.brand);
 }
