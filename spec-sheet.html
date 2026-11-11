@@ -1617,12 +1617,13 @@
   }
 
   /* The page sits on the quiet Tertiary surface so every elevated component
-     reads as lifted off it. */
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) body {
+     reads as lifted off it. SERCA borrows EarthRanger's tokens but keeps
+     Secondary Background, so it is excluded by brand rather than system. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]):not([data-brand="serca"]) body {
     background: var(--c-surface-quiet);
   }
 
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) .topbar {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]):not([data-brand="serca"]) .topbar {
     background: color-mix(in srgb, var(--c-surface-quiet) 86%, transparent);
   }
 
