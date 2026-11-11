@@ -350,21 +350,11 @@ The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` d
 
 **Neutrals are greyscale.** Secondary text and icons are `Greyscale/5`, field outlines `Greyscale/8`, dividers `Greyscale/9`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `Greyscale/10` is `UI/Background/Elevated Component 0`, the banded sub-surface inside a panel such as a table header or a row label. Selection is blue-tinted (`Blue/4`). In light mode icons share their value with secondary text, so an icon and its label read as one tier; in dark mode icons drop to `Greyscale/7` alongside form labels and tabs.
 
-Teal appears only in `UI/Patrol Status/Scheduled` and the categorical data scale. It is not an accent: keep it out of navigation, headers and chrome, which take the neutral background tokens.
-
-**This system defines no brand tokens.** Logo lockups, accent colors and brand backgrounds are brand-surface concerns and live outside it — a surface that needs them is a brand surface, not product UI.
-
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#111111` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a saturated surface, such as a filled CTA or a checked control's mark. The CTA is a mid-tone blue in light mode but a pale tint in dark mode, so a fixed light color reads fine in light mode and disappears in dark — this token flips with the mode so it always contrasts against the surface it's on.
 
 Pink is not part of the palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
 
 For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute other colors. These scales are designed for perceptual distinctiveness and accessibility across the full range of values. Tracks and sequential are intentionally identical in Light and Dark mode; categorical uses a separate value per mode, so always resolve it through the token rather than copying a hex.
-
-### Dark mode
-
-Dark mode is a **greyscale ladder**. Secondary and tertiary backgrounds sit on black, primary and elevated on `Greyscale/1`, and `Greyscale/2` is the Elevated Component 0 band. Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/3` and field outlines to `Greyscale/4`.
-
-The CTA lightens to `Blue/3` and the secondary blue deepens to `Blue/5`. Status and priority colors move to softer steps so they read without glowing: error `Red/5`, warning `Amber/5`, success `Green/4`, priority green `Green/2`, patrol active `Indigo/5`, overdue `Magenta/4`. Patrol paused is the exception, brightening from `Yellow/2` to `Yellow/3` — where it meets `UI/Status/Ready`, so keep the two apart by component.
 
 ## Typography
 
@@ -389,7 +379,7 @@ EarthRanger runs in low-bandwidth field conditions where a delayed web font can 
 
 ### Externally-facing communications
 
-This system covers **product UI only**. Websites, decks, newsletters and print are brand-facing material: they use the EarthRanger brand's external-communications scale (`external-comms-body-lg/md/sm/xs`, Manrope), whichever system the product UI is on.
+This system covers **product UI only**. For websites, decks, newsletters and print, see **External communications** in `earthranger/DESIGN.md`.
 
 ## Icons
 
