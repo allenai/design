@@ -30,12 +30,12 @@ colors:
   # tokens shift to lighter/more-saturated primitive steps for contrast.
 
   # Background
-  # Dark-mode surfaces sit on two steps only — Secondary (black) below,
-  # Primary/Tertiary/Elevated on Grey/1 above — so surfaces separate by
-  # their stroke rather than by tone.
+  # Dark-mode surfaces sit on two steps — Secondary and Tertiary on black,
+  # Primary and Elevated on Grey/1 — so a panel reads as lifted while the
+  # quiet surfaces recede into the page.
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
-  "UI/Background/Tertiary Background": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-1}" }   # quiet surfaces: filter chips, map controls, read-only fields
+  "UI/Background/Tertiary Background": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-0}" }   # quiet surfaces: filter chips, map controls, read-only fields
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
 
