@@ -80,6 +80,7 @@ colors:
 
   # Patrol Status
   "UI/Patrol Status/Active": { light: "{colors.indigo-2}", dark: "{colors.indigo-5}" }
+  "UI/Patrol Status/Paused": { light: "{colors.yellow-2}", dark: "{colors.yellow-2}" }
   "UI/Patrol Status/Overdue": { light: "{colors.magenta-2}", dark: "{colors.magenta-4}" }
   "UI/Patrol Status/Scheduled": { light: "{colors.teal-1}", dark: "{colors.teal-2}" }
   "UI/Patrol Status/Track Line (Mobile)": { light: "{colors.amber-3}", dark: "{colors.amber-3}" }
