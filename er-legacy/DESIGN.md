@@ -334,13 +334,13 @@ typography:
 
 ## Overview
 
-EarthRanger is a real-time platform for conservation: field reports, sensor telemetry and partner data on one map, used by protected-area managers, rangers, analysts and operations staff. Interfaces serve both field teams making time-sensitive decisions and analysts working through dense data at a desk, so the design language prioritizes **usability and data security above all else** — reliable and built for serious work, without being intimidating.
+EarthRanger is a platform for conservationists to collect data from the field, integrate cutting-edge technology, see wildlife and teams in real time, and develop strategies that accelerate conservation impact. The platform encompasses EarthRanger Web, EarthRanger Mobile, Ecoscope, Gundi, and the Buoy app — a suite of tools built around data-driven decision making and adaptive management.
 
-**ER Legacy is a bridge, not a fork.** EarthRanger Web adopted the design tokens and was repainted in the new palette in one step — blue calls to action became green, grey neutrals teal, blue selection teal. The architecture was the win; the whole palette change at the same moment was more than the product was ready for.
+EarthRanger is used by a broad range of conservation professionals: protected area managers, field personnel, analysts, operations coordinators, and technologists. Interfaces must serve both experts in the field making time-sensitive decisions and analysts working through complex data sets at a desk.
 
-ER Legacy separates those. A product takes the token architecture now and the new colors when it suits, keeping the palette its users know in the meantime. **The second step is the point:** because both palettes share every token name, moving to EarthRanger is a change of token file — no redlines change, no component is touched. `UI/CTA Primary` is still `UI/CTA Primary`; it resolves to blue here and green there. A product adopts ER Legacy to make that move cheap, not to avoid it.
+The design language prioritizes usability, accessibility, and data security above all else. EarthRanger is trustworthy, innovative, and approachable. Every interface decision should reinforce that the platform is reliable and built for serious work — without being intimidating or opaque.
 
-So a product picks one and stays on it until it switches. There is no blending the two. Use ER Legacy where a palette change would land alongside other disruption, or where users navigate by color; new surfaces should use EarthRanger. Anything that improves here should usually improve in EarthRanger too — this is a staging post, not a design direction.
+EarthRanger Legacy is a design system built from what existed in the app from 2021. The system was built for utility to remain steady as the brand around EarthRanger evolved. The primary CTA color is blue; a lighter blue is the secondary accent. Pink is never used in EarthRanger interfaces. Dark mode is a first-class, fully-defined mode (not just light-mode tokens dimmed) — it inverts rather than darkens: backgrounds swap from white/light grey to black/dark grey, text flips accordingly, and status colors shift to lighter/more-saturated steps for contrast on the dark surface. Track and sequential data colors are mode-stable — the same primitives work on both light and dark backgrounds. Categorical data colors have separate light and dark values.
 
 ## Colors
 
