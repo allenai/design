@@ -1158,6 +1158,7 @@
     --er-teal-t10:   #e7eeee;
     --er-teal-t20:   #cfdcdd;
     --er-teal-t30:   #b7cbcd;
+    --er-teal-t60:   #70979a;
     --er-teal-t80:   #407579;
     --er-teal-t90:   #27545f;
     --er-teal-t100:  #105257;
@@ -1263,6 +1264,7 @@
     --c-surface-strong: var(--er-white);                /* Elevated Component */
     --c-stroke:         var(--er-teal-t20);             /* Divider Lines */
     --c-field-outline:  var(--er-teal-t30);             /* Field Outline */
+    --c-icon:           var(--er-teal-t80);             /* Icons */
     --c-btn-disabled-bg: var(--er-grey-6);              /* Disabled */
 
     --c-outlined-primary-hover-bg: var(--er-green-6);
@@ -1470,6 +1472,7 @@
 
   /* ── Dark mode (EarthRanger-only toggle, independent of the system picker) ── */
   html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] {
+    --c-icon:           var(--er-teal-t60);           /* Icons, dark */
     /* Error Bg is the same token in both ER systems, so it is set here
        rather than in either one's own block. */
     --c-status-bg-error: var(--er-red-1);
@@ -1591,6 +1594,30 @@
     color: var(--c-text-secondary-reversed);
   }
 
+  /* Off states draw their stroke from the palette rather than the shared
+     hardcoded teal: Divider Lines in EarthRanger, Field Outline in Legacy.
+     The switch knob is an icon mark, so it takes the Icons color. */
+  html[data-system="earthranger"] .rd:not(.checked),
+  html[data-system="earthranger"] .sw:not(.on) {
+    border-color: var(--c-stroke);
+  }
+
+  html[data-system="er-legacy"] .rd:not(.checked),
+  html[data-system="er-legacy"] .sw:not(.on) {
+    border-color: var(--c-field-outline);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on)::after {
+    background: var(--c-icon);
+  }
+
+  /* The off fill was a hardcoded white, which stayed white in dark mode.
+     It is a field surface, so it follows the input background. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .rd:not(.checked),
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on) {
+    background: var(--c-input-bg);
+  }
+
   /* Legacy marks an active form control with CTA Primary, where the other
      systems use the neutral interactive color. Error fields keep red. */
   html[data-system="er-legacy"] .field:not(.field-error):focus,
@@ -1709,6 +1736,7 @@
      the semantic tokens: blue CTAs instead of green, grey neutrals instead
      of teal, and a greyscale ladder in dark rather than a teal one. */
   html[data-system="er-legacy"] {
+    --c-icon:     var(--er-grey-5);                      /* Icons */
     --er-grey-0:  #000000;
     --er-grey-1:  #111111;
     --er-grey-2:  #222222;
@@ -1750,6 +1778,7 @@
   }
 
   html[data-system="er-legacy"][data-er-mode="dark"] {
+    --c-icon:             var(--er-grey-7);              /* Icons, dark */
     --c-bg:               var(--er-grey-0);              /* Secondary Background */
     --c-bg-reversed:      var(--er-grey-11);
     --c-text:             var(--er-white);
