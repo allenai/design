@@ -38,7 +38,7 @@ colors:
   # background.
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
-  "UI/Background/Tertiary Background": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-0}" }   # quiet surfaces: filter chips, map controls, read-only fields
+  "UI/Background/Tertiary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }   # quiet surfaces: filter chips, map controls, read-only fields
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Elevated Component 0": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-3}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
@@ -350,7 +350,7 @@ Always use **semantic tokens** (`UI/Text/Primary Text`) rather than raw primitiv
 
 The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3), for calls to action, links and active states. **That is the defining difference from EarthRanger, whose CTA is green.** Note that `UI/Status/Running` shares the CTA's value here, so interactive and informational blue are the same color — rely on placement and component, not hue, to tell them apart. Status colors are otherwise strictly functional: use them to communicate meaning, never decoratively.
 
-**Neutrals are grey, not teal.** Secondary text and icons are `Greyscale/5`, dividers `Greyscale/9`, field outlines `Greyscale/8`, the secondary background `Greyscale/11`, and the tertiary background `Greyscale/10` — the quiet surface filter chips, map controls and read-only fields sit on. Selection is blue-tinted (`Blue/4`), not teal. Icons share their value with secondary text, so an icon and its label read as one tier.
+**Neutrals are grey, not teal.** Secondary text and icons are `Greyscale/5`, dividers `Greyscale/9`, field outlines `Greyscale/8`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `Greyscale/10` is Elevated Component 0, the band inside a panel. Selection is blue-tinted (`Blue/4`), not teal. Icons share their value with secondary text, so an icon and its label read as one tier.
 
 Teal survives as a primitive, used by `UI/Patrol Status/Scheduled`, but it is **not** a brand accent here and should not appear in navigation, headers or chrome — use `Greyscale/3` for dark chrome. **ER Legacy defines no brand tokens at all:** logo lockups, accent green and the brand backgrounds belong to EarthRanger and SERCA, and a surface needing them is a brand surface. Pink is never used, in either palette.
 
@@ -360,7 +360,7 @@ The data scales — categorical, tracks and sequential — are **EarthRanger's, 
 
 ### Dark mode
 
-A **greyscale ladder, not EarthRanger's teal one.** Backgrounds step `Greyscale/1` (secondary) → `Greyscale/2` (primary) → `Greyscale/3` (elevated and tertiary). Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/5`.
+A **greyscale ladder, not EarthRanger's teal one.** Secondary and tertiary backgrounds sit on black, primary and elevated on `Greyscale/1`, and `Greyscale/3` is the Elevated Component 0 band. Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/3` and field outlines to `Greyscale/4`.
 
 The CTA lightens to `Blue/3` and the secondary blue deepens to `Blue/5`. Status and priority colors move to softer steps so they read without glowing: error `Red/5`, warning `Amber/5`, success `Green/4`, priority green `Green/2`, patrol active `Indigo/5`, overdue `Magenta/4`.
 
