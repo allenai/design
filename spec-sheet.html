@@ -1622,6 +1622,10 @@
     background: var(--c-surface-quiet);
   }
 
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .topbar {
+    background: color-mix(in srgb, var(--c-surface-quiet) 86%, transparent);
+  }
+
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .paper-card,
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .form-card,
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .toolbar,
@@ -1629,8 +1633,7 @@
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .swatch,
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .radius-cell,
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .lg-note,
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-warning-note,
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-mode-toggle {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .er-warning-note {
     background: var(--c-surface-strong);
   }
 
