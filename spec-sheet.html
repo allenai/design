@@ -1143,6 +1143,7 @@
     --er-grey-10:   #f3f3f3;
     --er-grey-11:   #f9f9f9;
     --er-off-white: #faf2e9;
+    --er-off-white-50: #fdf9f4;
     --er-white:     #ffffff;
 
     --er-teal-1:     #107283;
@@ -1213,7 +1214,7 @@
     --er-purple-2: #a100cb;
 
     /* ── Semantic tokens — Light mode ── */
-    --c-bg:              var(--er-off-white);        /* Secondary Background */
+    --c-bg:              var(--er-off-white-50);     /* Secondary Background */
     --c-bg-reversed:      var(--er-teal-dark);
     --c-text:             var(--er-teal-dark);        /* Primary Text */
     --c-text-reversed:    var(--er-white);
@@ -1267,6 +1268,14 @@
     --c-stroke:         var(--er-teal-t20);             /* Divider Lines */
     --c-field-outline:  var(--er-teal-t30);             /* Field Outline */
     --c-icon:           var(--er-teal-t80);             /* Icons */
+
+    /* The root defaults hardcode a Strata teal for the menu highlight
+       and a dark-teal alpha for quiet text, which never flips in dark
+       mode. Both follow the palette here. */
+    --c-menu-highlight: var(--c-bg-selected);           /* Selected Background */
+    --c-menu-check:     var(--c-int-primary);           /* CTA Primary */
+    --c-faint:          var(--c-text-secondary);        /* Secondary Text */
+    --c-muted:          var(--c-text-secondary);        /* Secondary Text */
     --c-btn-disabled-bg: var(--er-grey-6);              /* Disabled */
 
     --c-outlined-primary-hover-bg: var(--er-green-6);
@@ -1601,6 +1610,7 @@
      teal: Field Outline for the stroke, since an unchecked control is a
      field edge, and the input surface for the fill, which was a
      hardcoded white that stayed white in dark mode. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .cb:not(.checked),
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .rd:not(.checked),
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on) {
     background: var(--c-input-bg);
@@ -1612,29 +1622,37 @@
     background: var(--c-icon);
   }
 
-  /* Legacy marks an active form control with CTA Primary, where the other
+  /* The ER family marks an active control with CTA Primary, where the other
      systems use the neutral interactive color. Error fields keep red. */
-  html[data-system="er-legacy"] .field:not(.field-error):focus,
-  html[data-system="er-legacy"] .field-focus:not(.field-error) {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field:not(.field-error):focus,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field-focus:not(.field-error) {
     border-color: var(--c-int-primary);
   }
 
-  html[data-system="er-legacy"] .field:not(.field-error):focus {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field:not(.field-error):focus {
     outline-color: color-mix(in srgb, var(--c-int-primary) 35%, transparent);
   }
 
-  html[data-system="er-legacy"] .field-focus:not(.field-error) {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .field-focus:not(.field-error) {
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-int-primary) 35%, transparent);
   }
 
-  html[data-system="er-legacy"] .rd.checked,
-  html[data-system="er-legacy"] .sw.on {
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .cb.checked,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .rd.checked,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw.on {
     background: var(--c-int-primary);
     border-color: var(--c-int-primary);
   }
 
-  html[data-system="er-legacy"] .dd-item .check {
-    color: var(--c-int-primary);
+  /* The slider's filled run and thumb are the active part, so they take CTA
+     Primary; the empty run is a field edge, so it takes Field Outline. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sl {
+    background: var(--c-field-outline);
+  }
+
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sl::before,
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sl::after {
+    background: var(--c-int-primary);
   }
 
   /* The page sits on the quiet Tertiary surface so every elevated component
@@ -1693,11 +1711,10 @@
     background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
   }
 
-  /* Legacy and SERCA draw a disabled button as the quiet Tertiary surface
-     with Disabled text, rather than the solid grey fill EarthRanger uses.
-     SERCA renders on EarthRanger's tokens, so it is picked out by brand. */
-  html[data-system="er-legacy"] .btn-disabled,
-  html[data-brand="serca"] .btn-disabled {
+  /* The ER family draws a disabled button as the quiet Tertiary surface
+     with Disabled text. That fill sits about 1.1:1 off the panel behind it,
+     so the button needs its own Field Outline edge to keep a shape. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-disabled {
     background: var(--c-surface-quiet);
     border: 1px solid var(--c-field-outline);
     color: var(--c-text-disabled);
@@ -1820,6 +1837,13 @@
     --c-stroke:         var(--er-grey-3);                 /* Divider Lines */
     --c-field-outline:  var(--er-grey-4);                 /* Field Outline */
     --c-outlined-primary-hover-bg: var(--er-blue-5);
+  }
+
+  /* Secondary Background moved to Off-White/50 for EarthRanger alone, so
+     SERCA is held on the original Off-White. Dark is untouched, and the
+     mode attribute keeps this from outranking the shared dark block. */
+  html[data-brand="serca"][data-er-mode="light"] {
+    --c-bg: var(--er-off-white);
   }
 
   /* Light/dark toggle — only relevant (and shown) for EarthRanger */
@@ -1963,7 +1987,7 @@
       </div>
       <div id="er-platform-fonts"></div>
 
-      <div class="subhead" id="er-ui-type-head">UI headings and button labels</div>
+      <div class="subhead">UI headings and button labels</div>
       <div id="er-ui-type-scale"></div>
 
       <div class="subhead er-not-legacy">External communications typography</div>
@@ -2121,7 +2145,7 @@
       <div>
         <h2>Form controls</h2>
         <p class="er-hide">Checkbox, radio, switch, and slider. All four share a single color vocabulary: white surface with a teal-80 stroke when off; <code>interactive-default</code> when on.</p>
-        <p class="er-only">Checkbox, radio, switch, and slider. All four share a single color vocabulary: the field surface with a Field Outline stroke when off, and the switch knob in Icons. On, they take <code>interactive-default</code> — CTA Primary in ER Legacy.</p>
+        <p class="er-only">Checkbox, radio, switch, and slider. All four share a single color vocabulary: the field surface with a Field Outline stroke when off, and the switch knob in Icons; CTA Primary when on.</p>
       </div>
     </div>
 
@@ -2144,7 +2168,7 @@
       <div class="ctrl-row">
         <div class="label">slider</div>
         <div class="ctrl-cell"><span class="sl"></span></div>
-        <div class="ctrl-cell"><span class="caption">Track 8px · filled portion uses <code>interactive-default</code></span></div>
+        <div class="ctrl-cell"><span class="caption er-hide">Track 8px · filled portion uses <code>interactive-default</code></span><span class="caption er-only">Track 8px · Field Outline, with the filled run and thumb in CTA Primary</span></div>
       </div>
     </div>
   </section>
@@ -2728,7 +2752,7 @@ const ER_PRIMITIVES = {
   "grey-3": "#333333", "grey-4": "#444444", "grey-5": "#63666a",
   "grey-6": "#767676", "grey-7": "#888b8d", "grey-8": "#b1b3b3",
   "grey-9": "#dddddd", "grey-10": "#f3f3f3", "grey-11": "#f9f9f9",
-  "off-white": "#faf2e9", "white": "#ffffff",
+  "off-white": "#faf2e9", "off-white-50": "#fdf9f4", "white": "#ffffff",
 
   "teal-1": "#107283", "teal-2": "#62bfd0", "teal-3": "#008586",
   "teal-4": "#00958f", "teal-5": "#00d0c8", "teal-dark": "#0a3235",
@@ -2818,7 +2842,7 @@ ALIASES["olmo-earth"] = ALIASES.strata; // stub
 ALIASES["earthranger"] = {
   light: [
     ["background/primary",       "white"],
-    ["background/secondary",     "off-white"],
+    ["background/secondary",     "off-white-50"],
     ["background/tertiary",      "teal-t10"],
     ["background/elevated",      "white"],
     ["background/elevated-0",    "grey-11"],
@@ -2958,6 +2982,15 @@ const notBrand = ([k]) => !k.startsWith("brand/");
 ALIASES["er-legacy"] = {
   light: ALIASES["earthranger"].light.filter(notBrand).map(([k, v]) => [k, ER_LEGACY_ALIASES.light[k] || v]),
   dark:  ALIASES["earthranger"].dark.filter(notBrand).map(([k, v]) => [k, ER_LEGACY_ALIASES.dark[k] || v]),
+};
+
+/* SERCA renders on EarthRanger's tokens and parts company on exactly one:
+   Secondary Background stayed on Off-White when EarthRanger moved to
+   Off-White/50. It keeps the brand rows, which are its own. */
+const SERCA_ALIASES = { light: { "background/secondary": "off-white" }, dark: {} };
+ALIASES["serca"] = {
+  light: ALIASES["earthranger"].light.map(([k, v]) => [k, SERCA_ALIASES.light[k] || v]),
+  dark:  ALIASES["earthranger"].dark.map(([k, v]) => [k, SERCA_ALIASES.dark[k] || v]),
 };
 
 /* Skylight is single-mode (no dark theme), so it takes the plain
@@ -3160,28 +3193,27 @@ function renderPrimitives() {
   `).join("");
 }
 
-function renderAliases(systemKey) {
+function renderAliases(brandKey) {
   const list = document.getElementById("aliases-list");
-  const raw = ALIASES[systemKey];
-  const rows = ["earthranger", "er-legacy"].includes(systemKey) ? raw[document.documentElement.dataset.erMode || "light"] : raw;
+  const raw = ALIASES[brandKey];
+  const rows = ["earthranger", "er-legacy", "serca"].includes(brandKey) ? raw[document.documentElement.dataset.erMode || "light"] : raw;
   list.innerHTML = rows.map(([alias, prim]) => `
     <div class="alias-row">
       <span class="alias-name">${alias}</span>
       <span class="alias-arrow">→</span>
       <span class="alias-value">
-        <span class="alias-dot" style="background:${hexFor(prim, systemKey)}"></span>
+        <span class="alias-dot" style="background:${hexFor(prim, brandKey)}"></span>
         <span class="alias-target">${prim}</span>
       </span>
     </div>
   `).join("");
 }
 
-/* ER Legacy is Roboto throughout with no line heights, and has neither
-   UI headings nor an external-comms scale. Derive its lists from the
-   shared ones so they cannot drift. */
+/* ER Legacy is Roboto throughout with no line heights, and has no
+   external-comms scale. Its UI headings and button labels are
+   EarthRanger's own, so that list is shared rather than derived. */
 const isLegacy = () => document.documentElement.dataset.system === "er-legacy";
 const LEGACY_TYPE = () => TYPOGRAPHY.map(([n, f, size, w]) => [n, f === "Roboto Mono" ? f : "Roboto", size, w, "normal"]);
-const LEGACY_UI_TYPE = () => ER_UI_TYPE.filter(([n]) => n.startsWith("button-"));
 const LEGACY_PLATFORM_FONTS = () => ER_PLATFORM_FONTS.map(([p, body]) => [p, body, body]);
 
 function renderTypography() {
@@ -3297,10 +3329,8 @@ function renderErPlatformFonts() {
   `).join("");
 }
 function renderErUiType() {
-  const head = document.getElementById("er-ui-type-head");
-  if (head) head.textContent = isLegacy() ? "Button labels" : "UI headings and button labels";
   const wrap = document.getElementById("er-ui-type-scale");
-  wrap.innerHTML = (isLegacy() ? LEGACY_UI_TYPE() : ER_UI_TYPE).map(([name, family, size, weight]) => `
+  wrap.innerHTML = ER_UI_TYPE.map(([name, family, size, weight]) => `
     <div class="type-row">
       <div class="type-label">${name}</div>
       <div class="type-spec">
@@ -3370,14 +3400,13 @@ function applySystem(brandKey) {
     btn.setAttribute("aria-pressed", btn.dataset.system === brandKey ? "true" : "false");
   });
   bindMeta(brandKey);
-  renderAliases(systemKey);
+  renderAliases(brandKey);
   renderRadii(systemKey);
   renderSpacing(systemKey);
-  /* ER Legacy's type scale, platform fonts and UI styles differ from the
-     shared ones, so these re-render on every switch rather than once. */
+  /* ER Legacy's type scale and platform fonts differ from the shared ones,
+     so these re-render on every switch rather than once. */
   renderTypography();
   renderErPlatformFonts();
-  renderErUiType();
 }
 
 /* EarthRanger's Light/Dark toggle is independent of the system picker —
@@ -3387,9 +3416,9 @@ function applyErMode(mode) {
   document.querySelectorAll(".er-mode-toggle button").forEach((btn) => {
     btn.setAttribute("aria-pressed", btn.dataset.erMode === mode ? "true" : "false");
   });
-  /* ER Legacy has an alias table of its own, so re-render the system that
-     is actually active rather than assuming EarthRanger. */
-  renderAliases(document.documentElement.dataset.system);
+  /* ER Legacy and SERCA have alias tables of their own, so re-render the
+     brand that is actually active rather than assuming EarthRanger. */
+  renderAliases(document.documentElement.dataset.brand);
   renderErSections();
   bindMeta(document.documentElement.dataset.brand);
 }

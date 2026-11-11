@@ -82,6 +82,7 @@
   --er-greyscale-10: #f3f3f3;
   --er-greyscale-11: #f9f9f9;
   --er-greyscale-off-white: #faf2e9;
+  --er-greyscale-off-white-50: #fdf9f4;
   --er-greyscale-white: #ffffff;
   --er-blue-1: #0056c7;
   --er-blue-2: #dde8f8;
@@ -176,6 +177,12 @@
   --er-typography-heading-sm-font-family: Roboto;
   --er-typography-heading-sm-font-weight: 700;
   --er-typography-heading-sm-font-size: 20px;
+  --er-typography-heading-ui-lg-font-family: Roboto;
+  --er-typography-heading-ui-lg-font-weight: 500;
+  --er-typography-heading-ui-lg-font-size: 32px;
+  --er-typography-heading-ui-md-font-family: Roboto;
+  --er-typography-heading-ui-md-font-weight: 500;
+  --er-typography-heading-ui-md-font-size: 24px;
   --er-typography-button-sm-font-family: Roboto;
   --er-typography-button-sm-font-weight: 600;
   --er-typography-button-sm-font-size: 18px;

@@ -145,6 +145,7 @@ colors:
   greyscale-10: "#f3f3f3"
   greyscale-11: "#f9f9f9"
   greyscale-off-white: "#faf2e9"
+  greyscale-off-white-50: "#fdf9f4"
   greyscale-white: "#ffffff"
 
   # Blue
@@ -280,6 +281,18 @@ typography:
     fontStyle: Bold
     fontSize: 20px
 
+  # UI headings: Roboto Medium, for headings inside product UI, matching
+  # EarthRanger's own. No line height set — the layout decides.
+  heading-ui-lg:
+    fontFamily: Roboto
+    fontWeight: 500
+    fontSize: 32px
+
+  heading-ui-md:
+    fontFamily: Roboto
+    fontWeight: 500
+    fontSize: 24px
+
   # Button labels: Roboto SemiBold.
   button-sm:
     fontFamily: Roboto
@@ -366,7 +379,7 @@ Reference a text-style token (`body-md`, `heading-lg`) rather than hardcoding fo
 
 **No style sets a line height.** The layout decides, so one token suits a dense table row and a roomy card alike.
 
-The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, and two button labels (`button-sm` 18px, `button-xs` 16px, SemiBold). Display and Headings are Bold; Body and Mono Regular.
+The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, two UI headings (`heading-ui-lg` 32px, `heading-ui-md` 24px, Medium) and two button labels (`button-sm` 18px, `button-xs` 16px, SemiBold). Display and Headings are Bold; Body and Mono Regular. The UI headings and button labels are EarthRanger's own, unchanged, and set no line height.
 
 ### Fallback stack (performance)
 

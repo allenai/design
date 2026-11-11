@@ -31,7 +31,7 @@ colors:
   # inside an elevated component, such as a table header or a row label: one
   # step away from Elevated in either mode, never a page background.
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
-  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-darkest}" }
+  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white-50}", dark: "{colors.teal-darkest}" }
   "UI/Background/Tertiary Background": { light: "{colors.teal-t10}", dark: "{colors.teal-darkest}" }
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Background/Elevated Component 0": { light: "{colors.greyscale-11}", dark: "{colors.teal-ai2-dark-teal}" }
@@ -146,6 +146,7 @@ colors:
   greyscale-10: "#f3f3f3"
   greyscale-11: "#f9f9f9"
   greyscale-off-white: "#faf2e9"
+  greyscale-off-white-50: "#fdf9f4"
   greyscale-white: "#ffffff"
 
   # Blue

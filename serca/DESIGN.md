@@ -171,6 +171,7 @@ colors:
   greyscale-10: "#f3f3f3"
   greyscale-11: "#f9f9f9"
   greyscale-off-white: "#faf2e9"
+  greyscale-off-white-50: "#fdf9f4"
   greyscale-white: "#ffffff"
 
   # Blue
