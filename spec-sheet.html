@@ -1594,28 +1594,19 @@
     color: var(--c-text-secondary-reversed);
   }
 
-  /* Off states draw their stroke from the palette rather than the shared
-     hardcoded teal: Divider Lines in EarthRanger, Field Outline in Legacy.
-     The switch knob is an icon mark, so it takes the Icons color. */
-  html[data-system="earthranger"] .rd:not(.checked),
-  html[data-system="earthranger"] .sw:not(.on) {
-    border-color: var(--c-stroke);
-  }
-
-  html[data-system="er-legacy"] .rd:not(.checked),
-  html[data-system="er-legacy"] .sw:not(.on) {
-    border-color: var(--c-field-outline);
-  }
-
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on)::after {
-    background: var(--c-icon);
-  }
-
-  /* The off fill was a hardcoded white, which stayed white in dark mode.
-     It is a field surface, so it follows the input background. */
+  /* Off states draw from the palette rather than the shared hardcoded
+     teal: Field Outline for the stroke, since an unchecked control is a
+     field edge, and the input surface for the fill, which was a
+     hardcoded white that stayed white in dark mode. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .rd:not(.checked),
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on) {
     background: var(--c-input-bg);
+    border-color: var(--c-field-outline);
+  }
+
+  /* The switch knob is an icon mark, so it takes the Icons color. */
+  html:is([data-system="earthranger"],[data-system="er-legacy"]) .sw:not(.on)::after {
+    background: var(--c-icon);
   }
 
   /* Legacy marks an active form control with CTA Primary, where the other
@@ -1697,6 +1688,15 @@
   }
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-destructive:hover {
     background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
+  }
+
+  /* Legacy and SERCA draw a disabled button as the quiet Tertiary surface
+     with Disabled text, rather than the solid grey fill EarthRanger uses.
+     SERCA renders on EarthRanger's tokens, so it is picked out by brand. */
+  html[data-system="er-legacy"] .btn-disabled,
+  html[data-brand="serca"] .btn-disabled {
+    background: var(--c-surface-quiet);
+    color: var(--c-text-disabled);
   }
 
   /* Reversed outlined carries no fill: stroke and label both take the
@@ -1985,7 +1985,8 @@
       <div class="label">02 — Buttons</div>
       <div>
         <h2>Buttons</h2>
-        <p>Four intents (default, primary, secondary, reversed) × filled & outlined variants × three sizes. Hover any button to see its hover state.</p>
+        <p class="er-hide">Four intents (default, primary, secondary, reversed) × filled & outlined variants × three sizes. Hover any button to see its hover state.</p>
+        <p class="er-only">Five intents (default, primary, secondary, reversed, destructive) × filled & outlined variants × three sizes, plus disabled. Hover any button to see its hover state.</p>
       </div>
     </div>
 
@@ -2114,7 +2115,8 @@
       <div class="label">04 — Form controls</div>
       <div>
         <h2>Form controls</h2>
-        <p>Checkbox, radio, switch, and slider. All four share a single color vocabulary: white surface with a teal-80 stroke when off; <code>interactive-default</code> when on.</p>
+        <p class="er-hide">Checkbox, radio, switch, and slider. All four share a single color vocabulary: white surface with a teal-80 stroke when off; <code>interactive-default</code> when on.</p>
+        <p class="er-only">Checkbox, radio, switch, and slider. All four share a single color vocabulary: the field surface with a Field Outline stroke when off, and the switch knob in Icons. On, they take <code>interactive-default</code> — CTA Primary in ER Legacy.</p>
       </div>
     </div>
 
