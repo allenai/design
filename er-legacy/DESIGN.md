@@ -30,17 +30,16 @@ colors:
   # shift to lighter/more-saturated primitive steps for contrast.
 
   # Background
-  # Dark-mode surfaces sit on two steps — Secondary and Tertiary on black,
-  # Primary and Elevated on Grey/1 — so a panel reads as lifted while the
-  # quiet surfaces recede into the page. Elevated Component 0 is the banded
-  # sub-surface inside an elevated component, such as a table header or a
-  # row label: a step down from Elevated in light, a step up in dark, and
-  # never a page background.
-  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
-  "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
+  # Listed from the quietest surface to the most forward: the page sits on
+  # Tertiary or Secondary, Elevated Component 0 is the banded sub-surface
+  # inside a panel (a table header, a row label), and Elevated and Primary
+  # are the panel itself. In dark the quiet surfaces sit on black and the
+  # panel on Grey/1, so a panel reads as lifted while the page recedes.
   "UI/Background/Tertiary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }   # quiet surfaces: filter chips, map controls, read-only fields
-  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
+  "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
   "UI/Background/Elevated Component 0": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-2}" }
+  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
+  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
 
   # Text

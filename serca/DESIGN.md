@@ -50,16 +50,16 @@ colors:
   # tokens shift to lighter/more-saturated primitive steps for contrast.
 
   # Background
-  # Dark-mode surfaces form one continuous teal ladder — Secondary/Tertiary
-  # (darkest) → Primary/Elevated → Elevated 0 → Selected (lightest) — rather
-  # than mixing in grey. Elevated Component 0 is the banded sub-surface
-  # inside an elevated component, such as a table header or a row label: one
-  # step away from Elevated in either mode, never a page background.
-  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
-  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-darkest}" }
+  # Listed from the quietest surface to the most forward: the page sits on
+  # Tertiary or Secondary, Elevated Component 0 is the banded sub-surface
+  # inside a panel (a table header, a row label), and Elevated and Primary
+  # are the panel itself. Dark mode runs one continuous teal ladder rather
+  # than mixing in grey.
   "UI/Background/Tertiary Background": { light: "{colors.teal-t10}", dark: "{colors.teal-darkest}" }
-  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
+  "UI/Background/Secondary Background": { light: "{colors.greyscale-off-white}", dark: "{colors.teal-darkest}" }
   "UI/Background/Elevated Component 0": { light: "{colors.greyscale-11}", dark: "{colors.teal-ai2-dark-teal}" }
+  "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
+  "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Background/Selected Background": { light: "{colors.teal-3-05}", dark: "{colors.teal-t100}" }
 
   # Text
