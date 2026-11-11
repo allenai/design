@@ -201,7 +201,7 @@
 [data-theme="dark"] {
   --er-ui-background-primary-background: #111111;
   --er-ui-background-secondary-background: #000000;
-  --er-ui-background-tertiary-background: #333333;
+  --er-ui-background-tertiary-background: #111111;
   --er-ui-background-elevated-component: #111111;
   --er-ui-background-selected-background: #2a394d;
   --er-ui-text-primary-text: #ffffff;

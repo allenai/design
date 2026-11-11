@@ -1591,6 +1591,31 @@
     color: var(--c-text-secondary-reversed);
   }
 
+  /* Legacy marks an active form control with CTA Primary, where the other
+     systems use the neutral interactive color. Error fields keep red. */
+  html[data-system="er-legacy"] .field:not(.field-error):focus,
+  html[data-system="er-legacy"] .field-focus:not(.field-error) {
+    border-color: var(--c-int-primary);
+  }
+
+  html[data-system="er-legacy"] .field:not(.field-error):focus {
+    outline-color: color-mix(in srgb, var(--c-int-primary) 35%, transparent);
+  }
+
+  html[data-system="er-legacy"] .field-focus:not(.field-error) {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-int-primary) 35%, transparent);
+  }
+
+  html[data-system="er-legacy"] .rd.checked,
+  html[data-system="er-legacy"] .sw.on {
+    background: var(--c-int-primary);
+    border-color: var(--c-int-primary);
+  }
+
+  html[data-system="er-legacy"] .dd-item .check {
+    color: var(--c-int-primary);
+  }
+
   /* The page sits on the quiet Tertiary surface so every elevated component
      reads as lifted off it. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) body {
@@ -1752,7 +1777,7 @@
     --c-text-secondary-reversed: var(--er-blue-3);
     --c-bg-selected:    var(--er-blue-5);
     --c-cta-secondary:  var(--er-blue-5);
-    --c-surface-quiet:  var(--er-grey-3);
+    --c-surface-quiet:  var(--er-grey-1);                 /* Tertiary Background */
 
     --c-stroke:         var(--er-grey-3);                 /* Divider Lines */
     --c-field-outline:  var(--er-grey-4);                 /* Field Outline */
