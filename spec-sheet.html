@@ -1711,17 +1711,11 @@
     background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
   }
 
-  /* The ER family draws a disabled button as a quiet fill with Disabled
-     text and no edge: Tertiary Background for EarthRanger, and Elevated
-     Component 0 for Legacy and SERCA, whose pages already sit on Tertiary. */
+  /* The ER family draws a disabled button with no edge: Elevated
+     Component 0, which keeps it off the Tertiary page, and Disabled text. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-disabled {
-    background: var(--c-surface-quiet);
-    color: var(--c-text-disabled);
-  }
-
-  html[data-system="er-legacy"] .btn-disabled,
-  html[data-brand="serca"] .btn-disabled {
     background: var(--c-surface-elevated-0);
+    color: var(--c-text-disabled);
   }
 
   /* Reversed outlined carries no fill: stroke and label both take the
