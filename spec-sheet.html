@@ -1711,13 +1711,17 @@
     background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
   }
 
-  /* The ER family draws a disabled button as the quiet Tertiary surface
-     with Disabled text. That fill sits about 1.1:1 off the panel behind it,
-     so the button needs its own Field Outline edge to keep a shape. */
+  /* The ER family draws a disabled button as a quiet fill with Disabled
+     text and no edge: Tertiary Background for EarthRanger, and Elevated
+     Component 0 for Legacy and SERCA, whose pages already sit on Tertiary. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-disabled {
     background: var(--c-surface-quiet);
-    border: 1px solid var(--c-field-outline);
     color: var(--c-text-disabled);
+  }
+
+  html[data-system="er-legacy"] .btn-disabled,
+  html[data-brand="serca"] .btn-disabled {
+    background: var(--c-surface-elevated-0);
   }
 
   /* Reversed outlined carries no fill: stroke and label both take the
