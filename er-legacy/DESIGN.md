@@ -1,6 +1,6 @@
 ---
 name: ER Legacy
-description: EarthRanger product interfaces in the palette used before the design-system adoption
+description: EarthRanger product interfaces in the design system carried forward from the 2021 app
 version: 0.0.1
 
 assets:
@@ -344,23 +344,25 @@ EarthRanger Legacy is a design system built from what existed in the app from 20
 
 ## Colors
 
-Always use **semantic tokens** (`UI/Text/Primary Text`) rather than raw primitives. They carry intent, give a Light and a Dark value, and adapt if the system changes.
+Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw primitive values wherever possible. Semantic tokens carry intent, provide both a Light and Dark value, and will automatically adapt if the design system is updated.
 
-**No new color values are introduced.** Every token resolves to a primitive EarthRanger already publishes; what differs is which primitive each points at. Nineteen tokens differ — the rest are identical, and are repeated so the spec stands alone.
+The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3) — used for calls to action, links, and active states. `UI/CTA Secondary` (`#dde8f8` light / `#2a394d` dark) is the quiet companion fill behind a secondary action. Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Note that `UI/Status/Running` resolves to the same blue as `UI/CTA Primary`, so informational and interactive blue look alike — rely on placement and component to tell them apart, and reach for `UI/CTA Primary` for anything the user can act on.
 
-The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3), for calls to action, links and active states. **That is the defining difference from EarthRanger, whose CTA is green.** Note that `UI/Status/Running` shares the CTA's value here, so interactive and informational blue are the same color — rely on placement and component, not hue, to tell them apart. Status colors are otherwise strictly functional: use them to communicate meaning, never decoratively.
+**Neutrals are greyscale.** Secondary text and icons are `Greyscale/5`, field outlines `Greyscale/8`, dividers `Greyscale/9`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `Greyscale/10` is `UI/Background/Elevated Component 0`, the banded sub-surface inside a panel such as a table header or a row label. Selection is blue-tinted (`Blue/4`). In light mode icons share their value with secondary text, so an icon and its label read as one tier; in dark mode icons drop to `Greyscale/7` alongside form labels and tabs.
 
-**Neutrals are grey, not teal.** Secondary text and icons are `Greyscale/5`, dividers `Greyscale/9`, field outlines `Greyscale/8`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `Greyscale/10` is Elevated Component 0, the band inside a panel. Selection is blue-tinted (`Blue/4`), not teal. Icons share their value with secondary text, so an icon and its label read as one tier.
+Teal appears only in `UI/Patrol Status/Scheduled` and the categorical data scale. It is not an accent: keep it out of navigation, headers and chrome, which take the neutral background tokens.
 
-Teal survives as a primitive, used by `UI/Patrol Status/Scheduled`, but it is **not** a brand accent here and should not appear in navigation, headers or chrome — use the neutral background tokens for dark chrome. **ER Legacy defines no brand tokens at all:** logo lockups, accent green and the brand backgrounds belong to EarthRanger and SERCA, and a surface needing them is a brand surface. Pink is never used, in either palette.
+**This system defines no brand tokens.** Logo lockups, accent colors and brand backgrounds are brand-surface concerns and live outside it — a surface that needs them is a brand surface, not product UI.
 
-Use `UI/Text/Primary Text Reversed` for text or icon marks sitting on a filled CTA or other saturated surface.
+Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#111111` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a saturated surface, such as a filled CTA or a checked control's mark. The CTA is a mid-tone blue in light mode but a pale tint in dark mode, so a fixed light color reads fine in light mode and disappears in dark — this token flips with the mode so it always contrasts against the surface it's on.
 
-The data scales — categorical, tracks and sequential — are **EarthRanger's, unchanged**, including the separate light and dark values on categorical. Use them in order, and resolve each through its token rather than copying a hex, so a chart keeps working when a product moves to EarthRanger.
+Pink is not part of the palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
+
+For data visualization, use the categorical, tracks, and sequential scales in order — do not skip steps or substitute other colors. These scales are designed for perceptual distinctiveness and accessibility across the full range of values. Tracks and sequential are intentionally identical in Light and Dark mode; categorical uses a separate value per mode, so always resolve it through the token rather than copying a hex.
 
 ### Dark mode
 
-A **greyscale ladder, not EarthRanger's teal one.** Secondary and tertiary backgrounds sit on black, primary and elevated on `Greyscale/1`, and `Greyscale/2` is the Elevated Component 0 band. Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/3` and field outlines to `Greyscale/4`.
+Dark mode is a **greyscale ladder**. Secondary and tertiary backgrounds sit on black, primary and elevated on `Greyscale/1`, and `Greyscale/2` is the Elevated Component 0 band. Text inverts to white, secondary text to `Greyscale/8`, icons and labels to `Greyscale/7`, dividers to `Greyscale/3` and field outlines to `Greyscale/4`.
 
 The CTA lightens to `Blue/3` and the secondary blue deepens to `Blue/5`. Status and priority colors move to softer steps so they read without glowing: error `Red/5`, warning `Amber/5`, success `Green/4`, priority green `Green/2`, patrol active `Indigo/5`, overdue `Magenta/4`. Patrol paused is the exception, brightening from `Yellow/2` to `Yellow/3` — where it meets `UI/Status/Ready`, so keep the two apart by component.
 
@@ -379,7 +381,7 @@ Reference a text-style token (`body-md`, `heading-lg`) rather than hardcoding fo
 
 **No style sets a line height.** The layout decides, so one token suits a dense table row and a roomy card alike.
 
-The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, two UI headings (`heading-ui-lg` 32px, `heading-ui-md` 24px, Medium) and two button labels (`button-sm` 18px, `button-xs` 16px, SemiBold). Display and Headings are Bold; Body and Mono Regular. The UI headings and button labels are EarthRanger's own, unchanged, and set no line height.
+The scale is Display, Heading (XL/LG/MD/SM), Body (LG/MD/SM/XS), Mono, two UI headings (`heading-ui-lg` 32px, `heading-ui-md` 24px, Medium) and two button labels (`button-sm` 18px, `button-xs` 16px, SemiBold). Display and Headings are Bold; Body and Mono Regular. The UI headings and button labels set no line height.
 
 ### Fallback stack (performance)
 
@@ -387,7 +389,7 @@ EarthRanger runs in low-bandwidth field conditions where a delayed web font can 
 
 ### Externally-facing communications
 
-ER Legacy covers **product UI only**. For websites, decks, newsletters and print, use EarthRanger's external-communications scale (`external-comms-body-lg/md/sm/xs`, Manrope) — that material is brand-facing and carries the current palette whichever palette the product UI is on.
+This system covers **product UI only**. Websites, decks, newsletters and print are brand-facing material: they use the EarthRanger brand's external-communications scale (`external-comms-body-lg/md/sm/xs`, Manrope), whichever system the product UI is on.
 
 ## Icons
 
@@ -405,7 +407,7 @@ ER Design System Figma file `gQJAI5XKeENQsqkCaFBev3`, Icons page. Custom filled 
 
 **Don't put `UI/Text/Primary Text` on a solid `UI/CTA Primary` fill.** In light mode it measures 3.16:1, under the 4.5:1 AA minimum for normal text — use `UI/Text/Primary Text Reversed`, which is white and measures 6.65:1. In dark mode the rule flips: `Blue/3` is light enough that **dark** text is correct at 8.47:1, while white falls to 2.23:1.
 
-**Don't mix ER Legacy and EarthRanger on one screen.** They share token names deliberately, so loading both breaks nothing visibly — one quietly wins and you get a screen that is neither palette. Pick one per product.
+**Don't load two token files at once.** Every EarthRanger-family system emits the same token names, so a second one layered on top breaks nothing visibly — one quietly wins and you get a screen that is neither palette. A product loads one, and swaps it whole when it moves.
 
 **Don't use emojis — use an icon library.** Emojis render inconsistently across platforms and carry none of the states (filled/outline, active/inactive) the libraries provide.
 
