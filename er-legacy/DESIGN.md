@@ -32,15 +32,16 @@ colors:
   # Background
   # Listed from the quietest surface to the most forward: the page sits on
   # Tertiary or Secondary, Elevated Component 0 is the banded sub-surface
-  # inside a panel (a table header, a row label), and Elevated and Primary
-  # are the panel itself. In dark the quiet surfaces sit on black and the
-  # panel on Grey/1, so a panel reads as lifted while the page recedes.
+  # inside a panel (a table header, a row label) and the fill behind a
+  # default button, and Elevated and Primary are the panel itself. In dark
+  # the quiet surfaces sit on black and the panel on Grey/1, so a panel
+  # reads as lifted while the page recedes.
   "UI/Background/Tertiary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }   # quiet surfaces: filter chips, map controls, read-only fields
   "UI/Background/Secondary Background": { light: "{colors.greyscale-11}", dark: "{colors.greyscale-0}" }
-  "UI/Background/Elevated Component 0": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-2}" }
+  "UI/Background/Elevated Component 0": { light: "{colors.greyscale-10}", dark: "{colors.greyscale-2}" }   # banded sub-surface inside a panel (table header, row label); also the default button fill
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
-  "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }
+  "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }   # selection, and the hover fill behind an outlined button
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.greyscale-0}", dark: "{colors.greyscale-white}" }
@@ -348,7 +349,7 @@ Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw prim
 
 The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3) — used for calls to action, links, and active states. `UI/CTA Secondary` (`#dde8f8` light / `#2a394d` dark) is the quiet companion fill behind a secondary action. Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Note that `UI/Status/Running` resolves to the same blue as `UI/CTA Primary`, so informational and interactive blue look alike — rely on placement and component to tell them apart, and reach for `UI/CTA Primary` for anything the user can act on.
 
-**Neutrals are greyscale.** Secondary text and icons are `Greyscale/5`, field outlines `Greyscale/8`, dividers `Greyscale/9`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `Greyscale/10` is `UI/Background/Elevated Component 0`, the banded sub-surface inside a panel such as a table header or a row label. Selection is blue-tinted (`Blue/4`). In light mode icons share their value with secondary text, so an icon and its label read as one tier; in dark mode icons drop to `Greyscale/7` alongside form labels and tabs.
+**Neutrals are greyscale.** Secondary text and icons are `Greyscale/5`, field outlines `Greyscale/8`, dividers `Greyscale/9`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `UI/Background/Elevated Component 0` (`Greyscale/10`) is the banded sub-surface inside a panel such as a table header or a row label, and the fill behind a default button — which darkens on hover rather than inverting its label. `UI/Background/Selected Background` (`Blue/4`) carries selection, and fills an outlined button on hover. In light mode icons share their value with secondary text, so an icon and its label read as one tier; in dark mode icons drop to `Greyscale/7` alongside form labels and tabs.
 
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#111111` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a saturated surface, such as a filled CTA or a checked control's mark. The CTA is a mid-tone blue in light mode but a pale tint in dark mode, so a fixed light color reads fine in light mode and disappears in dark — this token flips with the mode so it always contrasts against the surface it's on.
 
