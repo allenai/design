@@ -42,6 +42,7 @@ colors:
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }   # selection, and the hover fill behind an outlined button
+  "UI/Background/Hover Background": { light: "{colors.blue-2}", dark: "{colors.blue-5}" }   # the fill a surface or control takes on hover
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.greyscale-0}", dark: "{colors.greyscale-white}" }
@@ -53,7 +54,7 @@ colors:
   "UI/Text/Disabled": { light: "{colors.greyscale-6}", dark: "{colors.greyscale-7}" }
 
   # UI Chrome
-  "UI/Icons": { light: "{colors.greyscale-5}", dark: "{colors.greyscale-7}" }
+  "UI/Icons": { light: "{colors.greyscale-4}", dark: "{colors.greyscale-9}" }
   "UI/Field Outline": { light: "{colors.greyscale-8}", dark: "{colors.greyscale-4}" }
   "UI/Divider Lines": { light: "{colors.greyscale-9}", dark: "{colors.greyscale-3}" }
 
@@ -349,7 +350,7 @@ Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw prim
 
 The primary interactive color is `UI/CTA Primary` (`#0056c7` light / `#76b0ff` dark, Blue/1 and Blue/3) — used for calls to action, links, and active states. `UI/CTA Secondary` (`#dde8f8` light / `#2a394d` dark) is the quiet companion fill behind a secondary action. Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Note that `UI/Status/Running` resolves to the same blue as `UI/CTA Primary`, so informational and interactive blue look alike — rely on placement and component to tell them apart, and reach for `UI/CTA Primary` for anything the user can act on.
 
-**Neutrals are greyscale.** Secondary text and icons are `Greyscale/5`, field outlines `Greyscale/8`, dividers `Greyscale/9`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `UI/Background/Elevated Component 0` (`Greyscale/10`) is the banded sub-surface inside a panel such as a table header or a row label, and the fill behind a default button — which darkens on hover rather than inverting its label. `UI/Background/Selected Background` (`Blue/4`) carries selection, and fills an outlined button on hover. In light mode icons share their value with secondary text, so an icon and its label read as one tier; in dark mode icons drop to `Greyscale/7` alongside form labels and tabs.
+**Neutrals are greyscale.** Secondary text is `Greyscale/5`, icons `Greyscale/4`, field outlines `Greyscale/8`, dividers `Greyscale/9`, and the secondary and tertiary backgrounds both `Greyscale/11` — the quiet surface filter chips, map controls and read-only fields sit on. `UI/Background/Elevated Component 0` (`Greyscale/10`) is the banded sub-surface inside a panel such as a table header or a row label, and the fill behind a default button — whose label is `Greyscale/4`, the icon value, so a button's label and the icon beside it read as one tier; the fill darkens on hover rather than inverting that label. `UI/Background/Selected Background` (`Blue/4`) carries selection, and fills an outlined button on hover; `UI/Background/Hover Background` (`Blue/2`) is the fill a surface or control takes on hover. Icons sit a step darker than secondary text in light mode; in dark mode icons and default button labels both rise to `Greyscale/9`, a step brighter than secondary text (`Greyscale/8`), so they stay legible on the near-black panel.
 
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#111111` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a saturated surface, such as a filled CTA or a checked control's mark. The CTA is a mid-tone blue in light mode but a pale tint in dark mode, so a fixed light color reads fine in light mode and disappears in dark — this token flips with the mode so it always contrasts against the surface it's on.
 
@@ -388,7 +389,7 @@ This system covers **product UI only**. For websites, decks, newsletters and pri
 
 ### Library 1: Material Design Icons
 
-Figma library `x3D0XAL06JEEEi12suKcGs`. Outlined by default, 24×24px. The primary library: look here first for any standard UI icon. Color them with `UI/Icons` (`#63666a` light / `#888b8d` dark) unless the design says otherwise.
+Figma library `x3D0XAL06JEEEi12suKcGs`. Outlined by default, 24×24px. The primary library: look here first for any standard UI icon. Color them with `UI/Icons` (`#444444` light / `#dddddd` dark) unless the design says otherwise.
 
 ### Library 2: ER Design System Custom Icons
 

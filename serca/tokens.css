@@ -7,6 +7,7 @@
   --serca-ui-background-elevated-component: #ffffff;
   --serca-ui-background-primary-background: #ffffff;
   --serca-ui-background-selected-background: #f2f9f9;
+  --serca-ui-background-hover-background: #e7eeee;
   --serca-ui-text-primary-text: #0a3235;
   --serca-ui-text-primary-text-reversed: #ffffff;
   --serca-ui-text-secondary-text: #105257;
@@ -248,6 +249,7 @@
   --serca-ui-background-elevated-component: #032629;
   --serca-ui-background-primary-background: #032629;
   --serca-ui-background-selected-background: #105257;
+  --serca-ui-background-hover-background: #105257;
   --serca-ui-text-primary-text: #ffffff;
   --serca-ui-text-primary-text-reversed: #032629;
   --serca-ui-text-secondary-text: #cfdcdd;

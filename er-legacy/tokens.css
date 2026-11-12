@@ -7,6 +7,7 @@
   --er-ui-background-elevated-component: #ffffff;
   --er-ui-background-primary-background: #ffffff;
   --er-ui-background-selected-background: #f4f7fd;
+  --er-ui-background-hover-background: #dde8f8;
   --er-ui-text-primary-text: #000000;
   --er-ui-text-primary-text-reversed: #ffffff;
   --er-ui-text-secondary-text: #63666a;
@@ -14,7 +15,7 @@
   --er-ui-text-form-labels: #767676;
   --er-ui-text-tabs: #767676;
   --er-ui-text-disabled: #767676;
-  --er-ui-icons: #63666a;
+  --er-ui-icons: #444444;
   --er-ui-field-outline: #b1b3b3;
   --er-ui-divider-lines: #dddddd;
   --er-ui-cta-primary: #0056c7;
@@ -214,6 +215,7 @@
   --er-ui-background-elevated-component: #111111;
   --er-ui-background-primary-background: #111111;
   --er-ui-background-selected-background: #2a394d;
+  --er-ui-background-hover-background: #2a394d;
   --er-ui-text-primary-text: #ffffff;
   --er-ui-text-primary-text-reversed: #111111;
   --er-ui-text-secondary-text: #b1b3b3;
@@ -221,7 +223,7 @@
   --er-ui-text-form-labels: #888b8d;
   --er-ui-text-tabs: #888b8d;
   --er-ui-text-disabled: #888b8d;
-  --er-ui-icons: #888b8d;
+  --er-ui-icons: #dddddd;
   --er-ui-field-outline: #444444;
   --er-ui-divider-lines: #333333;
   --er-ui-cta-primary: #76b0ff;
