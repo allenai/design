@@ -1474,8 +1474,10 @@
 
 
   /* Primary outlined button hover, light mode: Teal/T10 fill, Ai2 Dark
-     Teal text/border (dark mode keeps its own green-tinted hover below). */
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="light"] .btn-primary-out:hover {
+     Teal text/border (dark mode keeps its own green-tinted hover below).
+     EarthRanger and SERCA only — ER Legacy has no teal, so its outlined
+     hovers fill with Background Selected instead. */
+  html[data-system="earthranger"][data-er-mode="light"] .btn-primary-out:hover {
     background: var(--er-teal-t10);
     color: var(--er-teal-dark);
     border-color: var(--er-teal-dark);
@@ -1562,10 +1564,10 @@
      it, this rule's higher specificity would win over .btn-default:hover
      and mask the hover state entirely. */
 
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-default:hover {
+  html[data-system="earthranger"][data-er-mode="dark"] .btn-default:hover {
     background: var(--c-int-default-hover);
   }
-  html:is([data-system="earthranger"],[data-system="er-legacy"])[data-er-mode="dark"] .btn-primary-out:hover {
+  html[data-system="earthranger"][data-er-mode="dark"] .btn-primary-out:hover {
     color: var(--c-cream);
   }
 
@@ -1696,9 +1698,25 @@
     color: var(--c-text);
   }
   /* Hover is the shared int-default-hover fill with reversed text, as
-     it was before the default fill moved to Tertiary Background. */
-  html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-default:hover {
+     it was before the default fill moved to Tertiary Background.
+     EarthRanger and SERCA only — ER Legacy keeps its label and darkens
+     its fill instead (below). */
+  html[data-system="earthranger"] .btn-default:hover {
     color: var(--c-text-reversed);
+  }
+
+  /* ER Legacy alone lifts the default button to Elevated Component 0, so it
+     reads as a raised control rather than sinking into Tertiary Background
+     (which Legacy shares with Secondary Background). Same specificity as the
+     ER-family rule above, so it has to stay after it. Chips are untouched.
+     Hover darkens that same fill by 5% and holds the label on Primary Text,
+     the way the destructive button hovers. */
+  html[data-system="er-legacy"] .btn-default {
+    background: var(--c-surface-elevated-0);
+  }
+  html[data-system="er-legacy"] .btn-default:hover {
+    background: color-mix(in srgb, var(--c-surface-elevated-0), black 5%);
+    color: var(--c-text);
   }
 
   /* Destructive fills with Status Bg/Error and labels in
@@ -1732,8 +1750,9 @@
   }
 
   /* Outlined default carries the Elevated Component fill, and every
-     outlined hover uses Background Selected. EarthRanger and SERCA
-     only -- ER Legacy keeps the ghost default and its own hovers. */
+     outlined hover uses Background Selected. The fill is EarthRanger and
+     SERCA only -- ER Legacy keeps the ghost default -- but both families
+     now share Background Selected on hover. */
   html[data-system="earthranger"] .btn-default-out {
     background: var(--c-surface);
   }
@@ -1741,6 +1760,22 @@
   html[data-system="earthranger"] .btn-primary-out:hover,
   html[data-system="earthranger"] .btn-secondary-out:hover {
     background: var(--c-bg-selected);
+  }
+
+  /* ER Legacy's outlined hovers: Background Selected behind the label, and
+     the label and stroke hold their resting color. The default variant gets
+     there through --btn-default-out-hover-*; these two need rules, because
+     the shared hovers hardcode a teal label and a green fill. */
+  html[data-system="er-legacy"] .btn-primary-out:hover,
+  html[data-system="er-legacy"] .btn-secondary-out:hover {
+    background: var(--c-bg-selected);
+  }
+  html[data-system="er-legacy"] .btn-primary-out:hover {
+    color: var(--c-int-primary);
+    border-color: var(--c-int-primary);
+  }
+  html[data-system="er-legacy"] .btn-secondary-out:hover {
+    color: var(--c-text-secondary);
   }
 
   /* The destructive row is hidden for systems that have no such button.
@@ -1793,7 +1828,13 @@
 
     --c-stroke:         var(--er-grey-9);
     --c-field-outline:  var(--er-grey-8);
-    --c-outlined-primary-hover-bg: var(--er-blue-4);
+
+    /* Every outlined hover fills with Background Selected. Taken through
+       the alias rather than Blue/4 so it tracks the token, and declared
+       again in the dark block only to outrank the ER-family teal. */
+    --c-outlined-primary-hover-bg: var(--c-bg-selected);
+    --btn-default-out-hover-bg:    var(--c-bg-selected);
+    --btn-default-out-hover-fg:    var(--c-text);
   }
 
   html[data-system="er-legacy"][data-er-mode="dark"] {
@@ -1834,7 +1875,9 @@
 
     --c-stroke:         var(--er-grey-3);                 /* Divider Lines */
     --c-field-outline:  var(--er-grey-4);                 /* Field Outline */
-    --c-outlined-primary-hover-bg: var(--er-blue-5);
+    --c-outlined-primary-hover-bg: var(--c-bg-selected);
+    --btn-default-out-hover-bg:    var(--c-bg-selected);
+    --btn-default-out-hover-fg:    var(--c-text);
   }
 
   /* Secondary Background moved to Off-White/50 for EarthRanger alone, so
