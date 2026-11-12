@@ -7,6 +7,7 @@
   --er-ui-background-elevated-component: #ffffff;
   --er-ui-background-primary-background: #ffffff;
   --er-ui-background-selected-background: #f2f9f9;
+  --er-ui-background-hover-background: #e7eeee;
   --er-ui-text-primary-text: #0a3235;
   --er-ui-text-primary-text-reversed: #ffffff;
   --er-ui-text-secondary-text: #105257;
@@ -246,6 +247,7 @@
   --er-ui-background-elevated-component: #032629;
   --er-ui-background-primary-background: #032629;
   --er-ui-background-selected-background: #105257;
+  --er-ui-background-hover-background: #105257;
   --er-ui-text-primary-text: #ffffff;
   --er-ui-text-primary-text-reversed: #032629;
   --er-ui-text-secondary-text: #cfdcdd;

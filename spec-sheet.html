@@ -1248,6 +1248,7 @@
     --c-cta-text:      var(--er-white);
     --c-text-secondary-reversed: var(--er-white);
     --c-bg-selected:   var(--er-teal-3-05);
+    --c-bg-hover:      var(--er-teal-t10);               /* Hover Background */
     --c-cta-secondary: var(--er-teal-t100);
     --c-surface-quiet: var(--er-teal-t10);
     /* --c-text-reversed already flips per data-er-mode (white light /
@@ -1583,6 +1584,7 @@
     --c-cta-text: var(--er-off-white);
     --c-text-secondary-reversed: var(--er-white);
     --c-bg-selected: var(--er-teal-t100);
+    --c-bg-hover: var(--er-teal-t100);                    /* Hover Background, dark */
   }
   /* Teal/T90 (dark mode secondary fill) is dark — needs light text,
      unlike the pale Teal/T20 secondary fill used in light mode. */
@@ -1709,14 +1711,16 @@
      reads as a raised control rather than sinking into Tertiary Background
      (which Legacy shares with Secondary Background). Same specificity as the
      ER-family rule above, so it has to stay after it. Chips are untouched.
-     Hover darkens that same fill by 5% and holds the label on Primary Text,
-     the way the destructive button hovers. */
+     Hover darkens that same fill by 5% and holds the label where it rests,
+     the way the destructive button hovers. The label is Icons (Grey/4 light,
+     Grey/9 dark), not Primary Text, so it matches any icon set beside it. */
   html[data-system="er-legacy"] .btn-default {
     background: var(--c-surface-elevated-0);
+    color: var(--c-btn-default-fg);
   }
   html[data-system="er-legacy"] .btn-default:hover {
     background: color-mix(in srgb, var(--c-surface-elevated-0), black 5%);
-    color: var(--c-text);
+    color: var(--c-btn-default-fg);
   }
 
   /* Destructive fills with Status Bg/Error and labels in
@@ -1790,7 +1794,7 @@
      the semantic tokens: blue CTAs instead of green, grey neutrals instead
      of teal, and a greyscale ladder in dark rather than a teal one. */
   html[data-system="er-legacy"] {
-    --c-icon:     var(--er-grey-5);                      /* Icons */
+    --c-icon:     var(--er-grey-4);                      /* Icons */
     --er-grey-0:  #000000;
     --er-grey-1:  #111111;
     --er-grey-2:  #222222;
@@ -1822,6 +1826,11 @@
     --c-cta-text:       var(--er-blue-1);
     --c-text-secondary-reversed: var(--er-blue-1);
     --c-bg-selected:    var(--er-blue-4);
+    --c-bg-hover:       var(--er-blue-2);                /* Hover Background */
+
+    /* The default button's label sits on Icons rather than Primary Text,
+       so a button's label and the icon beside it read as one tier. */
+    --c-btn-default-fg: var(--er-grey-4);
     --c-cta-secondary:  var(--er-blue-2);
     --c-surface-quiet:  var(--er-grey-11);               /* Tertiary Background */
     --c-surface-elevated-0: var(--er-grey-10);           /* Elevated Component 0 */
@@ -1838,7 +1847,7 @@
   }
 
   html[data-system="er-legacy"][data-er-mode="dark"] {
-    --c-icon:             var(--er-grey-7);              /* Icons, dark */
+    --c-icon:             var(--er-grey-9);              /* Icons, dark */
     --c-bg:               var(--er-grey-0);              /* Secondary Background */
     --c-bg-reversed:      var(--er-grey-11);
     --c-text:             var(--er-white);
@@ -1870,6 +1879,8 @@
     --c-cta-text:       var(--er-blue-3);
     --c-text-secondary-reversed: var(--er-blue-3);
     --c-bg-selected:    var(--er-blue-5);
+    --c-bg-hover:       var(--er-blue-5);                 /* Hover Background, dark */
+    --c-btn-default-fg: var(--er-grey-9);                 /* with Icons, dark */
     --c-cta-secondary:  var(--er-blue-5);
     --c-surface-quiet:  var(--er-grey-0);                 /* Tertiary Background */
 
@@ -2888,6 +2899,7 @@ ALIASES["earthranger"] = {
     ["background/elevated",      "white"],
     ["background/primary",       "white"],
     ["background/selected",      "teal-3-05"],
+    ["background/hover",         "teal-t10"],
     ["text/primary",             "teal-dark"],
     ["text/primary-reversed",    "white"],
     ["text/secondary",           "teal-t100"],
@@ -2936,6 +2948,7 @@ ALIASES["earthranger"] = {
     ["background/elevated",      "teal-extra-dark"],
     ["background/primary",       "teal-extra-dark"],
     ["background/selected",      "teal-t100"],
+    ["background/hover",         "teal-t100"],
     ["text/primary",             "white"],
     ["text/primary-reversed",    "teal-extra-dark"],
     ["text/secondary",           "teal-t20"],
@@ -2988,12 +3001,13 @@ const ER_LEGACY_ALIASES = {
     "background/tertiary": "grey-11",
     "background/elevated-0": "grey-10",
     "background/selected": "blue-4",
+    "background/hover": "blue-2",
     "text/primary": "grey-0",
     "text/secondary": "grey-5",
     "text/secondary-reversed": "blue-1",
     "text/form-labels": "grey-6",
     "text/tabs": "grey-6",
-    "icons": "grey-5",
+    "icons": "grey-4",
     "field-outline": "grey-8",
     "divider-lines": "grey-9",
     "cta-primary": "blue-1",
@@ -3007,12 +3021,13 @@ const ER_LEGACY_ALIASES = {
     "background/elevated": "grey-1",
     "background/elevated-0": "grey-2",
     "background/selected": "blue-5",
+    "background/hover": "blue-5",
     "text/primary-reversed": "grey-1",
     "text/secondary": "grey-8",
     "text/secondary-reversed": "blue-3",
     "text/form-labels": "grey-7",
     "text/tabs": "grey-7",
-    "icons": "grey-7",
+    "icons": "grey-9",
     "field-outline": "grey-4",
     "divider-lines": "grey-3",
     "cta-primary": "blue-3",

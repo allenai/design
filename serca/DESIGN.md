@@ -61,6 +61,7 @@ colors:
   "UI/Background/Elevated Component": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Background/Selected Background": { light: "{colors.teal-3-05}", dark: "{colors.teal-t100}" }
+  "UI/Background/Hover Background": { light: "{colors.teal-t10}", dark: "{colors.teal-t100}" }
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
