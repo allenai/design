@@ -1266,6 +1266,7 @@
     --c-surface:        var(--er-white);                /* Primary Background */
     --c-surface-strong: var(--er-white);                /* Elevated Component */
     --c-surface-elevated-0: var(--er-grey-11);          /* Elevated Component 0 */
+    --c-bg-disabled:    var(--er-grey-9);               /* Background Disabled */
     --c-stroke:         var(--er-teal-t20);             /* Divider Lines */
     --c-field-outline:  var(--er-teal-t30);             /* Field Outline */
     --c-icon:           var(--er-teal-t80);             /* Icons */
@@ -1530,6 +1531,7 @@
     --c-surface:        var(--er-teal-extra-dark);       /* Primary Background, dark */
     --c-surface-strong: var(--er-teal-extra-dark);       /* Elevated Component, dark */
     --c-surface-elevated-0: var(--er-teal-dark);         /* Elevated Component 0, dark */
+    --c-bg-disabled:    var(--er-teal-dark-90);         /* Background Disabled, dark (proposed) */
     --c-stroke:         var(--er-teal-dark-90);         /* Divider Lines, dark */
     --c-field-outline:  var(--er-teal-dark-80);         /* Field Outline, dark */
     --c-btn-disabled-bg: var(--er-grey-7);              /* Disabled, dark */
@@ -1733,10 +1735,10 @@
     background: color-mix(in srgb, var(--c-status-bg-error), black 5%);
   }
 
-  /* The ER family draws a disabled button with no edge: Elevated
-     Component 0, which keeps it off the Tertiary page, and Disabled text. */
+  /* The ER family draws a disabled button with no edge: Background
+     Disabled, a clear step off the page and the panel, and Disabled text. */
   html:is([data-system="earthranger"],[data-system="er-legacy"]) .btn-disabled {
-    background: var(--c-surface-elevated-0);
+    background: var(--c-bg-disabled);
     color: var(--c-text-disabled);
   }
 
@@ -1869,6 +1871,7 @@
     --c-surface:        var(--er-grey-1);                 /* Primary Background */
     --c-surface-strong: var(--er-grey-1);                 /* Elevated Component */
     --c-surface-elevated-0: var(--er-grey-2);             /* Elevated Component 0 */
+    --c-bg-disabled:    var(--er-grey-3);                 /* Background Disabled */
     --c-text-reversed:  var(--er-grey-1);                 /* Primary Text Reversed */
     --c-input-bg:       var(--er-grey-1);                 /* Elevated Component */
 
@@ -2900,6 +2903,7 @@ ALIASES["earthranger"] = {
     ["background/primary",       "white"],
     ["background/selected",      "teal-3-05"],
     ["background/hover",         "teal-t10"],
+    ["background/disabled",      "grey-9"],
     ["text/primary",             "teal-dark"],
     ["text/primary-reversed",    "white"],
     ["text/secondary",           "teal-t100"],
@@ -2949,6 +2953,7 @@ ALIASES["earthranger"] = {
     ["background/primary",       "teal-extra-dark"],
     ["background/selected",      "teal-t100"],
     ["background/hover",         "teal-t100"],
+    ["background/disabled",      "teal-dark-90"],
     ["text/primary",             "white"],
     ["text/primary-reversed",    "teal-extra-dark"],
     ["text/secondary",           "teal-t20"],
@@ -3020,6 +3025,7 @@ const ER_LEGACY_ALIASES = {
     "background/tertiary": "grey-0",
     "background/elevated": "grey-1",
     "background/elevated-0": "grey-2",
+    "background/disabled": "grey-3",
     "background/selected": "blue-5",
     "background/hover": "blue-5",
     "text/primary-reversed": "grey-1",

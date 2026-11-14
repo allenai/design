@@ -43,6 +43,7 @@ colors:
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.greyscale-1}" }
   "UI/Background/Selected Background": { light: "{colors.blue-4}", dark: "{colors.blue-5}" }   # selection, and the hover fill behind an outlined button
   "UI/Background/Hover Background": { light: "{colors.blue-2}", dark: "{colors.blue-5}" }   # the fill a surface or control takes on hover
+  "UI/Background/Disabled": { light: "{colors.greyscale-9}", dark: "{colors.greyscale-3}" }   # the fill behind a disabled button or field
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.greyscale-0}", dark: "{colors.greyscale-white}" }
@@ -351,6 +352,8 @@ Always use **semantic tokens** (e.g. `UI/Text/Primary Text`) instead of raw prim
 The primary interactive color is `UI/CTA Primary` — used for calls to action, links, and active states. `UI/CTA Secondary` is the quiet companion fill behind a secondary action. Status colors are strictly functional: use them only to communicate meaning (error, success, warning, running/informational), never decoratively. Note that `UI/Status/Running` resolves to the same blue as `UI/CTA Primary`, so informational and interactive blue look alike — rely on placement and component to tell them apart, and reach for `UI/CTA Primary` for anything the user can act on.
 
 **Neutrals are greyscale.** `UI/Text/Secondary Text`, `UI/Icons`, `UI/Field Outline` and `UI/Divider Lines` all resolve to greys, as do `UI/Background/Secondary Background` and `UI/Background/Tertiary Background` — which share one value, the quiet surface filter chips, map controls and read-only fields sit on. `UI/Background/Elevated Component 0` is the banded sub-surface inside a panel such as a table header or a row label, and the fill behind a default button — whose label is `UI/Icons`, so a button's label and the icon beside it read as one tier; the fill darkens on hover rather than inverting that label. `UI/Background/Selected Background` carries selection, and fills an outlined button on hover; `UI/Background/Hover Background` is the fill a surface or control takes on hover. `UI/Icons` sits a step darker than `UI/Text/Secondary Text` in light mode and a step brighter in dark, so icons and default button labels stay legible on the near-black panel.
+
+`UI/Background/Disabled` is the fill behind a disabled button or field, with `UI/Text/Disabled` for its label and no outline. It is the same grey as `UI/Divider Lines` in both modes, a clear step off the Secondary page and the Elevated panel, so a control that is switched off still reads as a control.
 
 Use `UI/Text/Primary Text Reversed` (the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a saturated surface, such as a filled CTA or a checked control's mark. The CTA is a mid-tone blue in light mode but a pale tint in dark mode, so a fixed light color reads fine in light mode and disappears in dark — this token flips with the mode so it always contrasts against the surface it's on.
 
