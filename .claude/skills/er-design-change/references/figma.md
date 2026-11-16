@@ -30,7 +30,7 @@ Node ids below were correct on 2026-11-16. Find things by name if an id no longe
 ## Spec sheet
 
 1. Find the visible section for the system by name prefix. Duplicate it, then place the copy to the right of the current one, clear of other nodes.
-2. Rename the copy with today's date in the same format (`- 11/16/26`). For the Legacy sheet, append the date the same way if it has none.
+2. Rename the copy with today's date in the same format (`- 11/16/26`). The Legacy sheet has no date in its name yet. Add one the same way, as the team agreed on 2026-11-16.
 3. Add or change the row:
    - copy a sibling row (same group) so layout, fonts and labels match;
    - bind the swatch fill to the variable (`setBoundVariableForPaint`);
