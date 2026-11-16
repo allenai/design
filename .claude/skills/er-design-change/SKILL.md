@@ -1,21 +1,19 @@
 ---
 name: er-design-change
-description: Carry a design change for EarthRanger, ER Legacy or SERCA all the way through - the Figma spec sheet, Figma variables and text styles, publishing the Figma library, DESIGN.md, spec-sheet.html, the version bump and release of @allenai/design-system, and an announcement in the Slack channel the user picks. Use whenever someone wants to add, change, rename or remove an ER-family colour or type token (e.g. "add a disabled background token", "change EarthRanger's hover colour in dark mode", "ER Legacy needs a new status colour"), or asks to bump the version, cut or ship a release, or publish a new version of the design system, even if they only name one of those steps.
+description: Carry a design change for EarthRanger, ER Legacy or SERCA all the way through - DESIGN.md, spec-sheet.html, the Figma spec sheet and variables, publishing the Figma library, the version bump and release of @allenai/design-system, and an announcement in the Slack channel the user picks. Use whenever someone wants to add, change, rename or remove an ER-family colour or type token (e.g. "add a disabled background token", "change EarthRanger's hover colour in dark mode", "ER Legacy needs a new status colour"), or asks to bump the version, cut or ship a release, or publish a new version of the design system, even if they only name one of those steps.
 ---
 
 # Ship an ER-family design change
 
-One change to EarthRanger, ER Legacy or SERCA touches seven places. Do them in this order, which is the order the design team works in:
+One change to EarthRanger, ER Legacy or SERCA touches five places. Do them in this order, which is the order the design team chose:
 
-1. Figma spec sheet
-2. Figma variables and styles
-3. Publish the Figma library
-4. `DESIGN.md` for each system the change touches
-5. `spec-sheet.html`
-6. Bump the version and release the npm package
-7. Announce it in Slack, in the channel the user picks
+1. `DESIGN.md` for each system the change touches
+2. `spec-sheet.html`
+3. Figma: the spec sheet, the variables (and text styles), then publishing the library
+4. Bump the version and release the npm package
+5. Announce it in Slack, in the channel the user picks
 
-Not every change needs all seven. Work out which apply (see "Scope the change"), tell the user the plan in a few lines, and get a yes before touching anything.
+Not every change needs all five. Work out which apply (see "Scope the change"), tell the user the plan in a few lines, and get a yes before touching anything.
 
 ### Review gates
 
@@ -23,22 +21,22 @@ The team wants time to review each part before the next one builds on it, so the
 
 | Gate | After | Show the user | Then |
 | --- | --- | --- | --- |
-| **A** | Steps 1–2 (Figma spec sheet, variables and styles) | Screenshot of the new spec-sheet section, plus each changed variable's value per mode | Step 3: walk them through publishing the library |
-| **B** | Steps 4–5 (`DESIGN.md`, `spec-sheet.html`) | The diff, summarised per file, plus renders of each affected system and mode | Step 6 |
-| **C** | Step 6 (version, PR, release) | The PR link, the version, and the release result | Step 7: the Slack post |
+| **A** | Steps 1–2 (`DESIGN.md`, `spec-sheet.html`) | Scope-check result, a per-file summary of the changes, renders of each affected system and mode | Step 3: Figma |
+| **B** | Step 3's Figma edits (spec sheet, variables, styles) | Screenshot of the new spec-sheet section, plus each changed variable's value per mode | Walk them through publishing the library, then step 4 |
+| **C** | Step 4 (version, PR, release) | The PR link, the version, and the release result | Step 5: the Slack post |
 
 At a gate, stop and wait. Silence or an unrelated reply is not approval; ask again rather than carrying on.
 
-If they ask for changes, make them and show the gate again. After gate A, publishing comes next even if they're tempted to skip it: an unpublished library is the step that gets forgotten.
+If they ask for changes, make them and show the gate again. After gate B, publishing comes next even if they're tempted to skip it: an unpublished library is the step that gets forgotten.
 
-The repo is `allenai/design` (locally `~/Claude-demo/design`). The Figma file is the **ER Design System** (`gQJAI5XKeENQsqkCaFBev3`); its variables are the Figma source of truth. Details for each Figma step are in `references/figma.md`; the release walkthrough is in `references/release.md`. Read each when you reach that step.
+The repo is `allenai/design` (locally `~/Claude-demo/design`). The Figma file is the **ER Design System** (`gQJAI5XKeENQsqkCaFBev3`). Details for the Figma step are in `references/figma.md`; the release walkthrough is in `references/release.md`. Read each when you reach that step.
 
 ## Ground rules
 
 These exist because each step either publishes something other people consume or edits a file several products depend on.
 
 - **Confirm every outward step before doing it**: pushing, opening a PR, publishing the library, running the release, posting in Slack. Say what will happen in one line and wait for a yes. A yes covers that one step, not the ones after it.
-  - The Figma edits in steps 1–2 are the exception. The user's yes to the plan covers them, because they land in a new, dated copy of the spec sheet and are reviewed at gate A before anything is published.
+  - The Figma edits in step 3 are the exception. The user's yes to the plan covers them, because they land in a new, dated copy of the spec sheet and are reviewed at gate B before anything is published.
 - **No @mentions** in PRs, commits, Slack or Figma unless the user approves that specific mention. Use plain names.
 - **Take values from the source, never guess.** Colours come from `DESIGN.md` primitives or the Figma `Primitives` collection. If the value the user wants isn't a primitive yet, say so and add the primitive as part of the change rather than inlining a hex.
 - **Stay inside EarthRanger, ER Legacy and SERCA.** The repo also holds Strata, Asta, OlmoEarth and Skylight, which belong to other teams. Never edit their folders, their `spec-sheet.html` tabs, or rules every tab shares. If a change seems to need one of those, stop and ask. If a check reports something about another system, report it; don't investigate or fix it.
@@ -50,40 +48,21 @@ These exist because each step either publishes something other people consume or
 Ask, or infer from the request and confirm:
 
 - **Which systems?** EarthRanger, ER Legacy, SERCA, or a mix.
-  - **SERCA** renders on EarthRanger's tokens, so an EarthRanger colour change usually belongs in SERCA too. SERCA has no Figma spec sheet or variables of its own: **skip the Figma steps for SERCA-only work.**
+  - **SERCA** renders on EarthRanger's tokens, so an EarthRanger colour change usually belongs in SERCA too. SERCA has no Figma spec sheet or variables of its own: **skip step 3 for SERCA-only work.**
   - **SERCA's light `UI/Background/Secondary Background` is Off-White on purpose** (EarthRanger's is Off-White/50). It's a brand decision, encoded as `SERCA_ALIASES` in `spec-sheet.html`. Never "sync" it to EarthRanger.
   - **ER Legacy** has its own colours (blues and greys, no teal) but shares token names with EarthRanger.
-- **Which modes?** Light, dark, or both, per system. A *new* token needs values for all four modes: EarthRanger light and dark, ER Legacy light and dark. SERCA follows EarthRanger.
+- **Which modes?** Light, dark, or both, per system.
+  - A *new* token needs values for all four modes: EarthRanger light and dark, ER Legacy light and dark. That holds even when the request names only one system. SERCA follows EarthRanger.
+  - Agree all four values with the user here, proposing existing primitives for the modes they didn't mention.
+  - The team chose this for now (2026-11-16) so the two systems' token lists don't drift apart.
 - **What kind of change?** Adding a token is a middle-number bump. Changing a value or wording is a last-number bump. Renaming or removing a token is a first-number bump. Use this to recommend the version later.
 - **Type or colour?** Figma holds colour as variables and type as text styles. There are no colour styles, so a colour change touches variables only.
 
 If the user hasn't picked values, propose them from existing primitives with contrast figures: WCAG ratio against the text that sits on it and against the surface behind it. Show a quick render before going further; the user decides from what they see.
 
-## 1. Figma spec sheet
+## 1. DESIGN.md
 
-The Color page has one visible spec-sheet section per system, named with a date, e.g. `EarthRanger Spec Sheet — Color Tokens- 11/12/26` and `Legacy Spec Sheet — Color Tokens`. Older dated copies are kept hidden as history.
-
-For each Figma system the change touches: duplicate the visible section, rename the copy with today's date (`M/D/YY`), make the change in the copy, then hide the previous one. The Legacy sheet's name has no date yet; add one the same way, as the team agreed. Screenshot it for gate A. Swatches should be bound to their `Tokens` variable, so a new row can only be bound once step 2 has created the variable. When a change adds a token, do step 2's variable work first, then come back and add the row.
-
-## 2. Figma variables and styles
-
-- **Variables:** one `Tokens` collection with modes `Light` and `Dark` (EarthRanger) and `Legacy Light` and `Legacy Dark` (ER Legacy). Values alias variables in the `Primitives` collection (single mode, `HEX`).
-  - Token names match `DESIGN.md` exactly, e.g. `UI/Background/Disabled`.
-  - Set scopes explicitly on new variables.
-  - A new token gets a value in all four modes, even when the request names only EarthRanger or only ER Legacy. Agree all four values with the user while scoping, proposing existing primitives for the modes they didn't mention. The team chose this for now (2026-11-16) so the two systems' token lists don't drift apart. Add the token to every `DESIGN.md` whose system gets it.
-- **Text styles:** only for typography changes.
-
-Read every write back and report the resolved values per mode.
-
-**Gate A.** Show the spec-sheet screenshot and the per-mode values, with a link to the section. Wait for approval before step 3.
-
-## 3. Publish the Figma library
-
-The Plugin API can't publish. Walk the user through it (see `references/figma.md`) and wait for them to say it's done.
-
-## 4. DESIGN.md
-
-Start from fresh `main` on a new branch (`git switch main && git pull && git switch -c <user>/<change>`). Then edit `earthranger/DESIGN.md`, `er-legacy/DESIGN.md` and/or `serca/DESIGN.md`.
+Start from fresh `main` on a new branch (`git switch main && git pull && git switch -c <user>/<change>`). Then edit `earthranger/DESIGN.md`, `er-legacy/DESIGN.md` and/or `serca/DESIGN.md`. A new token goes in every `DESIGN.md` whose system gets it.
 
 - **Frontmatter:** tokens are `"Group/Sub/Name": { light: "{colors.<primitive>}", dark: "{colors.<primitive>}" }`, placed next to their siblings, with a short trailing comment saying what the token is for.
 - **Prose:** add or adjust a sentence in the matching section.
@@ -91,7 +70,7 @@ Start from fresh `main` on a new branch (`git switch main && git pull && git swi
   - ER Legacy prose names semantic tokens only, never hex values or primitives.
 - **Build:** run `npm run build`. Check that the only diff in `tokens.json`/`tokens.css` is the rows you meant to touch. An unexpected diff means something upstream changed; stop and tell the user.
 
-## 5. spec-sheet.html
+## 2. spec-sheet.html
 
 It's hand-synced with `DESIGN.md`. Search for a sibling token (e.g. `--c-bg-hover`) and mirror every place it appears:
 
@@ -111,29 +90,51 @@ A rule without a system selector applies to every tab, so don't change it. Overr
 
 Render the sheet in a headless browser for each affected system and mode, and look at the screenshots yourself. One way to do it: `uv run --no-project --with playwright python …`. Install `chromium-headless-shell` if it's missing.
 
-**Scope check.** Before gate B, run `scripts/check_scope.py` from the repo root (its docstring has the command). It confirms two things against `origin/main`:
+**Scope check.** Before gate A, run `scripts/check_scope.py` from the repo root (its docstring has the command). It confirms two things against `origin/main`:
 - every changed file is in `earthranger/`, `er-legacy/` or `serca/`, or is `spec-sheet.html`, or is the `package.json` version;
 - the Strata, Asta, OlmoEarth and Skylight tabs render exactly as before. It only reads those tabs.
 
 If it fails, find the ER-family edit that leaked and undo or narrow it. Never adjust another system to make it pass. If you can't tell why it fails, show the user the report.
 
-**Gate B.** Nothing is committed or pushed yet. Show the user:
+**Gate A.** Nothing is committed or pushed yet. Show the user:
 - the scope-check result;
 - a short per-file summary of what changed in `DESIGN.md`, `tokens.*` and `spec-sheet.html`;
 - the diff, if they want it;
 - the renders;
 - the contrast figures.
 
-Wait for approval before step 6.
+Wait for approval before step 3. Skip to step 4 if the change is SERCA-only.
 
-## 6. Version, PR and release
+## 3. Figma
+
+Use the values approved at gate A. Token names match `DESIGN.md` exactly, e.g. `UI/Background/Disabled`.
+
+**Spec sheet.** The Color page has one visible spec-sheet section per system, named with a date, e.g. `EarthRanger Spec Sheet — Color Tokens- 11/12/26` and `Legacy Spec Sheet — Color Tokens`. Older dated copies are kept hidden as history.
+- For each Figma system the change touches, duplicate the visible section and rename the copy with today's date (`M/D/YY`).
+- The Legacy sheet's name has no date yet; add one the same way, as the team agreed.
+- Make the change in the copy, then hide the previous section.
+- Swatches are bound to their `Tokens` variable, so a new row can only be bound once the variable exists. When the change adds a token, create the variable (below) first, then add the row.
+
+**Variables.** One `Tokens` collection holds modes `Light` and `Dark` (EarthRanger) and `Legacy Light` and `Legacy Dark` (ER Legacy). Values alias variables in the `Primitives` collection (single mode, `HEX`).
+- Set scopes explicitly on new variables.
+- Give a new token all four modes.
+
+**Text styles:** change them only for typography changes.
+
+Read every write back and report the resolved values per mode.
+
+**Gate B.** Show the spec-sheet screenshot and the per-mode values, with a link to the section. Wait for approval.
+
+**Publish the library.** The Plugin API can't publish. Walk the user through it (see `references/figma.md`) and wait for them to say it's done before step 4.
+
+## 4. Version, PR and release
 
 **Bump:** recommend the bump from the kind of change, explain it in plain words, and confirm. Set the new version in:
 - `package.json` (`"version"` only; leave `package-lock.json` alone);
 - the `version:` line of each `DESIGN.md` the change touched.
 
 **PR shape:** ask each time whether the bump goes in the same PR as the change, or in a separate bump PR (its own branch from fresh `main`) so several changes can ship together. Then:
-- commit, then run the scope check again if anything changed since gate B;
+- commit, then run the scope check again if anything changed since gate A;
 - check for an open PR from this branch (`gh pr list --head <branch> --state open`):
   - **none:** after confirmation, push and open one, so the `DESIGN.md` and spec-sheet changes are always reviewed in a PR;
   - **already one:** after confirmation, push to update it, and say so rather than opening a second.
@@ -142,7 +143,7 @@ The PR body covers:
 - what changed and why;
 - contrast figures;
 - the spec-sheet renders, which the user drags in, since GitHub has no image upload from the CLI;
-- whether Figma is already updated and published;
+- a link to the new Figma spec-sheet section, and confirmation that the library is published;
 - that merging does not cut the release.
 
 **Release:** follow `references/release.md`. The Release workflow rebuilds, lints, tags, creates the GitHub release, and publishes to npm when the `NPM_AUTH_TOKEN` secret exists.
@@ -152,9 +153,9 @@ The PR body covers:
 - the new version and its release link;
 - whether npm publishing ran or was skipped.
 
-Wait for approval before drafting the Slack post. If they're batching (separate bump PR, release later), stop here and tell them gate C and step 7 are still to come.
+Wait for approval before drafting the Slack post. If they're batching (separate bump PR, release later), stop here and tell them gate C and step 5 are still to come.
 
-## 7. Announce it in Slack
+## 5. Announce it in Slack
 
 Every release gets an announcement. The people who need to hear about it vary by team, so don't assume a channel.
 
