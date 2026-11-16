@@ -1,6 +1,6 @@
 ---
 name: er-design-change
-description: Carry a design change for EarthRanger, ER Legacy or SERCA all the way through - the Figma spec sheet, Figma variables and text styles, publishing the Figma library, DESIGN.md, spec-sheet.html, the version bump and release of @allenai/design-system, and the post in #er-design-library. Use whenever someone wants to add, change, rename or remove an ER-family colour or type token (e.g. "add a disabled background token", "change EarthRanger's hover colour in dark mode", "ER Legacy needs a new status colour"), or asks to bump the version, cut or ship a release, or publish a new version of the design system, even if they only name one of those steps.
+description: Carry a design change for EarthRanger, ER Legacy or SERCA all the way through - the Figma spec sheet, Figma variables and text styles, publishing the Figma library, DESIGN.md, spec-sheet.html, the version bump and release of @allenai/design-system, and an announcement in the Slack channel the user picks. Use whenever someone wants to add, change, rename or remove an ER-family colour or type token (e.g. "add a disabled background token", "change EarthRanger's hover colour in dark mode", "ER Legacy needs a new status colour"), or asks to bump the version, cut or ship a release, or publish a new version of the design system, even if they only name one of those steps.
 ---
 
 # Ship an ER-family design change
@@ -13,7 +13,7 @@ One change to EarthRanger, ER Legacy or SERCA touches seven places. Do them in t
 4. `DESIGN.md` for each system the change touches
 5. `spec-sheet.html`
 6. Bump the version and release the npm package
-7. Post in #er-design-library
+7. Announce it in Slack, in the channel the user picks
 
 Not every change needs all seven. Work out which apply (see "Scope the change"), tell the user the plan in a few lines, and get a yes before touching anything.
 
@@ -138,9 +138,14 @@ The PR body covers:
 
 Wait for approval before drafting the Slack post. If they're batching (separate bump PR, release later), stop here and tell them gate C and step 7 are still to come.
 
-## 7. Post in #er-design-library
+## 7. Announce it in Slack
 
-Every release gets a post. Draft it and show the user. Send it only after they approve; a draft that sits unapproved is fine.
+Every release gets an announcement. The people who need to hear about it vary by team, so don't assume a channel.
+
+1. **Ask which channel.** Ask which Slack channel to post in, or whether to skip the post this time. Don't pick one yourself, even one used before.
+2. **Check the channel.** Read its topic and description first. If they say this kind of post belongs somewhere else, tell the user before drafting.
+3. **Draft and show.** Draft the post and show it to the user with the channel name.
+4. **Send after approval.** Send it only after they approve. A draft that sits unapproved is fine.
 
 Keep it short:
 - the new version;
