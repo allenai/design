@@ -1,7 +1,7 @@
 ---
 name: SERCA
 description: SMART-EarthRanger Conservation Alliance (SERCA) identity — booth, event, partner, and Alliance-member materials
-version: 0.0.1
+version: 0.7.0
 
 assets:
   # The pixel-bear mark. Vertical is the primary lockup; horizontal is for
@@ -62,6 +62,7 @@ colors:
   "UI/Background/Primary Background": { light: "{colors.greyscale-white}", dark: "{colors.teal-ai2-extra-dark-teal}" }
   "UI/Background/Selected Background": { light: "{colors.teal-3-05}", dark: "{colors.teal-t100}" }
   "UI/Background/Hover Background": { light: "{colors.teal-t10}", dark: "{colors.teal-t100}" }
+  "UI/Background/Disabled": { light: "{colors.greyscale-9}", dark: "{colors.teal-dark-90}" }   # the fill behind a disabled button or field; dark is a proposed teal, the dark divider step
 
   # Text
   "UI/Text/Primary Text": { light: "{colors.teal-ai2-dark-teal}", dark: "{colors.greyscale-white}" }
@@ -459,6 +460,8 @@ The primary interactive color is `UI/CTA Primary` (`#0f865d` light / `#0fcb8c` d
 Teal (`Teal/T100`, `#105257` light / `#faf2e9` off-white text on `Teal/T100` dark surfaces) is the primary brand accent and appears in navigation, headers, form labels/tabs, and `UI/CTA Secondary`. `Brand/Accent Green` (`#0f865d` light / `#0fcb8c` dark) shares its values with `UI/CTA Primary` — they're the same brand-accent green.
 
 Use `UI/Text/Primary Text Reversed` (`#ffffff` light / `#0a3235` dark — the inverse of `UI/Text/Primary Text`) for text or icon marks that sit directly on a brand-teal surface, such as a filled default-intent button or a checked control's mark. Teal is a mid-tone in light mode but becomes a pale tint in dark mode, so a fixed light color reads fine in light mode but disappears in dark mode — this token flips with the mode so it always contrasts against the surface it's on.
+
+`UI/Background/Disabled` (`greyscale-9` light, `teal-dark-90` dark) is the fill behind a disabled button or field, with `UI/Text/Disabled` for its label and no outline. It sits clearly off both the Secondary page and the Elevated panel, so a control that is switched off still reads as a control. Dark mode keeps to the teal ladder rather than dropping to a grey: `teal-dark-90` is the dark divider step, a shade above the panel and well short of the field outline.
 
 Pink is not part of the SERCA palette. Do not introduce any pink values, even from the broader Ai2 primitive palette.
 
