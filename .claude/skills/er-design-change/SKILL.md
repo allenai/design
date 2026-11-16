@@ -17,13 +17,28 @@ One change to EarthRanger, ER Legacy or SERCA touches seven places. Do them in t
 
 Not every change needs all seven. Work out which apply (see "Scope the change"), tell the user the plan in a few lines, and get a yes before touching anything.
 
+### Review gates
+
+The team wants time to review each part before the next one builds on it, so the work stops for an explicit approval three times:
+
+| Gate | After | Show the user | Then |
+| --- | --- | --- | --- |
+| **A** | Steps 1–2 (Figma spec sheet, variables and styles) | Screenshot of the new spec-sheet section, plus each changed variable's value per mode | Step 3: walk them through publishing the library |
+| **B** | Steps 4–5 (`DESIGN.md`, `spec-sheet.html`) | The diff, summarised per file, plus renders of each affected system and mode | Step 6 |
+| **C** | Step 6 (version, PR, release) | The PR link, the version, and the release result | Step 7: the Slack post |
+
+At a gate, stop and wait. Silence or an unrelated reply is not approval; ask again rather than carrying on.
+
+If they ask for changes, make them and show the gate again. After gate A, publishing comes next even if they're tempted to skip it: an unpublished library is the step that gets forgotten.
+
 The repo is `allenai/design` (locally `~/Claude-demo/design`). The Figma file is the **ER Design System** (`gQJAI5XKeENQsqkCaFBev3`); its variables are the Figma source of truth. Details for each Figma step are in `references/figma.md`; the release walkthrough is in `references/release.md`. Read each when you reach that step.
 
 ## Ground rules
 
 These exist because each step either publishes something other people consume or edits a file several products depend on.
 
-- **Confirm every outward step before doing it**: pushing, opening a PR, any Figma write, publishing the library, running the release, posting in Slack. Say what will happen in one line and wait for a yes. A yes covers that one step, not the ones after it.
+- **Confirm every outward step before doing it**: pushing, opening a PR, publishing the library, running the release, posting in Slack. Say what will happen in one line and wait for a yes. A yes covers that one step, not the ones after it.
+  - The Figma edits in steps 1–2 are the exception. The user's yes to the plan covers them, because they land in a new, dated copy of the spec sheet and are reviewed at gate A before anything is published.
 - **No @mentions** in PRs, commits, Slack or Figma unless the user approves that specific mention. Use plain names.
 - **Take values from the source, never guess.** Colours come from `DESIGN.md` primitives or the Figma `Primitives` collection. If the value the user wants isn't a primitive yet, say so and add the primitive as part of the change rather than inlining a hex.
 - **Stay in scope.** Change the tokens asked for. If you notice something else wrong, mention it at the end; don't fix it in the same PR.
@@ -47,7 +62,7 @@ If the user hasn't picked values, propose them from existing primitives with con
 
 The Color page has one visible spec-sheet section per system, named with a date, e.g. `EarthRanger Spec Sheet — Color Tokens- 11/12/26` and `Legacy Spec Sheet — Color Tokens`. Older dated copies are kept hidden as history.
 
-For each Figma system the change touches: duplicate the visible section, rename the copy with today's date (`M/D/YY`), make the change in the copy, then hide the previous one. Swatches should be bound to their `Tokens` variable, so a new row can only be bound once step 2 has created the variable. When a change adds a token, do step 2's variable work first, then come back and add the row. Screenshot the new section and show the user.
+For each Figma system the change touches: duplicate the visible section, rename the copy with today's date (`M/D/YY`), make the change in the copy, then hide the previous one. Screenshot it for gate A. Swatches should be bound to their `Tokens` variable, so a new row can only be bound once step 2 has created the variable. When a change adds a token, do step 2's variable work first, then come back and add the row.
 
 ## 2. Figma variables and styles
 
@@ -59,13 +74,15 @@ For each Figma system the change touches: duplicate the visible section, rename 
 
 Read every write back and report the resolved values per mode.
 
+**Gate A.** Show the spec-sheet screenshot and the per-mode values, with a link to the section. Wait for approval before step 3.
+
 ## 3. Publish the Figma library
 
 The Plugin API can't publish. Walk the user through it (see `references/figma.md`) and wait for them to say it's done.
 
 ## 4. DESIGN.md
 
-Edit `earthranger/DESIGN.md`, `er-legacy/DESIGN.md` and/or `serca/DESIGN.md`.
+Start from fresh `main` on a new branch (`git switch main && git pull && git switch -c <user>/<change>`). Then edit `earthranger/DESIGN.md`, `er-legacy/DESIGN.md` and/or `serca/DESIGN.md`.
 
 - **Frontmatter:** tokens are `"Group/Sub/Name": { light: "{colors.<primitive>}", dark: "{colors.<primitive>}" }`, placed next to their siblings, with a short trailing comment saying what the token is for.
 - **Prose:** add or adjust a sentence in the matching section.
@@ -85,7 +102,15 @@ It's hand-synced with `DESIGN.md`. Search for a sibling token (e.g. `--c-bg-hove
   - `ER_LEGACY_ALIASES`, for Legacy values that differ;
   - `SERCA_ALIASES`, only for a deliberate SERCA difference.
 
-Render the sheet in a headless browser for each affected system and mode, look at the screenshots yourself, then show them to the user. One way to do it: `uv run --no-project --with playwright python …`. Install `chromium-headless-shell` if it's missing.
+Render the sheet in a headless browser for each affected system and mode, and look at the screenshots yourself. One way to do it: `uv run --no-project --with playwright python …`. Install `chromium-headless-shell` if it's missing.
+
+**Gate B.** Nothing is committed or pushed yet. Show the user:
+- a short per-file summary of what changed in `DESIGN.md`, `tokens.*` and `spec-sheet.html`;
+- the diff, if they want it;
+- the renders;
+- the contrast figures.
+
+Wait for approval before step 6.
 
 ## 6. Version, PR and release
 
@@ -93,8 +118,7 @@ Render the sheet in a headless browser for each affected system and mode, look a
 - `package.json` (`"version"` only; leave `package-lock.json` alone);
 - the `version:` line of each `DESIGN.md` the change touched.
 
-**PR shape:** ask each time whether the bump goes in the same PR as the change, or in a separate bump PR so several changes can ship together. Then:
-- branch from fresh `main`;
+**PR shape:** ask each time whether the bump goes in the same PR as the change, or in a separate bump PR (its own branch from fresh `main`) so several changes can ship together. Then:
 - commit;
 - after confirmation, push and open the PR.
 
@@ -106,6 +130,13 @@ The PR body covers:
 - that merging does not cut the release.
 
 **Release:** follow `references/release.md`. The Release workflow rebuilds, lints, tags, creates the GitHub release, and publishes to npm when the `NPM_AUTH_TOKEN` secret exists.
+
+**Gate C.** Show:
+- the PR link and merged state;
+- the new version and its release link;
+- whether npm publishing ran or was skipped.
+
+Wait for approval before drafting the Slack post. If they're batching (separate bump PR, release later), stop here and tell them gate C and step 7 are still to come.
 
 ## 7. Post in #er-design-library
 
