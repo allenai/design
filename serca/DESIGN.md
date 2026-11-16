@@ -1,7 +1,7 @@
 ---
 name: SERCA
 description: SMART-EarthRanger Conservation Alliance (SERCA) identity — booth, event, partner, and Alliance-member materials
-version: 0.0.1
+version: 0.7.0
 
 assets:
   # The pixel-bear mark. Vertical is the primary lockup; horizontal is for

@@ -1,7 +1,7 @@
 ---
 name: EarthRanger
 description: EarthRanger product interfaces
-version: 0.0.1
+version: 0.7.0
 
 assets:
   logo: assets/EarthRanger-logo.svg

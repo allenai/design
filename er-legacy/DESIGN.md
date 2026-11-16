@@ -1,7 +1,7 @@
 ---
 name: ER Legacy
 description: EarthRanger product interfaces in the design system carried forward from the 2021 app
-version: 0.0.1
+version: 0.7.0
 
 assets:
   logo: assets/EarthRanger-logo.svg
