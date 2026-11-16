@@ -53,7 +53,7 @@ Ask, or infer from the request and confirm:
   - **SERCA** renders on EarthRanger's tokens, so an EarthRanger colour change usually belongs in SERCA too. SERCA has no Figma spec sheet or variables of its own: **skip the Figma steps for SERCA-only work.**
   - **SERCA's light `UI/Background/Secondary Background` is Off-White on purpose** (EarthRanger's is Off-White/50). It's a brand decision, encoded as `SERCA_ALIASES` in `spec-sheet.html`. Never "sync" it to EarthRanger.
   - **ER Legacy** has its own colours (blues and greys, no teal) but shares token names with EarthRanger.
-- **Which modes?** Light, dark, or both, per system.
+- **Which modes?** Light, dark, or both, per system. A *new* token needs values for all four modes: EarthRanger light and dark, ER Legacy light and dark. SERCA follows EarthRanger.
 - **What kind of change?** Adding a token is a middle-number bump. Changing a value or wording is a last-number bump. Renaming or removing a token is a first-number bump. Use this to recommend the version later.
 - **Type or colour?** Figma holds colour as variables and type as text styles. There are no colour styles, so a colour change touches variables only.
 
@@ -70,7 +70,7 @@ For each Figma system the change touches: duplicate the visible section, rename 
 - **Variables:** one `Tokens` collection with modes `Light` and `Dark` (EarthRanger) and `Legacy Light` and `Legacy Dark` (ER Legacy). Values alias variables in the `Primitives` collection (single mode, `HEX`).
   - Token names match `DESIGN.md` exactly, e.g. `UI/Background/Disabled`.
   - Set scopes explicitly on new variables.
-  - For a new EarthRanger-only or Legacy-only token, still give the other system's modes a sensible value and tell the user what you chose.
+  - A new token gets a value in all four modes, even when the request names only EarthRanger or only ER Legacy. Agree all four values with the user while scoping, proposing existing primitives for the modes they didn't mention. The team chose this for now (2026-11-16) so the two systems' token lists don't drift apart. Add the token to every `DESIGN.md` whose system gets it.
 - **Text styles:** only for typography changes.
 
 Read every write back and report the resolved values per mode.
