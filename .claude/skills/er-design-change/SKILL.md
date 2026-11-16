@@ -68,7 +68,10 @@ Start from fresh `main` on a new branch (`git switch main && git pull && git swi
 - **Prose:** add or adjust a sentence in the matching section.
   - EarthRanger and SERCA may name primitives in backticks.
   - ER Legacy prose names semantic tokens only, never hex values or primitives.
-- **Build:** run `npm run build`. Check that the only diff in `tokens.json`/`tokens.css` is the rows you meant to touch. An unexpected diff means something upstream changed; stop and tell the user.
+- **Build:** run `npm run build` locally. This is the one build the change needs. It regenerates `tokens.json` and `tokens.css` from the edited `DESIGN.md` files so they go into the PR.
+  - Check that the only diff in `tokens.json`/`tokens.css` is the rows you meant to touch.
+  - The build also regenerates Strata, Asta and OlmoEarth files, which should come out unchanged. Any other diff means something upstream changed: stop and tell the user. The scope check catches this too.
+  - Building is not releasing. Nothing is published until the Release workflow in step 4.
 
 ## 2. spec-sheet.html
 
@@ -133,6 +136,8 @@ Read every write back and report the resolved values per mode.
 - `package.json` (`"version"` only; leave `package-lock.json` alone);
 - the `version:` line of each `DESIGN.md` the change touched.
 
+No rebuild is needed for the bump: the generated token files don't contain the version.
+
 **PR shape:** ask each time whether the bump goes in the same PR as the change, or in a separate bump PR (its own branch from fresh `main`) so several changes can ship together. Then:
 - commit, then run the scope check again if anything changed since gate A;
 - check for an open PR from this branch (`gh pr list --head <branch> --state open`):
@@ -146,7 +151,11 @@ The PR body covers:
 - a link to the new Figma spec-sheet section, and confirmation that the library is published;
 - that merging does not cut the release.
 
-**Release:** follow `references/release.md`. The Release workflow rebuilds, lints, tags, creates the GitHub release, and publishes to npm when the `NPM_AUTH_TOKEN` secret exists.
+**Release:** follow `references/release.md`. The Release workflow runs on GitHub after the PR merges. In order, it:
+1. runs `npm run build` again as a safety net: if `main`'s generated files are stale, it commits the fix; after a correct step 1 this does nothing;
+2. lints the specs;
+3. tags the version and creates the GitHub release;
+4. publishes the npm package, but only when the `NPM_AUTH_TOKEN` secret exists; otherwise the release is GitHub-only.
 
 **Gate C.** Show:
 - the PR link and merged state;

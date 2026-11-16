@@ -1,13 +1,15 @@
 # Release @allenai/design-system
 
 A release is two acts:
-1. **Bump** the version, in a merged PR.
+1. **Bump** the version, in a merged PR. This is an edit to `package.json` and the touched `DESIGN.md` files. No `npm run build` is needed, because the generated token files don't contain the version. The change's own build already happened in step 1.
 2. **Run the Release workflow** on `main`. It:
-   - rebuilds the generated files and commits them;
+   - runs `npm run build` again as a safety net and commits anything stale (normally nothing);
    - lints the specs;
    - tags `v<version>`;
    - creates the GitHub release;
-   - publishes to npm when the `NPM_AUTH_TOKEN` secret is set.
+   - publishes the npm package when the `NPM_AUTH_TOKEN` secret is set. Without it, the release exists only on GitHub.
+
+"Build" and "release" are different things: `npm run build` regenerates files, and only the workflow tags and publishes.
 
 The tag is what makes a version installable: `npm install "github:allenai/design#semver:^<version>"`.
 
