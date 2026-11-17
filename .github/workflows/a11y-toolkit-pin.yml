@@ -1,0 +1,69 @@
+name: a11y toolkit pin
+
+# /a11y reads Microsoft's Accessibility Considerations Toolkit at the commit in
+# .claude/skills/a11y/toolkit.lock. Microsoft asks consumers to pin a reviewed,
+# immutable commit and review every update. So once a week this checks upstream
+# and, when the toolkit has moved, opens a PR that moves the pin, with the
+# upstream diff linked. It never merges: merging is the review.
+on:
+  schedule:
+    - cron: "17 14 * * 1" # Mondays, 14:17 UTC
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "Upstream commit to pin (blank = latest)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: a11y-toolkit-pin
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Move the pin
+        id: bump
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ inputs.sha }}
+        run: |
+          set +e
+          python3 -I .claude/skills/a11y/scripts/toolkit.py bump ${SHA:+--sha "$SHA"} \
+            --summary "$RUNNER_TEMP/summary.md"
+          code=$?
+          set -e
+          if [ $code -eq 3 ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          [ $code -eq 0 ] || exit $code
+          commit=$(sed -n 's/^commit=//p' .claude/skills/a11y/toolkit.lock)
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "short=${commit:0:7}" >> "$GITHUB_OUTPUT"
+
+      - name: Open a PR
+        if: steps.bump.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHORT: ${{ steps.bump.outputs.short }}
+        run: |
+          branch="a11y-toolkit/$SHORT"
+          # One PR per upstream commit, so a re-run or a quiet week while the
+          # last PR is still open doesn't open another.
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            echo "::notice::$branch already exists; nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add .claude/skills/a11y/toolkit.lock
+          git commit -m "a11y: pin Accessibility Considerations Toolkit to $SHORT"
+          git push -u origin "$branch"
+          gh pr create --base "${{ github.event.repository.default_branch }}" --head "$branch" \
+            --title "a11y: pin Accessibility Considerations Toolkit to $SHORT" \
+            --body-file "$RUNNER_TEMP/summary.md"
