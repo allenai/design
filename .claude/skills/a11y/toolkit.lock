@@ -1,0 +1,10 @@
+# Microsoft Accessibility Considerations Toolkit, pinned for /a11y.
+# https://github.com/microsoft/Microsoft-Accessibility/tree/main/Accessibility-Considerations-Toolkit
+#
+# Microsoft asks consumers to pin a reviewed, immutable commit and verify an exact
+# distribution hash. scripts/toolkit.py fetch downloads this commit and refuses it
+# if the hash differs. Change this file only through scripts/toolkit.py bump (the
+# a11y-toolkit-pin workflow does it weekly and opens a PR), after reading the diff.
+commit=6d4e52d588eaf2bc79297b3898aa4641d61e574d
+date=2026-11-11
+distribution_sha256=ad0335d4c90da66a398d188365e8085fdd60c875f7f233a48ad8f715c4b9724f
