@@ -21,8 +21,9 @@ evidence before judging: read the code, look at the image, pull the Figma contex
 that's practical. If there is no target, ask for one.
 
 Note whether a known design system is in use (MUI, Radix, React Aria, Fluent, and so on). When the
-target uses one of this repo's systems, read that system's `DESIGN.md` at the repo root (for example
-`earthranger/DESIGN.md`) for token values; don't guess colours. When a finding traces back to a
+target uses one of the allenai/design systems, read that system's `DESIGN.md` for token values (for
+example `earthranger/DESIGN.md` at the root of the allenai/design repo; outside that repo, use a
+local checkout or the installed `@allenai/design-system` package); don't guess colours. When a finding traces back to a
 token value, say so: the fix belongs in that `DESIGN.md` (for EarthRanger, ER Legacy, or SERCA, via
 the `er-design-change` skill), not in a local override. Report findings about another team's system
 to its owners rather than changing its tokens.

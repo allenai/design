@@ -1,0 +1,68 @@
+name: Sync a11y toolkit
+
+# The /a11y skill vendors Microsoft's Accessibility Considerations Toolkit at a
+# pinned commit (.claude/skills/a11y/references/SOURCE.md). Once a week this
+# checks upstream and, when the toolkit has moved, opens a PR with the new
+# content. It never merges: the files are loaded into model context, so a person
+# reads the diff first.
+on:
+  schedule:
+    - cron: "17 14 * * 1" # Mondays, 14:17 UTC
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "Upstream commit to pin (blank = latest)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: a11y-toolkit-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update the vendored toolkit
+        id: update
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUMMARY_FILE: ${{ runner.temp }}/summary.md
+        run: |
+          set +e
+          bash .claude/skills/a11y/scripts/update_toolkit.sh "${{ inputs.sha }}"
+          code=$?
+          set -e
+          if [ $code -eq 3 ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          [ $code -eq 0 ] || exit $code
+          sha=$(sed -n 's/^- Pinned commit: `\([0-9a-f]\{40\}\)`.*/\1/p' .claude/skills/a11y/references/SOURCE.md)
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "short=${sha:0:7}" >> "$GITHUB_OUTPUT"
+
+      - name: Open a PR
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHORT: ${{ steps.update.outputs.short }}
+        run: |
+          branch="a11y-toolkit/$SHORT"
+          # One PR per upstream commit: a re-run, or a week with no new commit
+          # while the last PR is still open, should not open another.
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            echo "::notice::$branch already exists; nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add .claude/skills/a11y/references
+          git commit -m "a11y: update Accessibility Considerations Toolkit to $SHORT"
+          git push -u origin "$branch"
+          gh pr create --base "${{ github.event.repository.default_branch }}" --head "$branch" \
+            --title "a11y: update Accessibility Considerations Toolkit to $SHORT" \
+            --body-file "${{ runner.temp }}/summary.md"
